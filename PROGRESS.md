@@ -47,6 +47,7 @@ Last updated 2026-11-18. This repo is public, so no keys or private details belo
 - Publishing (closed beta) built 2026-11-18: publish from Build to name.sogilex.net, contact forms, messages inbox. See `sogilex-build/docs/PUBLISHING.md`. Only accounts with `build_limits.can_publish` (the owner) can publish.
 - Owner's build limit raised to 20/day (`build_limits` table).
 - Before opening publishing to everyone: terms of service (operator: owner, Missouri, sole proprietor until the planned LLC), DMCA designated agent registration, email notifications for messages (needs a Resend API key).
+- Logos (2026-11-18): "Add your logo here" on Build and Menus (brand_kits table, assets/brand.js); logo + its colours used in menus, generated sites and published sites. Next ideas: curated colour palettes and font pairings (not unlimited options), flyers.
 - Menus milestone 1 live at build.sogilex.com/menus/ (2026-11-18): form, fit-to-page preview, autosave (`menus` table), print/PDF. No AI. Next: milestone 2 (Claude designs the style; see MENU-SPEC.md), after owner feedback.
   - Customer sites on **sogilex.net** subdomains (never sogilex.com: shared origin, phishing risk). sogilex.net DNS moves to Cloudflare; sogilex.com stays at Porkbun (email forwarding depends on it).
   - Cloudflare: account created, sogilex.net active on Cloudflare (2026-11-18). API token "Sogilex publishing" (Workers Scripts, KV, Account Settings read; sogilex.net Zone read, DNS, Workers Routes; expires in 1 year) is saved as a network secret on the "Sogilex" cloud environment, not in any repo.
