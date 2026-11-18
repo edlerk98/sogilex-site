@@ -36,5 +36,7 @@ Last updated 2026-11-18. This repo is public, so no keys or private details belo
 - Savepoint Atlas: build the Pack Plus features before selling it. Price $9.99 once; Stripe Payment Link still a placeholder.
 - Sogilex Build: tune quality and speed from real builds, and decide whether to keep Opus 5.5 or move to a cheaper model. First 3 builds (2026-11-18): 9.3k-15.5k output tokens, about $0.19-0.31 each, all finished; owner rated the result good.
 - Sogilex Build: more futuristic look for the Build site itself (owner's request, not yet specified).
-- Sogilex Build ideas from the owner, not yet scoped: PDF/Excel document creator, resume maker.
+- Direction (2026-11-18): Sogilex = design tools for local businesses that don't look AI-made. Order: brand mockup, then menus, then flyers, then invoices (no AI), then reports. Resume maker parked (wrong customer). Excel later.
+- Brand mockup (dark plum, sunset gradient, Unbounded/Inter/JetBrains Mono): https://claude.ai/artifact/P1FwkbQkqcBivZrtxJktzU. New look covers sogilex.com and Build, not Atlas.
+- Menu creator spec: `sogilex-build/docs/MENU-SPEC.md`.
 - The next Sogilex product: own subdomain, own card on sogilex.com.
