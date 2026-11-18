@@ -18,8 +18,9 @@ Last updated 2026-11-18. This repo is public, so no keys or private details belo
 ## Finishing touches
 
 - [ ] Enforce HTTPS in Pages settings for all three repos.
-- [ ] Re-run `sogilex-build/supabase/003_build.sql` in the Supabase SQL Editor (adds `finished_at` and `stop_reason`; failed builds stop counting toward the 3 a day, capped at 5 failures). Do this **before** the redeploy.
-- [ ] Then redeploy `build-site` from `sogilex-build/supabase/functions/build-site/index.ts` (API-key format check, `max_tokens` 16k to 24k, records stop reason).
+- [x] Database updated (2026-11-18): `finished_at`, `stop_reason`; failed builds don't count toward the 3 a day (max 5 failures); only the Edge Function can mark builds finished.
+- [x] `build-site` redeployed as version 7 (API-key format check, `max_tokens` 24k, records stop reason).
+- [ ] Do one test build and check its row has `finished_at` and `stop_reason` filled in. If both are empty, check the function logs for "finish_build failed".
 - [ ] Clear test builds: `delete from public.build_generations where status <> 'done';`
 - [ ] After 5-10 new builds, run the query at the bottom of `003_build.sql` to see seconds and cost per build. If any are near 150 s (Supabase's free-plan limit), lower effort or `max_tokens`.
 - [ ] Privacy policy for Sogilex Build.
