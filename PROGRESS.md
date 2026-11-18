@@ -22,7 +22,7 @@ Last updated 2026-11-18. This repo is public, so no keys or private details belo
 - [x] `build-site` redeployed as version 7 (API-key format check, `max_tokens` 24k, records stop reason).
 - [x] Test build 2026-11-18: recorded correctly. **Took 146 s** for 15,566 output tokens ($0.31), right at Supabase's free-plan 150 s limit.
 - [x] `build-site` version 8 stops a build at 140 s with a clear message (`stop_reason` "timeout"; doesn't count toward the 3 a day).
-- [ ] Upgrade Supabase to Pro ($25/month, 150 s to 400 s limit) once Build gets real traffic. Then raise `DEADLINE_MS` in `build-site` to about 380 s.
+- [x] Supabase Pro ($25/month) since 2026-11-18; `DEADLINE_MS` raised to 380 s (build-site v13). Effort stays "medium": "low" produced junk output.
 - [ ] Clear test builds: `delete from public.build_generations where status <> 'done';`
 - [ ] After 5-10 new builds, run the query at the bottom of `003_build.sql` to see seconds and cost per build. If any are near 150 s (Supabase's free-plan limit), lower effort or `max_tokens`.
 - [ ] Privacy policy for Sogilex Build.
