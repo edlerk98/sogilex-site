@@ -45,5 +45,6 @@ Last updated 2026-11-18. This repo is public, so no keys or private details belo
 - sogilex.com/menus and /flyers pages live (2026-11-18) with a real waitlist (Supabase `waitlist` table; read it in Table Editor).
 - Next (owner's order): Build publishing, then menus milestone 1.
   - Customer sites on **sogilex.net** subdomains (never sogilex.com: shared origin, phishing risk). sogilex.net DNS moves to Cloudflare; sogilex.com stays at Porkbun (email forwarding depends on it).
-  - Owner needs: a Cloudflare account. Still to answer: business name and state/country (for terms of service), and whether Lawn Gang 101 (homepage example) is a real business.
+  - Cloudflare: account created, sogilex.net active on Cloudflare (2026-11-18). API token "Sogilex publishing" (Workers Scripts, KV, Account Settings read; sogilex.net Zone read, DNS, Workers Routes; expires in 1 year) is saved as a network secret on the "Sogilex" cloud environment, not in any repo.
+  - Was: Owner needs a Cloudflare account. Still to answer: business name and state/country (for terms of service), and whether Lawn Gang 101 (homepage example) is a real business.
 - The next Sogilex product: own subdomain, own card on sogilex.com.
