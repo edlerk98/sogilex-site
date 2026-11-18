@@ -43,7 +43,10 @@ Last updated 2026-11-18. This repo is public, so no keys or private details belo
 - Sign-in (2026-11-18): password or emailed code on Atlas and Build, one session across *.sogilex.com (`assets/sogilex-auth.js`, keep identical in both repos). Owner to do in Supabase: paste `savepoint-atlas/supabase/email-sign-in.html` into BOTH Magic link and Confirm signup templates; set minimum password length to 8. Later: Sign in with Google (needs Google Cloud setup; if an iOS app ever offers it, Apple requires Sign in with Apple too).
 - build.sogilex.com restyled to the new look, with a Futuristic style (function v9), 2026-11-18. Sign-in tested end to end by owner.
 - sogilex.com/menus and /flyers pages live (2026-11-18) with a real waitlist (Supabase `waitlist` table; read it in Table Editor).
-- Next (owner's order): Build publishing, then menus milestone 1.
+- Publishing (closed beta) built 2026-11-18: publish from Build to name.sogilex.net, contact forms, messages inbox. See `sogilex-build/docs/PUBLISHING.md`. Only accounts with `build_limits.can_publish` (the owner) can publish.
+- Owner's build limit raised to 20/day (`build_limits` table).
+- Before opening publishing to everyone: terms of service (operator: owner, Missouri, sole proprietor until the planned LLC), DMCA designated agent registration, email notifications for messages (needs a Resend API key).
+- Next (owner's order): finish publishing, then menus milestone 1.
   - Customer sites on **sogilex.net** subdomains (never sogilex.com: shared origin, phishing risk). sogilex.net DNS moves to Cloudflare; sogilex.com stays at Porkbun (email forwarding depends on it).
   - Cloudflare: account created, sogilex.net active on Cloudflare (2026-11-18). API token "Sogilex publishing" (Workers Scripts, KV, Account Settings read; sogilex.net Zone read, DNS, Workers Routes; expires in 1 year) is saved as a network secret on the "Sogilex" cloud environment, not in any repo.
   - Was: Owner needs a Cloudflare account. Still to answer: business name and state/country (for terms of service), and whether Lawn Gang 101 (homepage example) is a real business.
