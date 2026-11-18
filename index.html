@@ -5,16 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sogilex · software and AI tools</title>
 <meta name="description" content="Sogilex builds software and AI tools. Makers of Savepoint Atlas, the completion tracker for open-world games.">
+<meta name="theme-color" content="#0c0d10">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
+<!-- The living field: points that drift and wake up around the cursor. Decorative only. -->
+<canvas id="field" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
 <header class="top">
   <div class="wrap row">
-    <a class="mark" href="./">Sogilex</a>
+    <a class="mark" href="./" aria-label="Sogilex home">Sogilex<span class="dot" aria-hidden="true"></span></a>
     <nav aria-label="Main">
       <a href="#products">Products</a>
+      <a href="#now">Now</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -23,60 +29,89 @@
 <main id="main">
   <section class="hero" aria-labelledby="hero-h">
     <div class="wrap">
-      <p class="eyebrow">Software and AI tools</p>
-      <h1 id="hero-h">Sogilex</h1>
-      <p class="lede">We build small, useful software, from game companions to AI tools. Each product gets its own name and its own address on sogilex.com.</p>
+      <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>Software and AI tools · est. 2026</p>
+      <h1 id="hero-h" class="word" aria-label="Sogilex">
+        <span aria-hidden="true">S</span><span aria-hidden="true">O</span><span aria-hidden="true">G</span><span aria-hidden="true">I</span><span aria-hidden="true">L</span><span aria-hidden="true">E</span><span aria-hidden="true">X</span><span class="period" aria-hidden="true">.</span>
+      </h1>
+      <p class="lede">We build small, useful software, from game companions to AI tools. Every product gets its own name and its own home on sogilex.com.</p>
+      <div class="cta-row">
+        <a class="btn" href="#products">See what we make</a>
+        <a class="ghost" href="#now">What's in the workshop</a>
+      </div>
     </div>
   </section>
 
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Software</span><i></i><span>AI tools</span><i></i><span>Games</span><i></i><span>Experiments</span><i></i><span>Made with care</span><i></i>
+      <span>Software</span><i></i><span>AI tools</span><i></i><span>Games</span><i></i><span>Experiments</span><i></i><span>Made with care</span><i></i>
+    </div>
+  </div>
+
   <section id="products" class="wrap block" aria-labelledby="products-h">
-    <div class="block-head">
-      <h2 id="products-h">Products</h2>
-      <span class="eyebrow">01 live</span>
+    <div class="block-head reveal">
+      <p class="eyebrow">01 · Products</p>
+      <h2 id="products-h">Things we've shipped</h2>
     </div>
     <div class="grid">
-      <article class="product atlas">
-        <div class="product-art" aria-hidden="true">
-          <svg viewBox="0 0 300 160" focusable="false">
+      <article class="card atlas reveal">
+        <div class="card-art" aria-hidden="true">
+          <svg viewBox="0 0 300 150" focusable="false" preserveAspectRatio="xMidYMax slice">
             <defs>
               <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb35c"/><stop offset=".55" stop-color="#ff5d73"/><stop offset="1" stop-color="#c2308f"/></linearGradient>
-              <mask id="stripes"><rect width="300" height="160" fill="#fff"/><rect y="98" width="300" height="4" fill="#000"/><rect y="112" width="300" height="6" fill="#000"/><rect y="128" width="300" height="8" fill="#000"/></mask>
+              <mask id="stripes"><rect width="300" height="150" fill="#fff"/><rect y="92" width="300" height="4" fill="#000"/><rect y="106" width="300" height="6" fill="#000"/><rect y="122" width="300" height="8" fill="#000"/></mask>
             </defs>
-            <g fill="none" stroke="#1f4a55" stroke-width="1.2"><ellipse cx="220" cy="130" rx="150" ry="70"/><ellipse cx="225" cy="134" rx="105" ry="46"/></g>
-            <circle cx="150" cy="96" r="62" fill="url(#sun)" mask="url(#stripes)"/>
-            <path d="M0 150 Q70 136 150 142 T300 138 V160 H0Z" fill="#0b252c"/>
+            <g fill="none" stroke="#1f4a55" stroke-width="1.2"><ellipse cx="225" cy="125" rx="150" ry="70"/><ellipse cx="230" cy="130" rx="105" ry="46"/><ellipse cx="235" cy="134" rx="60" ry="24"/></g>
+            <g class="sun"><circle cx="150" cy="92" r="60" fill="url(#sun)" mask="url(#stripes)"/></g>
+            <path d="M0 140 Q70 126 150 132 T300 128 V150 H0Z" fill="#0b252c"/>
           </svg>
         </div>
-        <div class="product-body">
-          <span class="tag">Live</span>
+        <div class="card-body">
+          <div class="card-meta"><span class="tag live">Live</span><span class="addr">atlas.sogilex.com</span></div>
           <h3>Savepoint Atlas</h3>
           <p>The completion tracker for open-world games. Verified checklists, sync across devices, spoiler controls, and a race to 100% with friends.</p>
-          <a class="btn" href="https://atlas.sogilex.com/">Open Savepoint Atlas</a>
+          <a class="btn" href="https://atlas.sogilex.com/">Open Savepoint Atlas <span aria-hidden="true">→</span></a>
         </div>
       </article>
-      <article class="product next">
-        <div class="product-body">
-          <span class="tag dim">In the workshop</span>
-          <h3>More on the way</h3>
-          <p>New tools are in progress. They'll appear here, each at its own sogilex.com address, when they're ready to use.</p>
+      <article class="card next reveal">
+        <div class="card-body">
+          <div class="card-meta"><span class="tag">In the workshop</span></div>
+          <h3>Next up</h3>
+          <p>New tools are being built. Each one gets its own sogilex.com address when it's ready to use.</p>
+          <div class="slots" aria-hidden="true"><span></span><span></span><span></span></div>
         </div>
       </article>
     </div>
+  </section>
+
+  <section id="now" class="wrap block" aria-labelledby="now-h">
+    <div class="block-head reveal">
+      <p class="eyebrow">02 · Now</p>
+      <h2 id="now-h">The workshop log</h2>
+    </div>
+    <ol class="log reveal">
+      <li><time datetime="2026-11">2026-11</time><span>Savepoint Atlas launches at <a href="https://atlas.sogilex.com/">atlas.sogilex.com</a>.</span></li>
+      <li><time datetime="2026-11">2026-11</time><span>Sogilex becomes the home for everything we build.</span></li>
+      <li class="cursor"><time>next</time><span>New tools in progress<span class="caret" aria-hidden="true"></span></span></li>
+    </ol>
   </section>
 
   <section id="contact" class="wrap block" aria-labelledby="contact-h">
-    <div class="block-head">
-      <h2 id="contact-h">Contact</h2>
+    <div class="contact reveal">
+      <p class="eyebrow">03 · Contact</p>
+      <h2 id="contact-h">Say hello</h2>
+      <p>Questions, ideas or press: <a href="mailto:[CONTACT EMAIL]">[CONTACT EMAIL]</a></p>
     </div>
-    <p class="contact">Questions, ideas or press: <a href="mailto:[CONTACT EMAIL]">[CONTACT EMAIL]</a></p>
   </section>
 </main>
 
 <footer class="foot">
   <div class="wrap row">
     <span>© 2026 Sogilex</span>
-    <span>This page uses no cookies, analytics or tracking.</span>
+    <span>No cookies, analytics or tracking on this page.</span>
   </div>
 </footer>
+
+<script src="assets/site.js" defer></script>
 </body>
 </html>
