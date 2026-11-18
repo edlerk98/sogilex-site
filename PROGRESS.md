@@ -39,4 +39,5 @@ Last updated 2026-11-18. This repo is public, so no keys or private details belo
 - Direction (2026-11-18): Sogilex = design tools for local businesses that don't look AI-made. Order: brand mockup, then menus, then flyers, then invoices (no AI), then reports. Resume maker parked (wrong customer). Excel later.
 - Brand mockup (dark plum, sunset gradient, Unbounded/Inter/JetBrains Mono): https://claude.ai/artifact/P1FwkbQkqcBivZrtxJktzU. New look covers sogilex.com and Build, not Atlas.
 - Menu creator spec: `sogilex-build/docs/MENU-SPEC.md`.
+- Homepage scene approved by owner (2026-11-18): sunset over a particle sea, page-wide cursor effects. Code in `design/sunset-scene.js`. Before launch: check phone performance and text readability over it.
 - The next Sogilex product: own subdomain, own card on sogilex.com.
