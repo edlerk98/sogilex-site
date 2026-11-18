@@ -93,7 +93,11 @@ nav a:hover { color: var(--text); background: rgba(255, 255, 255, .05); }
 .block-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
 h2 { font-family: var(--display); font-weight: 900; text-transform: uppercase; font-size: clamp(44px, 7vw, 76px); line-height: .9; margin: 0; }
 
-.grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 18px; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.grid .card.next { grid-column: 1 / -1; }
+.grid .card.next .card-body { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+.grid .card.next .slots { flex: 1 1 260px; margin-top: 0; }
+.card-art .typing { animation: blink 1s steps(1) infinite; }
 .card {
   --mx: 50%; --my: 50%;
   position: relative; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;
