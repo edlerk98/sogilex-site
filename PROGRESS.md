@@ -1,57 +1,134 @@
 # Sogilex: where things stand
 
-Last updated 2026-11-18. This repo is public, so no keys or private details belong here.
+Last updated 2026-11-18 (end of a long session). **A new session should read this file first.**
+This repo is public: no keys, user IDs or private details here.
+
+## How to start the next session
+
+- Start a cloud session on the **"Sogilex"** environment (it holds the Cloudflare key) with all three repos:
+  `edlerk98/sogilex-site`, `edlerk98/sogilex-build`, `edlerk98/savepoint-atlas`.
+- Tell it: *"Read PROGRESS.md in sogilex-site, then continue."*
+- Working style the owner asked for: be an advisor, not a yes-man; **simple, one-step-at-a-time walkthroughs**
+  for anything the owner does by hand (they get overwhelmed by long lists); test before shipping.
+
+## What Sogilex is
+
+Design tools for local businesses that **don't look AI-made**. Four design rules on every tool: one message,
+two typefaces at most, nothing generated to fake it (no generated people/props/textures), only the owner's
+facts (missing ones become [PLACEHOLDERS], never invented). Order of tools: websites (live), menus (live beta),
+flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). Excel later.
 
 ## Live
 
-| Site | Address | Repo |
+| What | Address | Repo |
 |---|---|---|
-| Sogilex (company) | https://sogilex.com | `edlerk98/sogilex-site` |
-| Savepoint Atlas | https://atlas.sogilex.com | `edlerk98/savepoint-atlas` |
-| Sogilex Build (beta) | https://build.sogilex.com | `edlerk98/sogilex-build` |
+| Company site | https://sogilex.com (+ /menus, /flyers pages) | `sogilex-site` |
+| Build: AI websites | https://build.sogilex.com | `sogilex-build` |
+| Menus (free beta) | https://build.sogilex.com/menus/ | `sogilex-build` |
+| Published customer sites | https://NAME.sogilex.net (closed beta: owner only) | `sogilex-build/worker` |
+| Savepoint Atlas | https://atlas.sogilex.com | `savepoint-atlas` |
 
-- All three are static sites on GitHub Pages. DNS is at Porkbun.
-- One Supabase project serves both products: magic-link sign-in (one Sogilex account), the Atlas checklist, contributions and friends, and the Build limits plus its `build-site` Edge Function.
-- Sign-in emails send from `signin@mail.sogilex.com` via Resend. `hello@sogilex.com` forwards (Porkbun) to the business inbox.
-- Sogilex Build calls Claude Opus 5.5 with a workspace-scoped Anthropic key stored as the `ANTHROPIC_API_KEY` Supabase secret. Limits: 3 builds per person and 50 overall per 24 hours. Rough cost: $0.20-0.30 per site. There is a monthly spend limit in the Anthropic Console.
+## Brand (sogilex.com and Build, not Atlas)
 
-## Finishing touches
+- Night plum + sunset gradient (#D91E8C to #F2496B to #FF9A4D). Tokens and fonts: `sogilex-site/design/README.md`.
+- Fonts self-hosted (SIL OFL): Unbounded (headings), Inter (body), JetBrains Mono (labels), Montserrat 600 (wordmark).
+- Logo: two offset rounded squares (`favicon.svg`, `<symbol id="mark">` in each page).
+- Background scene (owner loves it): sunset over a particle sea, drifting sparks, cursor glow + trailing ring,
+  click ripples, sun sets on scroll. `assets/scene.js` (copy in both sogilex-site and sogilex-build);
+  the horizon sits below the element marked `data-horizon` so it never runs behind text.
+- Design mockup canvas: https://claude.ai/artifact/P1FwkbQkqcBivZrtxJktzU
+- Boxes/cards must be solid dark panels with borders (owner: they blended into the scene).
 
-- [ ] Enforce HTTPS in Pages settings for all three repos.
-- [x] Database updated (2026-11-18): `finished_at`, `stop_reason`; failed builds don't count toward the 3 a day (max 5 failures); only the Edge Function can mark builds finished.
-- [x] `build-site` redeployed as version 7 (API-key format check, `max_tokens` 24k, records stop reason).
-- [x] Test build 2026-11-18: recorded correctly. **Took 146 s** for 15,566 output tokens ($0.31), right at Supabase's free-plan 150 s limit.
-- [x] `build-site` version 8 stops a build at 140 s with a clear message (`stop_reason` "timeout"; doesn't count toward the 3 a day).
-- [x] Supabase Pro ($25/month) since 2026-11-18; `DEADLINE_MS` raised to 380 s (build-site v13). Effort stays "medium": "low" produced junk output.
-- [ ] Clear test builds: `delete from public.build_generations where status <> 'done';`
-- [ ] After 5-10 new builds, run the query at the bottom of `003_build.sql` to see seconds and cost per build. If any are near 150 s (Supabase's free-plan limit), lower effort or `max_tokens`.
-- [ ] Privacy policy for Sogilex Build.
-- [ ] Savepoint Atlas privacy page: fill in `[OPERATOR NAME]`, `[COUNTRY]`, `[EFFECTIVE DATE]`, `[SUPABASE REGION]`, then get it reviewed and remove "Draft".
-- [ ] sogilex.net: forward to sogilex.com, and add `v=spf1 -all` and `_dmarc` `v=DMARC1; p=reject;` records.
-- [ ] Optional: branded sign-in email template (`savepoint-atlas/supabase/email-sign-in.html`; it currently says Savepoint Atlas, and could be made generic for Sogilex).
+## Infrastructure
 
-## Bigger next steps
+- **GitHub Pages** hosts all three static sites. Pushing to `main` deploys (about 45 s).
+- **DNS:** sogilex.com stays at **Porkbun** (hello@sogilex.com forwarding depends on it). sogilex.net is on **Cloudflare**.
+- **Supabase** (one project, **Pro plan, $25/month**): auth, all tables, the `build-site` Edge Function.
+  The session's Supabase connector can run SQL, apply migrations and deploy functions.
+- **Cloudflare** (free plan): Worker `sogilex-sites` on routes `*.sogilex.net/*` and `sogilex.net/*`, KV namespace
+  `sogilex-sites`, DNS `AAAA sogilex.net` and `AAAA *.sogilex.net` to `100::` (proxied). API token
+  "Sogilex publishing" (Workers Scripts/KV edit, Account Settings read; sogilex.net Zone read, DNS edit, Workers
+  Routes edit; expires 2027-11) is a network secret on the "Sogilex" environment: call api.cloudflare.com with
+  `Authorization: Bearer proxy-injected`. Deploying the Worker: see `sogilex-build/docs/PUBLISHING.md`.
+- **Anthropic:** `ANTHROPIC_API_KEY` Supabase secret; Claude Opus 5.5; spend limit in the Anthropic Console.
+- **Resend** sends sign-in emails from `signin@mail.sogilex.com`.
 
-- Savepoint Atlas: real verified Grand Theft Auto VI entries (contribute, then review).
-- Savepoint Atlas: build the Pack Plus features before selling it. Price $9.99 once; Stripe Payment Link still a placeholder.
-- Sogilex Build: tune quality and speed from real builds, and decide whether to keep Opus 5.5 or move to a cheaper model. First 3 builds (2026-11-18): 9.3k-15.5k output tokens, about $0.19-0.31 each, all finished; owner rated the result good.
-- Sogilex Build: more futuristic look for the Build site itself (owner's request, not yet specified).
-- Direction (2026-11-18): Sogilex = design tools for local businesses that don't look AI-made. Order: brand mockup, then menus, then flyers, then invoices (no AI), then reports. Resume maker parked (wrong customer). Excel later.
-- Brand mockup (dark plum, sunset gradient, Unbounded/Inter/JetBrains Mono): https://claude.ai/artifact/P1FwkbQkqcBivZrtxJktzU. New look covers sogilex.com and Build, not Atlas.
-- Menu creator spec: `sogilex-build/docs/MENU-SPEC.md`.
-- Homepage scene approved by owner (2026-11-18): sunset over a particle sea, page-wide cursor effects. Live on sogilex.com since 2026-11-18 (`assets/scene.js`); owner checked it on a phone.
-- Sign-in (2026-11-18): password or emailed code on Atlas and Build, one session across *.sogilex.com (`assets/sogilex-auth.js`, keep identical in both repos). Owner to do in Supabase: paste `savepoint-atlas/supabase/email-sign-in.html` into BOTH Magic link and Confirm signup templates; set minimum password length to 8. Later: Sign in with Google (needs Google Cloud setup; if an iOS app ever offers it, Apple requires Sign in with Apple too).
-- build.sogilex.com restyled to the new look, with a Futuristic style (function v9), 2026-11-18. Sign-in tested end to end by owner.
-- sogilex.com/menus and /flyers pages live (2026-11-18) with a real waitlist (Supabase `waitlist` table; read it in Table Editor).
-- Publishing tested end to end by owner 2026-11-18 (build, publish, live site, contact form, Messages).
-- Publishing (closed beta) built 2026-11-18: publish from Build to name.sogilex.net, contact forms, messages inbox. See `sogilex-build/docs/PUBLISHING.md`. Only accounts with `build_limits.can_publish` (the owner) can publish.
-- Owner's build limit raised to 20/day (`build_limits` table).
-- Before opening publishing to everyone: terms of service (operator: owner, Missouri, sole proprietor until the planned LLC), DMCA designated agent registration, email notifications for messages (needs a Resend API key).
-- Menus LIVE as a free beta on sogilex.com (2026-11-18): homepage card says Beta with "Make a menu"; /menus page links to build.sogilex.com/menus; waitlist kept for "new looks".
-- Menus looks (2026-11-18): 5 fonts × 10 palettes (+ logo) × 3 layouts × 3 borders, owner asked for more variety. Owner tested menus: "it is great".
-- Logos (2026-11-18): "Add your logo here" on Build and Menus (brand_kits table, assets/brand.js); logo + its colours used in menus, generated sites and published sites. Next ideas: curated colour palettes and font pairings (not unlimited options), flyers.
-- Menus milestone 1 live at build.sogilex.com/menus/ (2026-11-18): form, fit-to-page preview, autosave (`menus` table), print/PDF. No AI. Next: milestone 2 (Claude designs the style; see MENU-SPEC.md), after owner feedback.
-  - Customer sites on **sogilex.net** subdomains (never sogilex.com: shared origin, phishing risk). sogilex.net DNS moves to Cloudflare; sogilex.com stays at Porkbun (email forwarding depends on it).
-  - Cloudflare: account created, sogilex.net active on Cloudflare (2026-11-18). API token "Sogilex publishing" (Workers Scripts, KV, Account Settings read; sogilex.net Zone read, DNS, Workers Routes; expires in 1 year) is saved as a network secret on the "Sogilex" cloud environment, not in any repo.
-  - Was: Owner needs a Cloudflare account. Still to answer: business name and state/country (for terms of service), and whether Lawn Gang 101 (homepage example) is a real business.
-- The next Sogilex product: own subdomain, own card on sogilex.com.
+## Sign-in (shared by Atlas, Build, Menus)
+
+- `assets/sogilex-auth.js`, **keep identical** in savepoint-atlas and sogilex-build.
+- One session for all of *.sogilex.com (cookie on `.sogilex.com`, chunked). Customer sites are on sogilex.net,
+  so they never see it.
+- Password, or an emailed code (the email's link still works). Forgot password = sign in with a code, then set a
+  new one. "Password" button in Build/Menus header; password form on Atlas's Account page.
+- Supabase email templates (Magic link + Confirm signup) use `savepoint-atlas/supabase/email-sign-in.html`;
+  minimum password length 8; email code length 8. Owner tested all of it: works.
+
+## Build (websites): `sogilex-build`
+
+- `build-site` Edge Function, **version 14**: Opus 5.5, effort **medium** (low produced junk, never use it),
+  `max_tokens` 24000, stops itself at **380 s** (Supabase Pro limit 400 s; builds take ~140 s), styles incl.
+  Futuristic (with anti-cliché direction), rejects output that isn't a real page (doesn't count), saves each
+  finished page to `build_outputs`, sends `{t:"meta", build_id}` first. Logo: asks Claude for
+  `<img src="sogilex:logo">` and builds the palette from the logo's colours.
+- Limits: 3 builds/person/24 h (failed ones don't count, max 5 failures), 50 overall/24 h. Per-person overrides
+  in `build_limits` (owner: 20/day, can_publish = true). Cost about $0.25-0.31 per build.
+- SQL (all applied; files are safe to re-run): `supabase/003_build.sql`, `004_publishing.sql`,
+  `005_menus.sql`, `006_brand_kits.sql`. Lesson: new tables in this project don't grant `service_role` by default.
+
+## Publishing (closed beta): `sogilex-build/docs/PUBLISHING.md`
+
+- Publish panel under Build's preview: choose `name`, publish to `name.sogilex.net`, unpublish, Messages inbox.
+- Only HTML Build generated can be published (never uploads). The Worker strips scripts/frames/etc., points
+  forms at `/__form`, adds a honeypot and a "Made with Sogilex · Report this site" footer, inlines the logo,
+  and serves with a strict CSP (no scripts, images only as data: URLs).
+- Contact-form messages are stored (`site_messages`) and shown in Build. Rate limits: 30/site/hour, 5/visitor/hour.
+- Owner tested end to end: works.
+
+## Menus (free beta): build.sogilex.com/menus/
+
+- Milestone 1 of `sogilex-build/docs/MENU-SPEC.md` done, no AI: form (sections, dishes, multiple prices with
+  labels, dietary tags, footer), live preview that fits one page (type down to 80%, then two columns),
+  autosave (`menus` table, one per person), print / save as PDF (Letter or A4). Prices print exactly as typed.
+- **Looks:** 5 font pairings (Classic, Elegant, Modern, Bold, Warm) × 10 palettes (all WCAG AA checked) +
+  "From my logo" × 3 layouts (centered, left, dotted leaders) × 3 borders. Owner: "it is great".
+- Files: `menus/index.html`, `assets/menus.js`, `assets/menus.css`. Extra fonts: EB Garamond, Playfair Display,
+  Bebas Neue, Fraunces.
+
+## Logos (brand kit), Build + Menus
+
+- "Add your logo here" box (`assets/brand.js`): drag or click; PNG/JPG/WebP/SVG redrawn in the browser as a
+  small PNG (SVG scripts can't survive); PDFs get a plain "save it as a PNG" message; main colours extracted.
+- Stored in `brand_kits` (one per person). Used on menus, in generated sites and in published sites.
+
+## sogilex.com: `sogilex-site`
+
+- Pages: `/` (hero, tools, four rules, Lawn Gang sample, Atlas strip), `/menus/` (Beta, "Make your menu"),
+  `/flyers/` (planned, waitlist).
+- Waitlist: `waitlist` table (insert-only; read it in Supabase Table Editor), `assets/waitlist.js`, `supabase/waitlist.sql`.
+
+## Waiting on the owner
+
+- **Form the Missouri LLC** (planned; about $50 online). Then tell the next session the business name.
+- **Terms of service** need the operator name (LLC or the owner's own name) before publishing opens to everyone.
+- **DMCA designated agent** registration with the US Copyright Office (about $6), around the same time.
+- **Is "Lawn Gang 101" (homepage sample) a real business?** Never answered; if it's real and not the owner's, swap it.
+- Resend API key, later, for emailing site owners when a message arrives.
+- Atlas privacy page placeholders: `[OPERATOR NAME]`, `[COUNTRY]`, `[EFFECTIVE DATE]`, `[SUPABASE REGION]`.
+
+## Next steps (owner picks)
+
+1. **Flyers**: next new tool; reuse the brand kit and the "curated looks" approach from Menus.
+2. **Menus milestone 2**: Claude designs a style per restaurant (code still places every price). See MENU-SPEC.md.
+3. **Open publishing to everyone** once the terms of service exist (set `can_publish` for all, or remove the check).
+4. Smaller: enforce HTTPS in Pages settings for all three repos; add `v=spf1 -all` and `_dmarc p=reject` TXT
+   records for sogilex.net in Cloudflare (the Worker already redirects sogilex.net to sogilex.com); delete old
+   `build_outputs` after 30 days; a privacy policy page for Build/Menus (Build's "Privacy & limits" section is current).
+5. Atlas: real GTA VI entries; Pack Plus features before selling ($9.99, Stripe link still a placeholder);
+   a phone app later should start with Atlas (installable web app first).
+
+## How things were tested (reuse)
+
+- Browser tests: Playwright with `--host-resolver-rules=MAP build.sogilex.com 127.0.0.1` and a local
+  `python3 -m http.server`, Supabase calls mocked with `context.route`, a fake session in localStorage.
+- Worker tests: `miniflare@3` locally with a mocked Supabase (`outboundService`).
+- This cloud sandbox can't open sogilex.com/sogilex.net directly (proxy); the owner checks live pages.
