@@ -3,143 +3,151 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sogilex · software and AI tools</title>
-<meta name="description" content="Sogilex builds software and AI tools. Makers of Savepoint Atlas, the completion tracker for open-world games, and Sogilex Build, the AI website builder.">
-<meta name="theme-color" content="#0c0d10">
+<title>Sogilex · Design tools for local businesses</title>
+<meta name="description" content="Websites, menus and flyers for local businesses. AI does the heavy lifting; strict design rules keep it from looking that way.">
+<meta name="theme-color" content="#120A18">
+<meta property="og:title" content="Sogilex · Looks designed. Not churned out.">
+<meta property="og:description" content="Websites, menus and flyers for local businesses, with real layouts, clean type and only the facts you give it.">
+<meta property="og:url" content="https://sogilex.com/">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/unbounded-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css">
+<script src="assets/scene.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<!-- The living field: points that drift and wake up around the cursor. Decorative only. -->
-<canvas id="field" aria-hidden="true"></canvas>
-<div class="grain" aria-hidden="true"></div>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="sunset" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#D91E8C"/>
+      <stop offset="0.55" stop-color="#F2496B"/>
+      <stop offset="1" stop-color="#FF9A4D"/>
+    </linearGradient>
+    <symbol id="mark" viewBox="0 0 124 102">
+      <rect x="0" y="50" width="64" height="52" rx="11" fill="url(#sunset)"/>
+      <rect x="60" y="0" width="64" height="52" rx="11" fill="url(#sunset)"/>
+    </symbol>
+  </defs>
+</svg>
 
-<header class="top">
-  <div class="wrap row">
-    <a class="mark" href="./" aria-label="Sogilex home">Sogilex<span class="dot" aria-hidden="true"></span></a>
-    <nav aria-label="Main">
-      <a href="#products">Products</a>
-      <a href="#now">Now</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
+<canvas id="scene" aria-hidden="true"></canvas>
 
-<main id="main">
-  <section class="hero" aria-labelledby="hero-h">
-    <div class="wrap">
-      <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>Software and AI tools · est. 2026</p>
-      <h1 id="hero-h" class="word" aria-label="Sogilex">
-        <span aria-hidden="true">S</span><span aria-hidden="true">O</span><span aria-hidden="true">G</span><span aria-hidden="true">I</span><span aria-hidden="true">L</span><span aria-hidden="true">E</span><span aria-hidden="true">X</span><span class="period" aria-hidden="true">.</span>
-      </h1>
-      <p class="lede">We build small, useful software, from game companions to AI tools. Every product gets its own name and its own home on sogilex.com.</p>
-      <div class="cta-row">
-        <a class="btn" href="#products">See what we make</a>
-        <a class="ghost" href="#now">What's in the workshop</a>
+<div class="page">
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="logo" href="/" aria-label="Sogilex home">
+        <svg width="34" height="28" aria-hidden="true"><use href="#mark"/></svg>
+        <span class="wordmark">SOGILEX</span>
+      </a>
+      <nav aria-label="Main">
+        <ul class="nav">
+          <li><a href="#tools">Tools</a></li>
+          <li><a href="#rules">How we design</a></li>
+          <li><a class="btn btn-ghost btn-sm" href="https://build.sogilex.com/">Open Build</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="hero-copy">
+          <p class="label">Design tools for local businesses</p>
+          <h1 id="hero-title">Looks designed. <span class="glow-text">Not churned out.</span></h1>
+          <p class="lede">Sogilex uses AI for the heavy lifting and strict design rules to keep it from looking that way: real layouts, clean type, no generated stock art, and only the facts you give it.</p>
+          <div class="actions" data-horizon>
+            <a class="btn btn-primary" href="https://build.sogilex.com/">Build a website</a>
+            <a class="btn btn-ghost" href="#tools">See all tools</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-track">
-      <span>Software</span><i></i><span>AI tools</span><i></i><span>Games</span><i></i><span>Experiments</span><i></i><span>Made with care</span><i></i>
-      <span>Software</span><i></i><span>AI tools</span><i></i><span>Games</span><i></i><span>Experiments</span><i></i><span>Made with care</span><i></i>
-    </div>
-  </div>
-
-  <section id="products" class="wrap block" aria-labelledby="products-h">
-    <div class="block-head reveal">
-      <p class="eyebrow">01 · Products</p>
-      <h2 id="products-h">Things we've shipped</h2>
-    </div>
-    <div class="grid">
-      <article class="card atlas reveal">
-        <div class="card-art" aria-hidden="true">
-          <svg viewBox="0 0 300 150" focusable="false" preserveAspectRatio="xMidYMax slice">
-            <defs>
-              <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb35c"/><stop offset=".55" stop-color="#ff5d73"/><stop offset="1" stop-color="#c2308f"/></linearGradient>
-              <mask id="stripes"><rect width="300" height="150" fill="#fff"/><rect y="92" width="300" height="4" fill="#000"/><rect y="106" width="300" height="6" fill="#000"/><rect y="122" width="300" height="8" fill="#000"/></mask>
-            </defs>
-            <g fill="none" stroke="#1f4a55" stroke-width="1.2"><ellipse cx="225" cy="125" rx="150" ry="70"/><ellipse cx="230" cy="130" rx="105" ry="46"/><ellipse cx="235" cy="134" rx="60" ry="24"/></g>
-            <g class="sun"><circle cx="150" cy="92" r="60" fill="url(#sun)" mask="url(#stripes)"/></g>
-            <path d="M0 140 Q70 126 150 132 T300 128 V150 H0Z" fill="#0b252c"/>
-          </svg>
+    <section class="tools" id="tools" aria-labelledby="tools-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="label">01 / Tools</p>
+            <h2 class="h2" id="tools-title">Everything a shop front needs.</h2>
+          </div>
+          <p class="muted">One Sogilex account for every tool. Free during the beta, with three website builds a day.</p>
         </div>
-        <div class="card-body">
-          <div class="card-meta"><span class="tag live">Live</span><span class="addr">atlas.sogilex.com</span></div>
-          <h3>Savepoint Atlas</h3>
-          <p>The completion tracker for open-world games. Verified checklists, sync across devices, spoiler controls, and a race to 100% with friends.</p>
-          <a class="btn" href="https://atlas.sogilex.com/">Open Savepoint Atlas <span aria-hidden="true">→</span></a>
+
+        <div class="cards">
+          <article class="card panel live">
+            <div class="card-top"><span class="label">Build</span><span class="tag on">Live</span></div>
+            <h3>Websites</h3>
+            <p>Describe your business in a few sentences. Get a one-page site you can download and keep.</p>
+            <a class="more" href="https://build.sogilex.com/">Open Build →</a>
+          </article>
+          <article class="card panel">
+            <div class="card-top"><span class="label">Menus</span><span class="tag">Coming soon</span></div>
+            <h3>Restaurant menus</h3>
+            <p>Type your dishes and prices once. Get a print-ready menu. Prices stay exactly as you typed them, and updates are free.</p>
+            <a class="more" href="mailto:hello@sogilex.com?subject=Tell%20me%20when%20Sogilex%20Menus%20opens">Get notified →</a>
+          </article>
+          <article class="card panel">
+            <div class="card-top"><span class="label">Flyers</span><span class="tag">Later</span></div>
+            <h3>Flyers</h3>
+            <p>Event and promo flyers with one clear message, built on real typography. No waxy crowds, no grime filters.</p>
+          </article>
         </div>
-      </article>
-      <article class="card build reveal">
-        <div class="card-art" aria-hidden="true">
-          <svg viewBox="0 0 300 150" focusable="false" preserveAspectRatio="xMidYMid slice">
-            <rect width="300" height="150" fill="#101114"/>
-            <g stroke="#23262c" stroke-width="1">
-              <path d="M0 30H300M0 60H300M0 90H300M0 120H300M30 0V150M60 0V150M90 0V150M120 0V150M150 0V150M180 0V150M210 0V150M240 0V150M270 0V150"/>
-            </g>
-            <g transform="translate(62 26)">
-              <rect width="176" height="104" rx="8" fill="#16181d" stroke="#3a3e46"/>
-              <rect width="176" height="16" rx="8" fill="#1d2026"/>
-              <circle cx="10" cy="8" r="2.6" fill="#ff5d73"/><circle cx="19" cy="8" r="2.6" fill="#f2b84b"/><circle cx="28" cy="8" r="2.6" fill="#c8f169"/>
-              <rect x="12" y="28" width="92" height="12" rx="2" fill="#c8f169"/>
-              <rect x="12" y="46" width="128" height="5" rx="2" fill="#4a4e56"/>
-              <rect x="12" y="56" width="110" height="5" rx="2" fill="#4a4e56"/>
-              <rect x="12" y="72" width="46" height="14" rx="4" fill="#c8f169"/>
-              <rect x="64" y="72" width="40" height="14" rx="4" fill="none" stroke="#4a4e56"/>
-              <rect class="typing" x="122" y="28" width="2.5" height="12" fill="#c8f169"/>
-            </g>
-          </svg>
+      </div>
+    </section>
+
+    <section class="rules" id="rules" aria-labelledby="rules-title">
+      <div class="wrap">
+        <div class="rules-intro">
+          <p class="label">02 / How we design</p>
+          <h2 class="h2" id="rules-title">Four rules your customers can feel.</h2>
+          <p>Most AI-made flyers and pages look the same: everything shouting, six fonts, grime on every surface, faces that aren't quite right. Every Sogilex tool is built to the opposite rules.</p>
         </div>
-        <div class="card-body">
-          <div class="card-meta"><span class="tag live">Beta</span><span class="addr">build.sogilex.com</span></div>
-          <h3>Sogilex Build</h3>
-          <p>Describe a website in a sentence or two. Build designs it and writes it as one file you can download and host anywhere.</p>
-          <a class="btn" href="https://build.sogilex.com/">Try Sogilex Build <span aria-hidden="true">→</span></a>
+        <ol class="rule-list">
+          <li class="panel"><span class="num">01</span><h3>One message</h3><p>A clear first, second and third thing to read. Never a wall of callouts.</p></li>
+          <li class="panel"><span class="num">02</span><h3>Two typefaces</h3><p>At most. Hierarchy comes from size and space, not from mixing styles.</p></li>
+          <li class="panel"><span class="num">03</span><h3>Nothing generated to fake it</h3><p>No generated people, props or textures. Shapes, type and your own photos only.</p></li>
+          <li class="panel"><span class="num">04</span><h3>Only your facts</h3><p>No made-up prices, reviews or awards. Anything missing becomes a clear [PLACEHOLDER].</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="sample" aria-labelledby="sample-title">
+      <div class="wrap">
+        <p class="label">03 / Made with Build</p>
+        <h2 class="h2" id="sample-title">A lawn care site, from one paragraph.</h2>
+        <figure class="browser">
+          <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="lg" role="img" aria-label="Preview of a site made with Build: a lawn care company with a dark green hero, a large uppercase headline and a lime call-to-action button">
+            <div class="lg-bar"><span>LAWN GANG <b>101</b></span><span class="lg-cta">GET A QUOTE</span></div>
+            <div class="lg-hero"><span>LAWNS KEPT SHARP.</span><span>LANDSCAPES BUILT TO LAST.</span></div>
+            <div class="lg-land"></div>
+            <div class="lg-strip"><span>LAWN CARE</span><span>RETAINING WALLS</span><span>FLOWER BEDS</span><span>IN-HOUSE DESIGN</span></div>
+          </div>
+          <figcaption>Sample output. Phone number, email and hours were left as placeholders because they weren't in the brief.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="also solid" aria-labelledby="also-title">
+      <div class="wrap">
+        <div>
+          <p class="label">Also from Sogilex</p>
+          <h2 id="also-title">Savepoint Atlas: track every collectible, together.</h2>
         </div>
-      </article>
-      <article class="card next reveal">
-        <div class="card-body">
-          <div class="card-meta"><span class="tag">In the workshop</span></div>
-          <h3>Next up</h3>
-          <p>New tools are being built. Each one gets its own sogilex.com address when it's ready to use.</p>
-          <div class="slots" aria-hidden="true"><span></span><span></span><span></span></div>
-        </div>
-      </article>
+        <a class="btn btn-ghost btn-sm" href="https://atlas.sogilex.com/">Visit Atlas</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer solid">
+    <div class="wrap">
+      <span><svg width="22" height="18" aria-hidden="true"><use href="#mark"/></svg>© 2026 Sogilex</span>
+      <a href="mailto:hello@sogilex.com">hello@sogilex.com</a>
     </div>
-  </section>
-
-  <section id="now" class="wrap block" aria-labelledby="now-h">
-    <div class="block-head reveal">
-      <p class="eyebrow">02 · Now</p>
-      <h2 id="now-h">The workshop log</h2>
-    </div>
-    <ol class="log reveal">
-      <li><time datetime="2026-11">2026-11</time><span>Sogilex Build opens in beta at <a href="https://build.sogilex.com/">build.sogilex.com</a>.</span></li>
-      <li><time datetime="2026-11">2026-11</time><span>Savepoint Atlas launches at <a href="https://atlas.sogilex.com/">atlas.sogilex.com</a>.</span></li>
-      <li><time datetime="2026-11">2026-11</time><span>Sogilex becomes the home for everything we build.</span></li>
-      <li class="cursor"><time>next</time><span>New tools in progress<span class="caret" aria-hidden="true"></span></span></li>
-    </ol>
-  </section>
-
-  <section id="contact" class="wrap block" aria-labelledby="contact-h">
-    <div class="contact reveal">
-      <p class="eyebrow">03 · Contact</p>
-      <h2 id="contact-h">Say hello</h2>
-      <p>Questions, ideas or press: <a href="mailto:hello@sogilex.com">hello@sogilex.com</a></p>
-    </div>
-  </section>
-</main>
-
-<footer class="foot">
-  <div class="wrap row">
-    <span>© 2026 Sogilex</span>
-    <span>No cookies, analytics or tracking on this page.</span>
-  </div>
-</footer>
-
-<script src="assets/site.js" defer></script>
+  </footer>
+</div>
 </body>
 </html>
