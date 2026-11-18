@@ -43,6 +43,7 @@ Last updated 2026-11-18. This repo is public, so no keys or private details belo
 - Sign-in (2026-11-18): password or emailed code on Atlas and Build, one session across *.sogilex.com (`assets/sogilex-auth.js`, keep identical in both repos). Owner to do in Supabase: paste `savepoint-atlas/supabase/email-sign-in.html` into BOTH Magic link and Confirm signup templates; set minimum password length to 8. Later: Sign in with Google (needs Google Cloud setup; if an iOS app ever offers it, Apple requires Sign in with Apple too).
 - build.sogilex.com restyled to the new look, with a Futuristic style (function v9), 2026-11-18. Sign-in tested end to end by owner.
 - sogilex.com/menus and /flyers pages live (2026-11-18) with a real waitlist (Supabase `waitlist` table; read it in Table Editor).
+- Publishing tested end to end by owner 2026-11-18 (build, publish, live site, contact form, Messages).
 - Publishing (closed beta) built 2026-11-18: publish from Build to name.sogilex.net, contact forms, messages inbox. See `sogilex-build/docs/PUBLISHING.md`. Only accounts with `build_limits.can_publish` (the owner) can publish.
 - Owner's build limit raised to 20/day (`build_limits` table).
 - Before opening publishing to everyone: terms of service (operator: owner, Missouri, sole proprietor until the planned LLC), DMCA designated agent registration, email notifications for messages (needs a Resend API key).
