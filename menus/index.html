@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sogilex Menus · Print-ready restaurant menus</title>
+<meta name="description" content="Type your dishes and prices once. Get a menu that looks designed, prints clean, and keeps every price exactly as you typed it. Coming soon from Sogilex.">
+<meta name="theme-color" content="#120A18">
+<meta property="og:title" content="Sogilex Menus · coming soon">
+<meta property="og:description" content="Restaurant menus that look designed, not churned out. Prices stay exactly as you typed them.">
+<meta property="og:url" content="https://sogilex.com/menus/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/unbounded-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/scene.js" defer></script>
+<script src="/assets/waitlist.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="sunset" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D91E8C"/><stop offset="0.55" stop-color="#F2496B"/><stop offset="1" stop-color="#FF9A4D"/></linearGradient>
+    <symbol id="mark" viewBox="0 0 124 102"><rect x="0" y="50" width="64" height="52" rx="11" fill="url(#sunset)"/><rect x="60" y="0" width="64" height="52" rx="11" fill="url(#sunset)"/></symbol>
+  </defs>
+</svg>
+
+<canvas id="scene" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="logo" href="/" aria-label="Sogilex home"><svg width="34" height="28" aria-hidden="true"><use href="#mark"/></svg><span class="wordmark">SOGILEX</span></a>
+      <nav aria-label="Main">
+        <ul class="nav">
+          <li><a href="/#tools">Tools</a></li>
+          <li><a href="/#rules">How we design</a></li>
+          <li><a class="btn btn-ghost btn-sm" href="https://build.sogilex.com/">Open Build</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="hero-copy">
+          <a class="crumb" href="/#tools">SOGILEX / MENUS · COMING SOON</a>
+          <h1 id="hero-title">A menu that looks like your restaurant. <span class="glow-text">Not like a template.</span></h1>
+          <p class="lede">Type your dishes and prices once. Sogilex designs a menu that fits your place, fits the page and prints clean. Change a price next month in seconds, for free.</p>
+          <form class="waitlist" data-waitlist="menus" data-horizon>
+            <label for="menus-email">Get an email when Menus opens</label>
+            <div class="row">
+              <input id="menus-email" name="email" type="email" autocomplete="email" required placeholder="you@yourrestaurant.com">
+              <button class="btn btn-primary" type="submit">Join the waitlist</button>
+            </div>
+            <div class="hp" aria-hidden="true"><label for="menus-website">Leave this empty</label><input id="menus-website" name="website" tabindex="-1" autocomplete="off"></div>
+            <p class="form-status" role="status" aria-live="polite">One email when it opens. Nothing else.</p>
+            <noscript><p class="form-status">Or email <a href="mailto:hello@sogilex.com?subject=Menus%20waitlist">hello@sogilex.com</a> and we'll add you.</p></noscript>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="sample-title">
+      <div class="wrap">
+        <div class="split">
+          <div style="display: flex; flex-direction: column; gap: 18px">
+            <p class="label">01 / What you get</p>
+            <h2 class="h2" id="sample-title">Set like a real menu.</h2>
+            <p class="muted" style="margin: 0; font-size: 17px">Dish names you can find at a glance, prices lined up where the eye expects them, descriptions that stay quiet. No clip-art chefs, no fake chalkboard, no stock food photos.</p>
+            <p class="muted" style="margin: 0; font-size: 17px">Anything you don't give us is left off the page. A menu never gets a made-up dish, price or review.</p>
+          </div>
+          <figure style="margin: 0">
+            <div class="menu-card" role="img" aria-label="Sample menu for a fictional restaurant called Ninth and Pine, with starters and mains, prices aligned on the right and short italic descriptions">
+              <header>
+                <p class="m-name">Ninth &amp; Pine</p>
+                <p class="m-tag">Neighbourhood kitchen</p>
+              </header>
+              <section>
+                <h4>To start</h4>
+                <div class="item"><span class="i-name">Charred carrots <small>V · GF</small></span><span class="i-price">9</span><span class="i-desc">whipped feta, hot honey, dill</span></div>
+                <div class="item"><span class="i-name">Crab toast</span><span class="i-price">14</span><span class="i-desc">brown butter, lemon, chives</span></div>
+                <div class="item"><span class="i-name">Garden soup <small>VG</small></span><span class="i-price">8</span><span class="i-desc">changes with the market</span></div>
+              </section>
+              <section>
+                <h4>Mains</h4>
+                <div class="item"><span class="i-name">Half chicken <small>GF</small></span><span class="i-price">24</span><span class="i-desc">salsa verde, crisp potatoes</span></div>
+                <div class="item"><span class="i-name">Mushroom ragù <small>V</small></span><span class="i-price">19</span><span class="i-desc">fresh pappardelle, parmesan</span></div>
+                <div class="item"><span class="i-name">Catch of the day</span><span class="i-price">Market</span><span class="i-desc">ask your server</span></div>
+              </section>
+              <footer>V vegetarian · VG vegan · GF gluten-free</footer>
+            </div>
+            <figcaption class="sample-note">Sample menu for a made-up restaurant.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="how-title">
+      <div class="wrap">
+        <div style="display: flex; flex-direction: column; gap: 14px">
+          <p class="label">02 / How it works</p>
+          <h2 class="h2" id="how-title">Three steps, about ten minutes.</h2>
+        </div>
+        <ol class="steps">
+          <li class="panel"><h3>Type your menu</h3><p>Sections, dishes, prices, sizes and dietary tags, in a simple form.</p></li>
+          <li class="panel"><h3>Pick a style</h3><p>Choose a style and an accent colour. Sogilex designs the layout, picks the type and fits it to the page.</p></li>
+          <li class="panel"><h3>Print it</h3><p>Save as a PDF and print it anywhere, in colour or black and white. Come back and change anything, any time.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="promise-title">
+      <div class="wrap">
+        <div style="display: flex; flex-direction: column; gap: 14px">
+          <p class="label">03 / Our promises</p>
+          <h2 class="h2" id="promise-title">The parts that have to be right.</h2>
+        </div>
+        <ul class="promises">
+          <li class="panel"><h3>Prices exactly as typed</h3><p>The AI designs the look. Your prices are placed by plain code and never pass through it, so they can't be changed, rounded or invented.</p></li>
+          <li class="panel"><h3>Updates are free</h3><p>Change a price, add a special, drop a dish. Your menu updates instantly without a new design.</p></li>
+          <li class="panel"><h3>It fits the page</h3><p>Letter or A4, one page or two. Type scales to fit, and never gets too small to read.</p></li>
+          <li class="panel"><h3>Prints clean</h3><p>Designed to read just as well on a black-and-white office printer as on good paper.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="faq-title">
+      <div class="wrap">
+        <div style="display: flex; flex-direction: column; gap: 14px">
+          <p class="label">04 / Questions</p>
+          <h2 class="h2" id="faq-title">Before you ask.</h2>
+        </div>
+        <div class="faq">
+          <details class="panel"><summary>When does it open?</summary><p>We're building it now. Join the waitlist and we'll email you once, the day it opens.</p></details>
+          <details class="panel"><summary>What will it cost?</summary><p>It will be free during the beta. We'll announce pricing before the beta ends, and nothing will be charged without you choosing a plan.</p></details>
+          <details class="panel"><summary>Do I need any design skills?</summary><p>No. If you can type your dishes and prices, you can make the menu.</p></details>
+          <details class="panel"><summary>Can I add photos?</summary><p>Not at launch. Menus are designed with type, space and colour, which is also what makes them print well.</p></details>
+          <details class="panel"><summary>Will there be an online menu or QR code?</summary><p>We're considering it. If you need one, say so when you join the waitlist by emailing hello@sogilex.com. It helps us decide.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="cta-title">
+      <div class="wrap" style="align-items: flex-start">
+        <h2 class="h2" id="cta-title">Be first in line.</h2>
+        <form class="waitlist" data-waitlist="menus">
+          <label for="menus-email-2">Your email</label>
+          <div class="row">
+            <input id="menus-email-2" name="email" type="email" autocomplete="email" required placeholder="you@yourrestaurant.com">
+            <button class="btn btn-primary" type="submit">Join the waitlist</button>
+          </div>
+          <div class="hp" aria-hidden="true"><label for="menus-website-2">Leave this empty</label><input id="menus-website-2" name="website" tabindex="-1" autocomplete="off"></div>
+          <p class="form-status" role="status" aria-live="polite">One email when it opens. Nothing else.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer solid">
+    <div class="wrap">
+      <span><svg width="22" height="18" aria-hidden="true"><use href="#mark"/></svg>© 2026 Sogilex</span>
+      <a href="mailto:hello@sogilex.com">hello@sogilex.com</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

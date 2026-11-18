@@ -40,5 +40,8 @@ Last updated 2026-11-18. This repo is public, so no keys or private details belo
 - Brand mockup (dark plum, sunset gradient, Unbounded/Inter/JetBrains Mono): https://claude.ai/artifact/P1FwkbQkqcBivZrtxJktzU. New look covers sogilex.com and Build, not Atlas.
 - Menu creator spec: `sogilex-build/docs/MENU-SPEC.md`.
 - Homepage scene approved by owner (2026-11-18): sunset over a particle sea, page-wide cursor effects. Live on sogilex.com since 2026-11-18 (`assets/scene.js`); owner checked it on a phone.
-- Next (owner's order): Build publishing (hosting on a subdomain + working contact form), then menus milestone 1.
+- sogilex.com/menus and /flyers pages live (2026-11-18) with a real waitlist (Supabase `waitlist` table; read it in Table Editor).
+- Next (owner's order): Build publishing, then menus milestone 1.
+  - Customer sites on **sogilex.net** subdomains (never sogilex.com: shared origin, phishing risk). sogilex.net DNS moves to Cloudflare; sogilex.com stays at Porkbun (email forwarding depends on it).
+  - Owner needs: a Cloudflare account. Still to answer: business name and state/country (for terms of service), and whether Lawn Gang 101 (homepage example) is a real business.
 - The next Sogilex product: own subdomain, own card on sogilex.com.
