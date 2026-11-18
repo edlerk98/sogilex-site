@@ -40,6 +40,7 @@ Last updated 2026-11-18. This repo is public, so no keys or private details belo
 - Brand mockup (dark plum, sunset gradient, Unbounded/Inter/JetBrains Mono): https://claude.ai/artifact/P1FwkbQkqcBivZrtxJktzU. New look covers sogilex.com and Build, not Atlas.
 - Menu creator spec: `sogilex-build/docs/MENU-SPEC.md`.
 - Homepage scene approved by owner (2026-11-18): sunset over a particle sea, page-wide cursor effects. Live on sogilex.com since 2026-11-18 (`assets/scene.js`); owner checked it on a phone.
+- Sign-in (2026-11-18): password or emailed code on Atlas and Build, one session across *.sogilex.com (`assets/sogilex-auth.js`, keep identical in both repos). Owner to do in Supabase: paste `savepoint-atlas/supabase/email-sign-in.html` into BOTH Magic link and Confirm signup templates; set minimum password length to 8. Later: Sign in with Google (needs Google Cloud setup; if an iOS app ever offers it, Apple requires Sign in with Apple too).
 - sogilex.com/menus and /flyers pages live (2026-11-18) with a real waitlist (Supabase `waitlist` table; read it in Table Editor).
 - Next (owner's order): Build publishing, then menus milestone 1.
   - Customer sites on **sogilex.net** subdomains (never sogilex.com: shared origin, phishing risk). sogilex.net DNS moves to Cloudflare; sogilex.com stays at Porkbun (email forwarding depends on it).
