@@ -86,6 +86,9 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
   and serves with a strict CSP (no scripts, images only as data: URLs).
 - Contact-form messages are stored (`site_messages`) and shown in Build. Rate limits: 30/site/hour, 5/visitor/hour.
 - Owner tested end to end: works.
+- HTTPS (2026-11-19): owner's mom got "this form is not secure" on a published site opened over http. Fixed:
+  Cloudflare "Always Use HTTPS" turned on for sogilex.net (API token can edit zone settings), and the Worker
+  itself 308-redirects any http request to https and sends HSTS (1 year). Logos are now served as `/logo.png`.
 
 ## Menus (free beta): build.sogilex.com/menus/
 
@@ -159,7 +162,8 @@ Owner's mom (photographer) built a site and couldn't change it afterwards. Plan,
 1. **Flyers**: next new tool; reuse the brand kit and the "curated looks" approach from Menus.
 2. **Menus milestone 2**: Claude designs a style per restaurant (code still places every price). See MENU-SPEC.md.
 3. **Open publishing to everyone** once the terms of service exist (set `can_publish` for all, or remove the check).
-4. Smaller: enforce HTTPS in Pages settings for all three repos; add `v=spf1 -all` and `_dmarc p=reject` TXT
+4. Smaller: **enforce HTTPS in GitHub Pages settings for all three repos (owner must do it: the session can't reach
+   that GitHub API)**; add `v=spf1 -all` and `_dmarc p=reject` TXT
    records for sogilex.net in Cloudflare (the Worker already redirects sogilex.net to sogilex.com); delete old
    `build_outputs` after 30 days (but never the published one or a person's latest: "Your sites" relies on them); a privacy policy page for Build/Menus (Build's "Privacy & limits" section is current).
 5. Atlas: real GTA VI entries; Pack Plus features before selling ($9.99, Stripe link still a placeholder);
