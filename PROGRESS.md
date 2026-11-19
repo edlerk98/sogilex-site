@@ -75,7 +75,7 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 - **GitHub Pages** hosts all three static sites. Pushing to `main` deploys (about 45 s).
 - **DNS:** sogilex.com stays at **Porkbun** (hello@sogilex.com forwarding depends on it). sogilex.net is on **Cloudflare**.
 - **Supabase** (one project, **Pro plan, $25/month**): auth, all tables, Edge Functions `build-site` (v15),
-  `edit-site` (v3), `read-menu` (v1), `edit-selftest` (retired stub, deletable). Deploying a function from a
+  `edit-site` (v3), `read-menu` (v3: longer text limits, anything shortened is flagged), `edit-selftest` (retired stub, deletable). Deploying a function from a
   session: the Supabase connector's deploy tool takes the full file text; send exactly the tested file.
   The session's Supabase connector can run SQL, apply migrations and deploy functions.
 - **Cloudflare** (free plan): Worker `sogilex-sites` on routes `*.sogilex.net/*` and `sogilex.net/*`, KV namespace
