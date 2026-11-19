@@ -72,8 +72,10 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
   `<img src="sogilex:logo">` and builds the palette from the logo's colours.
 - Limits: 3 builds/person/24 h (failed ones don't count, max 5 failures), 50 overall/24 h. Per-person overrides
   in `build_limits` (owner: 20/day, can_publish = true). Cost about $0.25-0.31 per build.
+- **Your sites (2026-11-19):** "Your sites" picker above the preview; the latest finished build opens on return;
+  any past version can be reopened, downloaded or published. RPCs `my_builds()` / `my_build(id)` (own rows only).
 - SQL (all applied; files are safe to re-run): `supabase/003_build.sql`, `004_publishing.sql`,
-  `005_menus.sql`, `006_brand_kits.sql`. Lesson: new tables in this project don't grant `service_role` by default.
+  `005_menus.sql`, `006_brand_kits.sql`, `007_my_sites.sql`. Lesson: new tables in this project don't grant `service_role` by default.
 
 ## Publishing (closed beta): `sogilex-build/docs/PUBLISHING.md`
 
@@ -123,6 +125,18 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 No real users yet: the 5 other accounts are the owner's friend and mom testing. Waitlist 0. Advice given: get
 3 local restaurants to react to a printed Sogilex menu before building more tools; their answers pick the next build.
 
+## Website editing plan (owner's priority, 2026-11-19)
+
+Owner's mom (photographer) built a site and couldn't change it afterwards. Plan, one piece at a time, each tested live:
+1. **Done:** reopen your sites (above).
+2. **Chat edits:** an `edit-site` Edge Function sends the current page + the request; Claude returns small
+   find/replace edits (not a full rewrite: faster, cheaper, leaves the rest untouched). Every edit saves a new
+   version (Undo). Separate daily limit (~30). Big restyles fall back to a rebuild.
+3. **Photos:** resized in the browser (~2000 px), stored in Supabase Storage, referenced as `sogilex:photo:N`
+   like the logo; the Worker serves them from the site's own address (`/photos/...`) so the no-scripts CSP stays
+   (img-src 'self' data:). Needs the Cloudflare key ("Sogilex" environment). Photos only at first.
+   Before publishing opens to everyone: terms of service + DMCA agent are required (user-uploaded images).
+
 ## Next steps (owner picks)
 
 1. **Flyers**: next new tool; reuse the brand kit and the "curated looks" approach from Menus.
@@ -130,7 +144,7 @@ No real users yet: the 5 other accounts are the owner's friend and mom testing. 
 3. **Open publishing to everyone** once the terms of service exist (set `can_publish` for all, or remove the check).
 4. Smaller: enforce HTTPS in Pages settings for all three repos; add `v=spf1 -all` and `_dmarc p=reject` TXT
    records for sogilex.net in Cloudflare (the Worker already redirects sogilex.net to sogilex.com); delete old
-   `build_outputs` after 30 days; a privacy policy page for Build/Menus (Build's "Privacy & limits" section is current).
+   `build_outputs` after 30 days (but never the published one or a person's latest: "Your sites" relies on them); a privacy policy page for Build/Menus (Build's "Privacy & limits" section is current).
 5. Atlas: real GTA VI entries; Pack Plus features before selling ($9.99, Stripe link still a placeholder);
    a phone app later should start with Atlas (installable web app first).
 
