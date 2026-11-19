@@ -34,8 +34,8 @@ This repo is public: no keys, user IDs or private details here.
 - **Gaps the done-for-you model exposes (build when needed):**
   1. One account = one business. Each client needs its own sign-in for now (Gmail plus-addresses work:
      you+client@gmail.com). Several businesses per account becomes worth building after a few clients.
-  2. Contact-form messages land in the owner's Build inbox; they must forward them. Automatic email to the client
-     needs a Resend API key (Resend already sends sign-in mail).
+  2. Contact-form messages: now also emailed to an address the owner picks (built 2026-11-19; needs the
+     RESEND_API_KEY secret, see "Message emails").
   3. Own domains (Cloudflare for SaaS custom hostnames) not built; the sheet says "coming soon".
   4. Edits are capped per day (30) but not per month: a monthly allowance matters once anyone pays.
 - **Before taking money:** Missouri LLC, business bank account, a one-page written agreement per customer
@@ -158,6 +158,23 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
   undo works), always ending "Keep every word, every section, the layout and the images exactly as they are."
 - Build is labelled **Beta** on sogilex.com (card tag and hero button) as well as on Build itself.
 
+## Message emails (2026-11-19): contact-form messages also go to the owner's inbox
+
+- Build > Publish panel: "Email me new messages" box (prefilled with the sign-in email). Own sign-in email works
+  at once; any other address gets a confirmation email and must press Confirm on build.sogilex.com/email/
+  (a button, so mail-app link scanners can't confirm). Max 3 confirmation emails per hour.
+- Every message email: Reply-To = the visitor's email (found in the form fields), subject "New message from
+  <name> (<slug>.sogilex.net)", a one-click Stop link (same page) and a List-Unsubscribe header.
+- How: table `message_emails` (014_message_email.sql) + `site_messages.emailed_at`; an insert trigger calls the
+  Edge Function **`message-email` (v1, verify_jwt off, checks callers itself)** through pg_net, only if the
+  owner has a confirmed address. The function claims the message (emailed_at) so it never sends twice, and only
+  sends messages under 15 minutes old. Messages always stay in Build either way.
+- **Needs the owner to add the Supabase Edge Function secret `RESEND_API_KEY`** (a Resend API key with sending
+  access for mail.sogilex.com). Sends from messages@mail.sogilex.com. Until then: own address "saves" but no
+  email goes out, and another address shows "Email sending isn't set up yet."
+- Tested: function from the database via pg_net (all actions answer correctly), trigger in a rolled-back
+  transaction, Build box and confirm/stop page in a browser with stand-ins. Not yet tested: a real email.
+
 ## Flyers (free beta): build.sogilex.com/flyers/
 
 - `flyers/index.html`, `assets/flyers.js`, `assets/flyers.css` (reuses menus.css for the editor). No AI: every
@@ -204,7 +221,7 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 - **Form the Missouri LLC** (planned; about $50 online). Then tell the next session the business name.
 - **Terms of service** need the operator name (LLC or the owner's own name) before publishing opens to everyone.
 - **DMCA designated agent** registration with the US Copyright Office (about $6), around the same time.
-- Resend API key, later, for emailing site owners when a message arrives.
+- **Add the Supabase Edge Function secret `RESEND_API_KEY`** so contact-form messages get emailed (see "Message emails").
 - Atlas privacy page placeholders: `[OPERATOR NAME]`, `[COUNTRY]`, `[EFFECTIVE DATE]`, `[SUPABASE REGION]`.
 
 ## Usage (checked 2026-11-19)
