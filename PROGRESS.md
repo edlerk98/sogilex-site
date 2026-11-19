@@ -5,11 +5,36 @@ This repo is public: no keys, user IDs or private details here.
 
 ## How to start the next session
 
-- Start a cloud session on the **"Sogilex"** environment (a session started on Default can move to it with one approval) (it holds the Cloudflare key) with all three repos:
+- Start a cloud session on the **"Sogilex"** environment (it holds the Cloudflare key; a session started on
+  Default can move to it with one approval) with all three repos:
   `edlerk98/sogilex-site`, `edlerk98/sogilex-build`, `edlerk98/savepoint-atlas`.
 - Tell it: *"Read PROGRESS.md in sogilex-site, then continue."*
-- Working style the owner asked for: be an advisor, not a yes-man; **simple, one-step-at-a-time walkthroughs**
-  for anything the owner does by hand (they get overwhelmed by long lists); test before shipping.
+- Working style the owner asked for: be an advisor, not a yes-man (say when they're wrong and why, give
+  confidence levels); **simple, one-step-at-a-time walkthroughs** for anything the owner does by hand (they get
+  overwhelmed by long lists); test before shipping; end each reply with one clear next step.
+
+## Where we left off (2026-11-19, end of a long session)
+
+- **Business direction decided: done-for-you.** The owner sells menus (print + online + QR) and websites to local
+  restaurants as a service, using Sogilex as the tool, rather than self-serve software first.
+- **Offer + price sheet made** (2 letter pages, design canvas, private to the owner):
+  https://claude.ai/artifact/VbFfATarqVS9VNuapzoJbQ . Page 1: "Your menu, on paper and online. Done for you." with
+  a free-sample hook ("I'll redo your current menu"). Page 2 prices: setup Menu $149 / Menu + website $349;
+  care plans Menu $25/mo, Menu + website $45/mo (unlimited changes within 1 business day); extra menu $75; same-day
+  change $25; printing at cost; yearly = 2 months free; founding offer: first 10 restaurants half-price setup;
+  own domain "coming soon". Placeholders the owner fills: [YOUR NAME] [PHONE] [YOUR CITY] [BUSINESS NAME] [2 DAYS]
+  [X] spots left.
+- **Owner's next step:** fill the placeholders, print, visit the first restaurant with a free sample menu
+  (use "Read it from a photo" on their current menu, check prices, print). Their reaction picks what to build next.
+- **Gaps the done-for-you model exposes (build when needed):**
+  1. One account = one business. Each client needs its own sign-in for now (Gmail plus-addresses work:
+     you+client@gmail.com). Several businesses per account becomes worth building after a few clients.
+  2. Contact-form messages land in the owner's Build inbox; they must forward them. Automatic email to the client
+     needs a Resend API key (Resend already sends sign-in mail).
+  3. Own domains (Cloudflare for SaaS custom hostnames) not built; the sheet says "coming soon".
+  4. Edits are capped per day (30) but not per month: a monthly allowance matters once anyone pays.
+- **Before taking money:** Missouri LLC, business bank account, a one-page written agreement per customer
+  (Stripe later). Terms of service + DMCA agent before publishing opens to the public.
 
 ## What Sogilex is
 
@@ -44,12 +69,14 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 
 - **GitHub Pages** hosts all three static sites. Pushing to `main` deploys (about 45 s).
 - **DNS:** sogilex.com stays at **Porkbun** (hello@sogilex.com forwarding depends on it). sogilex.net is on **Cloudflare**.
-- **Supabase** (one project, **Pro plan, $25/month**): auth, all tables, the `build-site` Edge Function.
+- **Supabase** (one project, **Pro plan, $25/month**): auth, all tables, Edge Functions `build-site` (v15),
+  `edit-site` (v3), `read-menu` (v1), `edit-selftest` (retired stub, deletable). Deploying a function from a
+  session: the Supabase connector's deploy tool takes the full file text; send exactly the tested file.
   The session's Supabase connector can run SQL, apply migrations and deploy functions.
 - **Cloudflare** (free plan): Worker `sogilex-sites` on routes `*.sogilex.net/*` and `sogilex.net/*`, KV namespace
   `sogilex-sites`, DNS `AAAA sogilex.net` and `AAAA *.sogilex.net` to `100::` (proxied). API token
   "Sogilex publishing" (Workers Scripts/KV edit, Account Settings read; sogilex.net Zone read, DNS edit, Workers
-  Routes edit; expires 2027-11) is a network secret on the "Sogilex" environment: call api.cloudflare.com with
+  Routes edit, and zone settings edit works too; expires 2027-11) is a network secret on the "Sogilex" environment: call api.cloudflare.com with
   `Authorization: Bearer proxy-injected`. Deploying the Worker: see `sogilex-build/docs/PUBLISHING.md`.
 - **Anthropic:** `ANTHROPIC_API_KEY` Supabase secret; Claude Opus 5.5; spend limit in the Anthropic Console.
 - **Resend** sends sign-in emails from `signin@mail.sogilex.com`.
@@ -66,7 +93,7 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 
 ## Build (websites): `sogilex-build`
 
-- `build-site` Edge Function, **version 14**: Opus 5.5, effort **medium** (low produced junk, never use it),
+- `build-site` Edge Function, **version 15** (v15 added "Use my photos"): Opus 5.5, effort **medium** (low produced junk, never use it),
   `max_tokens` 24000, stops itself at **380 s** (Supabase Pro limit 400 s; builds take ~140 s), styles incl.
   Futuristic (with anti-cliché direction), rejects output that isn't a real page (doesn't count), saves each
   finished page to `build_outputs`, sends `{t:"meta", build_id}` first. Logo: asks Claude for
@@ -82,8 +109,9 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 
 - Publish panel under Build's preview: choose `name`, publish to `name.sogilex.net`, unpublish, Messages inbox.
 - Only HTML Build generated can be published (never uploads). The Worker strips scripts/frames/etc., points
-  forms at `/__form`, adds a honeypot and a "Made with Sogilex · Report this site" footer, inlines the logo,
-  and serves with a strict CSP (no scripts, images only as data: URLs).
+  forms at `/__form`, adds a honeypot and a "Made with Sogilex · Report this site" footer, serves the logo as
+  `/logo.png` and photos as `/photos/<id>.jpg` (copied to KV at publish), with a strict CSP (no scripts; images
+  only from the site itself or data: URLs). Always https (308 redirect + HSTS).
 - Contact-form messages are stored (`site_messages`) and shown in Build. Rate limits: 30/site/hour, 5/visitor/hour.
 - Owner tested end to end: works.
 - HTTPS (2026-11-19): owner's mom got "this form is not secure" on a published site opened over http. Fixed:
@@ -121,7 +149,10 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 
 - "Add your logo here" box (`assets/brand.js`): drag or click; PNG/JPG/WebP/SVG redrawn in the browser as a
   small PNG (SVG scripts can't survive); PDFs get a plain "save it as a PNG" message; main colours extracted.
-- Stored in `brand_kits` (one per person). Used on menus, in generated sites and in published sites.
+- Stored in `brand_kits` (one per person), at most 480×200 (~100 KB); older bigger logos shrink on load.
+  Used on menus, in generated sites and in published sites. Menus can have its own logo (`menu_logo`).
+- After the logo change, **Evergreen needs one republish** (Publish this version) for its page to drop from
+  ~720 KB to ~30 KB; not confirmed done.
 
 ## sogilex.com: `sogilex-site`
 
@@ -133,6 +164,11 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 - Waitlist: `waitlist` table (insert-only; read it in Supabase Table Editor), `assets/waitlist.js`, `supabase/waitlist.sql`.
 
 ## Waiting on the owner
+
+- **Fill in and print the offer sheet; first restaurant visit** (see "Where we left off").
+- **Turn on leaked-password protection** in Supabase (Authentication → password security); can't be done from a
+  session. Not confirmed done.
+- **Enforce HTTPS** in GitHub Pages settings for all three repos (Settings → Pages); not confirmed done.
 
 - **Form the Missouri LLC** (planned; about $50 online). Then tell the next session the business name.
 - **Terms of service** need the operator name (LLC or the owner's own name) before publishing opens to everyone.
@@ -173,6 +209,9 @@ Owner's mom (photographer) built a site and couldn't change it afterwards. Plan,
 
 ## Next steps (owner picks)
 
+0. **Done-for-you support, as clients arrive:** several businesses in one account; client email notifications for
+   contact-form messages (Resend key); own domains; a monthly edit allowance. Second example site for
+   `/examples/` (owner's mom's photography site, if she agrees).
 1. **Flyers**: next new tool; reuse the brand kit and the "curated looks" approach from Menus.
 2. **Menus milestone 2**: Claude designs a style per restaurant (code still places every price). See MENU-SPEC.md.
 3. **Open publishing to everyone** once the terms of service exist (set `can_publish` for all, or remove the check).
