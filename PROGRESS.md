@@ -34,8 +34,8 @@ This repo is public: no keys, user IDs or private details here.
 - **Gaps the done-for-you model exposes (build when needed):**
   1. One account = one business. Each client needs its own sign-in for now (Gmail plus-addresses work:
      you+client@gmail.com). Several businesses per account becomes worth building after a few clients.
-  2. Contact-form messages: now also emailed to an address the owner picks (built 2026-11-19; needs the
-     RESEND_API_KEY secret, see "Message emails").
+  2. Contact-form messages: now also emailed to an address the owner picks (live and tested 2026-11-19).
+     For a client: type their email, they press Confirm once in the email we send them.
   3. Own domains (Cloudflare for SaaS custom hostnames) not built; the sheet says "coming soon".
   4. Edits are capped per day (30) but not per month: a monthly allowance matters once anyone pays.
 - **Before taking money:** Missouri LLC, business bank account, a one-page written agreement per customer
@@ -169,11 +169,12 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
   Edge Function **`message-email` (v1, verify_jwt off, checks callers itself)** through pg_net, only if the
   owner has a confirmed address. The function claims the message (emailed_at) so it never sends twice, and only
   sends messages under 15 minutes old. Messages always stay in Build either way.
-- **Needs the owner to add the Supabase Edge Function secret `RESEND_API_KEY`** (a Resend API key with sending
-  access for mail.sogilex.com). Sends from messages@mail.sogilex.com. Until then: own address "saves" but no
-  email goes out, and another address shows "Email sending isn't set up yet."
-- Tested: function from the database via pg_net (all actions answer correctly), trigger in a rolled-back
-  transaction, Build box and confirm/stop page in a browser with stand-ins. Not yet tested: a real email.
+- Secret `RESEND_API_KEY` is set (Resend key "Sogilex messages", sending access, mail.sogilex.com only).
+  Sends from messages@mail.sogilex.com. Function `message-email` is at v3 (v3 logs why a confirmation failed).
+- The service role needed explicit grants on `message_emails` and `site_messages` (new tables in this project
+  don't grant it anything): remember this for any future Edge Function that writes a new table.
+- **Owner tested it live end to end (2026-11-19):** confirmation email, Confirm page, a real contact-form message
+  arrived, Reply goes to the visitor, Stop link opens the stop page.
 
 ## Flyers (free beta): build.sogilex.com/flyers/
 
@@ -221,7 +222,6 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 - **Form the Missouri LLC** (planned; about $50 online). Then tell the next session the business name.
 - **Terms of service** need the operator name (LLC or the owner's own name) before publishing opens to everyone.
 - **DMCA designated agent** registration with the US Copyright Office (about $6), around the same time.
-- **Add the Supabase Edge Function secret `RESEND_API_KEY`** so contact-form messages get emailed (see "Message emails").
 - Atlas privacy page placeholders: `[OPERATOR NAME]`, `[COUNTRY]`, `[EFFECTIVE DATE]`, `[SUPABASE REGION]`.
 
 ## Usage (checked 2026-11-19)
