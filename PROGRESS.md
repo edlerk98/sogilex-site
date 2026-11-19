@@ -15,6 +15,11 @@ This repo is public: no keys, user IDs or private details here.
 
 ## Where we left off (2026-11-19, end of a long session)
 
+- **Flyers built (free beta), on branch `claude/handoff-file-update-zb1a1w` in sogilex-build and sogilex-site,
+  not yet merged to `main` (so not live).** Database table `flyers` is already live (013_flyers.sql).
+  See the Flyers section below.
+- **Offer sheet filled in** (contact details are on the private canvas only, not here); turnaround days and
+  "spots left" removed for now.
 - **Business direction decided: done-for-you.** The owner sells menus (print + online + QR) and websites to local
   restaurants as a service, using Sogilex as the tool, rather than self-serve software first.
 - **Offer + price sheet made** (2 letter pages, design canvas, private to the owner):
@@ -145,7 +150,25 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 - Files: `menus/index.html`, `assets/menus.js`, `assets/menus.css`. Extra fonts: EB Garamond, Playfair Display,
   Bebas Neue, Fraunces.
 
-## Logos (brand kit), Build + Menus
+## Flyers (free beta): build.sogilex.com/flyers/
+
+- `flyers/index.html`, `assets/flyers.js`, `assets/flyers.css` (reuses menus.css for the editor). No AI: every
+  word is what was typed; blanks are left off. Several flyers per person (max 40, trigger), table `flyers`
+  (`supabase/013_flyers.sql`), autosave, New / Duplicate / Delete.
+- Fields: headline, small line above, line under, big price/deal, when, where, up to 5 details, call to action,
+  fine print, business name/phone/website/address, shared logo (brand kit), QR code. First flyer pre-fills
+  business details from the saved menu.
+- Kinds (starters set a look + example text in empty boxes, never words): Event, Special or deal, Live music,
+  Grand opening, Class or sign-up, Notice or hours. Looks: 3 layouts (Poster, Colour block, Left-aligned) x
+  the 5 Menus font pairings x the 10 Menus palettes (+ logo colour). Text on the accent picks the more
+  readable of white/ink.
+- Fit: headline size from its length, then everything shrinks in steps (to 58%) until it fits the page and no
+  word sticks out; a single overlong word may break as a last resort.
+- Sizes: US Letter, A4 (print dialog / Save as PDF), Square 8in (social). "Save image" draws the flyer through
+  SVG foreignObject with fonts embedded: 1080x1080 for Square, 150 dpi for print sizes. Works in Chrome/Edge;
+  Safari may refuse (shows a message pointing to PDF). Owner should test on their phone.
+
+## Logos (brand kit), Build + Menus + Flyers
 
 - "Add your logo here" box (`assets/brand.js`): drag or click; PNG/JPG/WebP/SVG redrawn in the browser as a
   small PNG (SVG scripts can't survive); PDFs get a plain "save it as a PNG" message; main colours extracted.
@@ -158,8 +181,8 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 
 - Pages: `/` (hero, tools, four rules, "How Build works" 3 steps + link to examples, Atlas strip), `/examples/`
   (Evergreen Lawn & Landscape demo, live at https://evergreenlawn.sogilex.net/, labelled "Demo site"; screenshots
-  in `examples/`, rendered from the published copy in Cloudflare KV), `/menus/` (Beta), `/flyers/` (planned,
-  waitlist). Nav: Tools, Examples, How we design, Open Build.
+  in `examples/`, rendered from the published copy in Cloudflare KV), `/menus/` (Beta), `/flyers/` (Beta,
+  links to build.sogilex.com/flyers/). Nav: Tools, Examples, How we design, Open Build.
 - Examples to add: 2-3 demos in other trades (owner's mom's photography site is the obvious next one).
 - Waitlist: `waitlist` table (insert-only; read it in Supabase Table Editor), `assets/waitlist.js`, `supabase/waitlist.sql`.
 
@@ -212,7 +235,8 @@ Owner's mom (photographer) built a site and couldn't change it afterwards. Plan,
 0. **Done-for-you support, as clients arrive:** several businesses in one account; client email notifications for
    contact-form messages (Resend key); own domains; a monthly edit allowance. Second example site for
    `/examples/` (owner's mom's photography site, if she agrees).
-1. **Flyers**: next new tool; reuse the brand kit and the "curated looks" approach from Menus.
+1. **Flyers next**: owner tests the beta on real flyers. Then maybe: a photo on the flyer, a 9:16 story size,
+   two-up half-letter printing, Claude-designed looks (like Menus milestone 2).
 2. **Menus milestone 2**: Claude designs a style per restaurant (code still places every price). See MENU-SPEC.md.
 3. **Open publishing to everyone** once the terms of service exist (set `can_publish` for all, or remove the check).
 4. Smaller: **enforce HTTPS in GitHub Pages settings for all three repos (owner must do it: the session can't reach
