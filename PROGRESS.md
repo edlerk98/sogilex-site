@@ -5,7 +5,7 @@ This repo is public: no keys, user IDs or private details here.
 
 ## How to start the next session
 
-- Start a cloud session on the **"Sogilex"** environment (it holds the Cloudflare key) with all three repos:
+- Start a cloud session on the **"Sogilex"** environment (a session started on Default can move to it with one approval) (it holds the Cloudflare key) with all three repos:
   `edlerk98/sogilex-site`, `edlerk98/sogilex-build`, `edlerk98/savepoint-atlas`.
 - Tell it: *"Read PROGRESS.md in sogilex-site, then continue."*
 - Working style the owner asked for: be an advisor, not a yes-man; **simple, one-step-at-a-time walkthroughs**
@@ -75,7 +75,7 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 - **Your sites (2026-11-19):** "Your sites" picker above the preview; the latest finished build opens on return;
   any past version can be reopened, downloaded or published. RPCs `my_builds()` / `my_build(id)` (own rows only).
 - SQL (all applied; files are safe to re-run): `supabase/003_build.sql`, `004_publishing.sql`,
-  `005_menus.sql`, `006_brand_kits.sql`, `007_my_sites.sql`, `008_edits.sql`. Lesson: new tables in this project don't grant `service_role` by default.
+  `005_menus.sql`, `006_brand_kits.sql`, `007_my_sites.sql`, `008_edits.sql`, `009_photos.sql`. Lesson: new tables in this project don't grant `service_role` by default.
 
 ## Publishing (closed beta): `sogilex-build/docs/PUBLISHING.md`
 
@@ -139,10 +139,14 @@ Owner's mom (photographer) built a site and couldn't change it afterwards. Plan,
    A full restyle ("rewrite") took 147 s and ~20k output tokens: about $0.47. Works only because edit-site pings
    every 5 s (Supabase cuts a response after 150 s with no bytes). If restyles get common, consider limiting them.
    `edit-selftest` is a retired stub (returns 410); it can be deleted in the Supabase dashboard (Edge Functions).
-3. **Photos:** resized in the browser (~2000 px), stored in Supabase Storage, referenced as `sogilex:photo:N`
-   like the logo; the Worker serves them from the site's own address (`/photos/...`) so the no-scripts CSP stays
-   (img-src 'self' data:). Needs the Cloudflare key ("Sogilex" environment). Photos only at first.
-   Before publishing opens to everyone: terms of service + DMCA agent are required (user-uploaded images).
+3. **Done (2026-11-19): your own photos.** "Your photos" box in Build (`assets/photos.js`): redrawn in the browser
+   as JPEG (max 2000 px, strips GPS/EXIF) + 400 px preview, private bucket `site-photos/<uid>/<id>.jpg` (+ `-t.jpg`),
+   list in `site_photos` (max 60/person, `009_photos.sql`). Pages use `sogilex:photo:<id>`; Build preview swaps in
+   1-hour signed links, Download/Copy put the photos inside the file. build-site (v15, "Use my photos" tick box)
+   and edit-site (v3) send Claude the list + previews of the newest 12; edit-site refuses unknown photo tags.
+   Worker copies used photos to KV on publish, serves `/photos/<id>.jpg`, CSP `img-src data: 'self'`.
+   Not yet tested live end to end (sandbox can't sign in): needs the owner's check.
+   **Before publishing opens to everyone: terms of service + DMCA agent are required (user-uploaded images).**
 
 ## Next steps (owner picks)
 
