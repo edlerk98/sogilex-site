@@ -14,8 +14,9 @@ This repo is public: no keys, user IDs or private details here.
 ## What Sogilex is
 
 Design tools for local businesses that **don't look AI-made**. Four design rules on every tool: one message,
-two typefaces at most, nothing generated to fake it (no generated people/props/textures), only the owner's
-facts (missing ones become [PLACEHOLDERS], never invented). Order of tools: websites (live), menus (live beta),
+two typefaces at most, no AI look (rule 03, reworded 2026-11-19 at the owner's request: no glossy stock art,
+grime filters or uncanny faces; Sogilex itself is AI-made, so "nothing generated" overclaimed), only the owner's
+facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: demo sites are labelled demos. Order of tools: websites (live), menus (live beta),
 flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). Excel later.
 
 ## Live
@@ -107,8 +108,11 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 
 ## sogilex.com: `sogilex-site`
 
-- Pages: `/` (hero, tools, four rules, Lawn Gang sample, Atlas strip), `/menus/` (Beta, "Make your menu"),
-  `/flyers/` (planned, waitlist).
+- Pages: `/` (hero, tools, four rules, "How Build works" 3 steps + link to examples, Atlas strip), `/examples/`
+  (Evergreen Lawn & Landscape demo, live at https://evergreenlawn.sogilex.net/, labelled "Demo site"; screenshots
+  in `examples/`, rendered from the published copy in Cloudflare KV), `/menus/` (Beta), `/flyers/` (planned,
+  waitlist). Nav: Tools, Examples, How we design, Open Build.
+- Examples to add: 2-3 demos in other trades (owner's mom's photography site is the obvious next one).
 - Waitlist: `waitlist` table (insert-only; read it in Supabase Table Editor), `assets/waitlist.js`, `supabase/waitlist.sql`.
 
 ## Waiting on the owner
@@ -116,7 +120,6 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 - **Form the Missouri LLC** (planned; about $50 online). Then tell the next session the business name.
 - **Terms of service** need the operator name (LLC or the owner's own name) before publishing opens to everyone.
 - **DMCA designated agent** registration with the US Copyright Office (about $6), around the same time.
-- **Is "Lawn Gang 101" (homepage sample) a real business?** Never answered; if it's real and not the owner's, swap it.
 - Resend API key, later, for emailing site owners when a message arrives.
 - Atlas privacy page placeholders: `[OPERATOR NAME]`, `[COUNTRY]`, `[EFFECTIVE DATE]`, `[SUPABASE REGION]`.
 

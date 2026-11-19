@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sogilex Examples · Sites made with Sogilex Build</title>
+<meta name="description" content="Websites made with Sogilex Build: designed from a few sentences, changed by chatting, and published in minutes.">
+<meta name="theme-color" content="#120A18">
+<meta property="og:title" content="Sites made with Sogilex Build">
+<meta property="og:description" content="Designed from a few sentences, changed by chatting, published in minutes.">
+<meta property="og:url" content="https://sogilex.com/examples/">
+<meta property="og:image" content="https://sogilex.com/examples/evergreen.jpg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/unbounded-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/scene.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="sunset" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D91E8C"/><stop offset="0.55" stop-color="#F2496B"/><stop offset="1" stop-color="#FF9A4D"/></linearGradient>
+    <symbol id="mark" viewBox="0 0 124 102"><rect x="0" y="50" width="64" height="52" rx="11" fill="url(#sunset)"/><rect x="60" y="0" width="64" height="52" rx="11" fill="url(#sunset)"/></symbol>
+  </defs>
+</svg>
+
+<canvas id="scene" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="logo" href="/" aria-label="Sogilex home"><svg width="34" height="28" aria-hidden="true"><use href="#mark"/></svg><span class="wordmark">SOGILEX</span></a>
+      <nav aria-label="Main">
+        <ul class="nav">
+          <li><a href="/#tools">Tools</a></li>
+          <li><a href="/examples/" aria-current="page">Examples</a></li>
+          <li><a href="/#rules">How we design</a></li>
+          <li><a class="btn btn-ghost btn-sm" href="https://build.sogilex.com/">Open Build</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero hero examples-hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="hero-copy">
+          <a class="crumb" href="/">SOGILEX / EXAMPLES</a>
+          <h1 id="hero-title">Sites made with <span class="glow-text">Sogilex Build.</span></h1>
+          <p class="lede" data-horizon>Each one was made with the same tools you get: a few sentences to start, then changes asked for in plain words. Until our first customers say we can show their sites, these are demo businesses, so their names, phone numbers and details are made up.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="evergreen-title">
+      <div class="wrap">
+        <article class="example panel">
+          <a class="example-shot browser" href="https://evergreenlawn.sogilex.net/" target="_blank" rel="noopener" aria-label="Visit the Evergreen Lawn &amp; Landscape demo site (opens in a new tab)">
+            <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            <picture>
+              <source media="(max-width: 600px)" srcset="/examples/evergreen-phone.jpg" width="780" height="1560">
+              <img src="/examples/evergreen.jpg" width="1280" height="800" alt="The Evergreen Lawn &amp; Landscape demo site: a crew member mowing beside a stone house, with the headline &quot;Your Lawn. Our Passion.&quot; and a lime &quot;Get a Free Quote&quot; button">
+            </picture>
+          </a>
+          <div class="example-meta">
+            <div class="example-tags"><span class="tag on">Demo site</span><span class="label">Lawn care · St. Louis, MO</span></div>
+            <h2 class="h2" id="evergreen-title">Evergreen Lawn &amp; Landscape</h2>
+            <ul class="example-how">
+              <li>Built from one paragraph, a logo and three photos, in under two minutes.</li>
+              <li>Changed by chatting: the before-and-after section became a photo slideshow, then a simple photo stack.</li>
+              <li>Two more photos added later, with one click.</li>
+              <li>Published at <b>evergreenlawn.sogilex.net</b>, with a working contact form.</li>
+            </ul>
+            <div class="actions">
+              <a class="btn btn-primary" href="https://evergreenlawn.sogilex.net/" target="_blank" rel="noopener">Visit the site →</a>
+              <a class="btn btn-ghost" href="https://build.sogilex.com/">Make one like it</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="cta-title">
+      <div class="wrap" style="align-items: flex-start">
+        <h2 class="h2" id="cta-title">Your business could be next.</h2>
+        <p class="muted" style="margin: 0; max-width: 40rem; font-size: 17px">Describe your business in a few sentences, add your logo and photos, and change anything by asking. Free during the beta.</p>
+        <a class="btn btn-primary" href="https://build.sogilex.com/">Build your website</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer solid">
+    <div class="wrap">
+      <span><svg width="22" height="18" aria-hidden="true"><use href="#mark"/></svg>© 2026 Sogilex</span>
+      <a href="mailto:hello@sogilex.com">hello@sogilex.com</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
