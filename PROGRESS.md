@@ -76,7 +76,7 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 - **Your sites (2026-11-19):** "Your sites" picker above the preview; the latest finished build opens on return;
   any past version can be reopened, downloaded or published. RPCs `my_builds()` / `my_build(id)` (own rows only).
 - SQL (all applied; files are safe to re-run): `supabase/003_build.sql`, `004_publishing.sql`,
-  `005_menus.sql`, `006_brand_kits.sql`, `007_my_sites.sql`, `008_edits.sql`, `009_photos.sql`. Lesson: new tables in this project don't grant `service_role` by default.
+  `005_menus.sql`, `006_brand_kits.sql`, `007_my_sites.sql`, `008_edits.sql`, `009_photos.sql`, `010_menu_import.sql`. Lesson: new tables in this project don't grant `service_role` by default.
 
 ## Publishing (closed beta): `sogilex-build/docs/PUBLISHING.md`
 
@@ -100,6 +100,10 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 - **Structure (2026-11-19):** one page or front and back (flows onto page 2), add-ons per dish/section
   ("Add bacon +2", "Choice of ..."), section kinds (regular, specials box, set price for prix fixe/tasting),
   starters (Bar & grill, Fine dining, Café & bakery, Pizzeria, Taqueria) that set sections + look, never dishes.
+- **Read from photos + QR (2026-11-19):** "Read it from a photo" (up to 4 photos or a PDF) fills the form via the
+  `read-menu` Edge Function; every price highlighted until checked; print warns. Optional QR code on the last page.
+  Live-tested: 24/24 prices exact on a tilted photo, 23 s, ~7 cents. Details in `sogilex-build/docs/MENU-SPEC.md`.
+  Next for restaurants: an online menu at `name.sogilex.net/menu` (natural QR target, price changes update both).
 - Files: `menus/index.html`, `assets/menus.js`, `assets/menus.css`. Extra fonts: EB Garamond, Playfair Display,
   Bebas Neue, Fraunces.
 
