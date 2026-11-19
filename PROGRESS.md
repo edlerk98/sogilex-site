@@ -145,7 +145,10 @@ Owner's mom (photographer) built a site and couldn't change it afterwards. Plan,
    1-hour signed links, Download/Copy put the photos inside the file. build-site (v15, "Use my photos" tick box)
    and edit-site (v3) send Claude the list + previews of the newest 12; edit-site refuses unknown photo tags.
    Worker copies used photos to KV on publish, serves `/photos/<id>.jpg`, CSP `img-src data: 'self'`.
-   Not yet tested live end to end (sandbox can't sign in): needs the owner's check.
+   Each photo shows "+ Add to site" (or "On this site") for the open site, plus "Add the N photos that aren't on
+   this site"; after an upload with a site open, the chat offers "Add them to my site". Both send a chat edit naming
+   the exact photo tags (owner, 2026-11-19: "there needs to be a way to add new photos to a site already built").
+   Owner tested: build with 3 photos + 2 edits worked live (25 s, 11 s).
    **Before publishing opens to everyone: terms of service + DMCA agent are required (user-uploaded images).**
 
 ## Next steps (owner picks)
