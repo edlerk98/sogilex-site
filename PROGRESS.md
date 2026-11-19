@@ -1,6 +1,6 @@
 # Sogilex: where things stand
 
-Last updated 2026-11-18 (end of a long session). **A new session should read this file first.**
+Last updated 2026-11-19. **A new session should read this file first.**
 This repo is public: no keys, user IDs or private details here.
 
 ## How to start the next session
@@ -91,6 +91,9 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
   autosave (`menus` table, one per person), print / save as PDF (Letter or A4). Prices print exactly as typed.
 - **Looks:** 5 font pairings (Classic, Elegant, Modern, Bold, Warm) × 10 palettes (all WCAG AA checked) +
   "From my logo" × 3 layouts (centered, left, dotted leaders) × 3 borders. Owner: "it is great".
+- **Structure (2026-11-19):** one page or front and back (flows onto page 2), add-ons per dish/section
+  ("Add bacon +2", "Choice of ..."), section kinds (regular, specials box, set price for prix fixe/tasting),
+  starters (Bar & grill, Fine dining, Café & bakery, Pizzeria, Taqueria) that set sections + look, never dishes.
 - Files: `menus/index.html`, `assets/menus.js`, `assets/menus.css`. Extra fonts: EB Garamond, Playfair Display,
   Bebas Neue, Fraunces.
 
@@ -114,6 +117,11 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 - **Is "Lawn Gang 101" (homepage sample) a real business?** Never answered; if it's real and not the owner's, swap it.
 - Resend API key, later, for emailing site owners when a message arrives.
 - Atlas privacy page placeholders: `[OPERATOR NAME]`, `[COUNTRY]`, `[EFFECTIVE DATE]`, `[SUPABASE REGION]`.
+
+## Usage (checked 2026-11-19)
+
+No real users yet: the 5 other accounts are the owner's friend and mom testing. Waitlist 0. Advice given: get
+3 local restaurants to react to a printed Sogilex menu before building more tools; their answers pick the next build.
 
 ## Next steps (owner picks)
 
