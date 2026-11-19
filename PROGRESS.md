@@ -54,7 +54,7 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 | What | Address | Repo |
 |---|---|---|
 | Company site | https://sogilex.com (+ /menus, /flyers pages) | `sogilex-site` |
-| Build: AI websites | https://build.sogilex.com | `sogilex-build` |
+| Build: AI websites (beta) | https://build.sogilex.com | `sogilex-build` |
 | Menus (free beta) | https://build.sogilex.com/menus/ | `sogilex-build` |
 | Published customer sites | https://NAME.sogilex.net (closed beta: owner only) | `sogilex-build/worker` |
 | Savepoint Atlas | https://atlas.sogilex.com | `savepoint-atlas` |
@@ -149,6 +149,14 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
   after the LLC + terms of service.
 - Files: `menus/index.html`, `assets/menus.js`, `assets/menus.css`. Extra fonts: EB Garamond, Playfair Display,
   Bebas Neue, Fraunces.
+
+## Build quick changes (2026-11-19)
+
+- 8 one-click buttons above the "Change your site" chat (`renderQuick` in `assets/build.js`): Serif fonts,
+  Sans-serif fonts, Darker look, Lighter look, Bigger headline, More breathing room, Simpler, Use my logo colours
+  (only with a logo; sends the hex colours). Each sends a fixed request through `edit-site` (one edit, one version,
+  undo works), always ending "Keep every word, every section, the layout and the images exactly as they are."
+- Build is labelled **Beta** on sogilex.com (card tag and hero button) as well as on Build itself.
 
 ## Flyers (free beta): build.sogilex.com/flyers/
 
