@@ -75,7 +75,7 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 - **Your sites (2026-11-19):** "Your sites" picker above the preview; the latest finished build opens on return;
   any past version can be reopened, downloaded or published. RPCs `my_builds()` / `my_build(id)` (own rows only).
 - SQL (all applied; files are safe to re-run): `supabase/003_build.sql`, `004_publishing.sql`,
-  `005_menus.sql`, `006_brand_kits.sql`, `007_my_sites.sql`. Lesson: new tables in this project don't grant `service_role` by default.
+  `005_menus.sql`, `006_brand_kits.sql`, `007_my_sites.sql`, `008_edits.sql`. Lesson: new tables in this project don't grant `service_role` by default.
 
 ## Publishing (closed beta): `sogilex-build/docs/PUBLISHING.md`
 
@@ -129,9 +129,13 @@ No real users yet: the 5 other accounts are the owner's friend and mom testing. 
 
 Owner's mom (photographer) built a site and couldn't change it afterwards. Plan, one piece at a time, each tested live:
 1. **Done:** reopen your sites (above).
-2. **Chat edits:** an `edit-site` Edge Function sends the current page + the request; Claude returns small
-   find/replace edits (not a full rewrite: faster, cheaper, leaves the rest untouched). Every edit saves a new
-   version (Undo). Separate daily limit (~30). Big restyles fall back to a rebuild.
+2. **Done (2026-11-19): chat edits** ("Change your site" under the preview). `edit-site` Edge Function (v2,
+   verify_jwt off, does its own auth): Opus 5.5, effort medium, structured JSON output {reply, edits[find/replace],
+   rewrite}, server-side refusal fallbacks; one retry if a find doesn't match; refuses versions that add scripts.
+   Each change = new version (build_generations kind='edit', parent_id, note) + page in build_outputs; Undo opens
+   the parent. Questions/refusals make no version. Limits: 30 edits/person/day (failed don't count, max 10
+   failures), 500/day overall; builds count separately. SQL `008_edits.sql`. Measured on a real 33 KB site:
+   small edits 6-8 s, adding a section 25 s, ~17k input tokens, about $0.08-0.13 per edit.
 3. **Photos:** resized in the browser (~2000 px), stored in Supabase Storage, referenced as `sogilex:photo:N`
    like the logo; the Worker serves them from the site's own address (`/photos/...`) so the no-scripts CSP stays
    (img-src 'self' data:). Needs the Cloudflare key ("Sogilex" environment). Photos only at first.
