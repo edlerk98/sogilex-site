@@ -125,6 +125,16 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 
 ## Menus (free beta): build.sogilex.com/menus/
 
+- **Statement looks (2026-11-19)**, after the owner said the Poor Richard's sample "looks like a Word doc" (every
+  section identical, no focal point): "Ready-made looks" row (Tavern, Sports bar, Bistro, Diner, Café, Clean
+  modern) sets font + colours + layout + border at once; new Tavern palette (deep red on cream); new layout
+  "Colour bands" (section headings on solid accent bands, diamond ornament under the name, text on the band picks
+  white or ink for contrast); per-section "Feature this section" (tinted panel, bigger heading, never splits
+  across columns or pages). Tested on the full Poor Richard's menu: fits front and back at 84-88%.
+  Known: one shared type scale for both pages, so page 1 can end with spare space when page 2 is full.
+- Photo reader no longer cuts text silently (it did: "Served with ... D"): higher limits, anything still too
+  long goes in the "couldn't read clearly" note.
+
 - Milestone 1 of `sogilex-build/docs/MENU-SPEC.md` done, no AI: form (sections, dishes, multiple prices with
   labels, dietary tags, footer), live preview that fits one page (type down to 80%, then two columns),
   autosave (`menus` table, one per person), print / save as PDF (Letter or A4). Prices print exactly as typed.
