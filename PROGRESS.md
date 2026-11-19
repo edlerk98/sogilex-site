@@ -136,6 +136,9 @@ Owner's mom (photographer) built a site and couldn't change it afterwards. Plan,
    the parent. Questions/refusals make no version. Limits: 30 edits/person/day (failed don't count, max 10
    failures), 500/day overall; builds count separately. SQL `008_edits.sql`. Measured on a real 33 KB site:
    small edits 6-8 s, adding a section 25 s, ~17k input tokens, about $0.08-0.13 per edit.
+   A full restyle ("rewrite") took 147 s and ~20k output tokens: about $0.47. Works only because edit-site pings
+   every 5 s (Supabase cuts a response after 150 s with no bytes). If restyles get common, consider limiting them.
+   `edit-selftest` is a retired stub (returns 410); it can be deleted in the Supabase dashboard (Edge Functions).
 3. **Photos:** resized in the browser (~2000 px), stored in Supabase Storage, referenced as `sogilex:photo:N`
    like the logo; the Worker serves them from the site's own address (`/photos/...`) so the no-scripts CSP stays
    (img-src 'self' data:). Needs the Cloudflare key ("Sogilex" environment). Photos only at first.
