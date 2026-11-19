@@ -76,7 +76,7 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 - **Your sites (2026-11-19):** "Your sites" picker above the preview; the latest finished build opens on return;
   any past version can be reopened, downloaded or published. RPCs `my_builds()` / `my_build(id)` (own rows only).
 - SQL (all applied; files are safe to re-run): `supabase/003_build.sql`, `004_publishing.sql`,
-  `005_menus.sql`, `006_brand_kits.sql`, `007_my_sites.sql`, `008_edits.sql`, `009_photos.sql`, `010_menu_import.sql`, `011_online_menus.sql`. Lesson: new tables in this project don't grant `service_role` by default.
+  `005_menus.sql`, `006_brand_kits.sql`, `007_my_sites.sql`, `008_edits.sql`, `009_photos.sql`, `010_menu_import.sql`, `011_online_menus.sql`, `012_menu_logo.sql`. Lesson: new tables in this project don't grant `service_role` by default.
 
 ## Publishing (closed beta): `sogilex-build/docs/PUBLISHING.md`
 
@@ -105,7 +105,15 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
   Live-tested: 24/24 prices exact on a tilted photo, 23 s, ~7 cents. Details in `sogilex-build/docs/MENU-SPEC.md`.
 - **Online menu (2026-11-19, closed beta):** "Online menu" box in Menus → https://<name>.sogilex.net/menu, built by
   the Worker from the saved menu text; updates on every save unless photo-read prices are unchecked; "Use it for my
-  QR code". SQL `011_online_menus.sql`. Not yet tried live by the owner.
+  QR code". SQL `011_online_menus.sql`. Owner tested: works, QR opens it.
+- **Menu-only logo (2026-11-19):** one logo per account is shared by Build and Menus (right for a real business);
+  Menus now says so and offers "Use a different logo for this menu" (`brand_kits.menu_logo/_name/_colors`,
+  `012_menu_logo.sql`); the online menu serves it as `/menu-logo.png`. Underlying assumption still: one account =
+  one business (one logo, menu, website, address). Owner's demos: use a separate sign-in per demo business.
+  Multi-business accounts only if customers ask.
+- **Custom domains (idea, owner asked 2026-11-19):** Cloudflare for SaaS custom hostnames (first 100 free); owner
+  adds one DNS record at their registrar. Proposed as the first paid feature (own domain + no Sogilex footer),
+  after the LLC + terms of service.
 - Files: `menus/index.html`, `assets/menus.js`, `assets/menus.css`. Extra fonts: EB Garamond, Playfair Display,
   Bebas Neue, Fraunces.
 
