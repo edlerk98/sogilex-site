@@ -288,7 +288,12 @@ facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: d
 
 ## Your account: build.sogilex.com/account/ (2026-11-20)
 
-- "Account" in every tool's menu bar. One list of everything saved to the account: websites (every version, which is
+- **Menu bar (2026-11-20, owner asked to condense it):** every tool page has two drop-downs, **Tools ▾** (Websites,
+  Menus, Flyers, Posts, Invoices; current one marked "here") and **Account ▾** (Your account, Password, Sign out;
+  the last two only when signed in). Build also keeps "How it works" and "Privacy & limits". Plain `<details>` plus
+  `assets/nav.js` (one open at a time, closes on outside click / Escape / choosing). Styles at the end of build.css.
+  A new tool needs one line in each page's Tools list (6 pages).
+- One list of everything saved to the account: websites (every version, which is
   published, the published address and message count), the menu (and online menu link), flyers, posts, quotes and
   invoices (status, unpaid total), logo and photo count, and settings (email, member since, where contact-form
   messages go, change password, sign out, "Email us to delete it"). Six per section, then "Show all".
