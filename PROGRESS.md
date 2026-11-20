@@ -35,10 +35,8 @@ This repo is public: no keys, user IDs or private details here.
   `sogilex-build/supabase/015_remove_atlas.sql` (data was placeholder test entries only), including the sign-up hook
   that made an Atlas profile for every new account (dropped first, so sign-ups don't break). Atlas wording removed
   from the sign-in boxes. The `savepoint-atlas` repo stays only to serve the closed page; no more work there.
-- **Owner to-do (2 minutes): paste the updated sign-in email** (`sogilex-build/supabase/email-sign-in.html`, now
-  without "Savepoint Atlas") into Supabase > Authentication > Emails > Templates, in both "Magic link" and "Confirm
-  signup". And check Authentication > URL Configuration: "Site URL" should be https://build.sogilex.com (if it is
-  atlas.sogilex.com, a sign-in link could land on the closed page).
+- Done by the owner 2026-11-20: Supabase sign-in email templates (Magic link + Confirm signup) no longer mention
+  Atlas ("One Sogilex account works for Build, Menus and Flyers."); Site URL confirmed https://build.sogilex.com.
 - Flyers is live (merged 2026-11-19). See the Flyers section below.
 - **Offer sheet filled in** (contact details are on the private canvas only, not here); turnaround days and
   "spots left" removed for now.
