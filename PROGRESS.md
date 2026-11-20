@@ -17,11 +17,13 @@ This repo is public: no keys, user IDs or private details here.
 
 - **Quotes & invoices (5th tool) built 2026-11-20** (owner approved the plan, including the advisor's additions:
   the owner is the first user, billing their own done-for-you clients; "Bill this again next month" for care plans).
-  See the "Quotes & invoices" section below. Database applied live; pages on branch `claude/gifted-brahmagupta-n0pd29`
-  in both repos (live once pushed to `main`). **Owner's test:** make a real invoice for themselves (e.g. a $149 setup
+  See the "Quotes & invoices" section below. **Live** (database, build.sogilex.com/invoices/ and
+  sogilex.com/invoices/, pushed to `main` 2026-11-20); not yet used by the owner with a real sign-in. **Owner's test:** make a real invoice for themselves (e.g. a $149 setup
   for a pretend client), print it to PDF, check it reads right. Next for this tool, when asked: email from Sogilex,
   Stripe "Pay now", reminders.
 - Still open and more important: the first restaurant visit (Poor Richard's sample menu).
+- Security advisor (pre-existing, not urgent): `public.rls_auto_enable()` is SECURITY DEFINER and executable by anon
+  and authenticated; revoke EXECUTE from them (check what it is first).
 - All of 2026-11-20's work is live and the owner checked it: Posts + AI captions, Services tab, done-for-you
   section, Atlas closed. The first real AI caption worked.
 - **"Services" tab (2026-11-20, owner: "each time we add something it needs to automatically go under that tab"):**
