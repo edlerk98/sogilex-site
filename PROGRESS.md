@@ -141,7 +141,8 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
   ids; removed photos drop off the menu. Fonts: Anton (Heavy), Alfa Slab One (Slab), Rye (Western), Lobster
   (Script), self-hosted OFL, headings only. Palettes Mustard (dark/yellow) and Ketchup. Looks: Bold grill, Night
   market, Saloon, Retro diner, Sweet shop. Poor Richard's fits front and back at 80-84% with photos.
-  Not yet: photos on the online menu (/menu) or in Flyers.
+  Online menu shows the photos too (2026-11-20, Worker deployed; see sogilex-build/docs/PUBLISHING.md), plus the
+  new palettes/lettering (system-font stand-ins) and the longer text limits. Not yet: photos in Flyers.
 - Photo reader no longer cuts text silently (it did: "Served with ... D"): higher limits, anything still too
   long goes in the "couldn't read clearly" note.
 
