@@ -13,11 +13,24 @@ This repo is public: no keys, user IDs or private details here.
   confidence levels); **simple, one-step-at-a-time walkthroughs** for anything the owner does by hand (they get
   overwhelmed by long lists); test before shipping; end each reply with one clear next step.
 
-## Where we left off (2026-11-19, end of a long session)
+## Where we left off (2026-11-20)
 
-- **Flyers built (free beta), on branch `claude/handoff-file-update-zb1a1w` in sogilex-build and sogilex-site,
-  not yet merged to `main` (so not live).** Database table `flyers` is already live (013_flyers.sql).
-  See the Flyers section below.
+- **Homepage section "04 / Done for you" is live** (owner approved prices going public): headline, the two price
+  cards from the offer sheet ($149 + $25/mo menu; $349 + $45/mo menu + website), founding offer, and a "Get a free
+  sample menu" form. Requests go to table `sample_requests` (`sogilex-site/supabase/sample_requests.sql`: anyone can
+  insert, nobody can read via the API; one per email a day, 30 a day in all) and are emailed to hello@sogilex.com by
+  `message-email` v4 (action "sample", Reply-To the requester). Owner confirmed hello@sogilex.com reaches them.
+  No "Most popular" label: no customers yet, so it would be a made-up claim.
+- **Pricing advice given:** prices are fine and low; the risk is "unlimited changes" eating time. Decide a private
+  fair-use line for the one-page agreement (e.g. a full redesign = $75). Ask founding customers for permission to
+  show their menu as an example plus a one-line quote, in exchange for half-price setup.
+- **Owner's next step is still the first restaurant visit** (Poor Richard's, Eureka/Fenton): read their menu in
+  again (the reader no longer cuts text), use the Bold grill look with their photos, print, visit.
+- Parked by the owner: an AI help chat (advised: not until self-serve users ask repeated questions), and a
+  "Questions? Text us" line with phone numbers. Résumé maker stays parked (wrong customer); suggested 4th service
+  instead: weekly social posts made from the menu (specials/dishes as Instagram/Facebook images).
+- Suggested, not done: move the Savepoint Atlas strip on the homepage to a small footer link.
+- Flyers is live (merged 2026-11-19). See the Flyers section below.
 - **Offer sheet filled in** (contact details are on the private canvas only, not here); turnaround days and
   "spots left" removed for now.
 - **Business direction decided: done-for-you.** The owner sells menus (print + online + QR) and websites to local
