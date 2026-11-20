@@ -29,7 +29,10 @@ This repo is public: no keys, user IDs or private details here.
 - Parked by the owner: an AI help chat (advised: not until self-serve users ask repeated questions), and a
   "Questions? Text us" line with phone numbers. Résumé maker stays parked (wrong customer); suggested 4th service
   instead: weekly social posts made from the menu (specials/dishes as Instagram/Facebook images).
-- Suggested, not done: move the Savepoint Atlas strip on the homepage to a small footer link.
+- **Savepoint Atlas removed from sogilex.com (2026-11-20, owner: "nothing to do with what I am building").** Atlas itself
+  still runs at atlas.sogilex.com, untouched: 2 people have checklists, one used it 2026-11-20. Shutting it down is
+  a separate decision (warn users, offer an export first; it shares the Sogilex sign-in and database). Do no new
+  Atlas work unless the owner asks.
 - Flyers is live (merged 2026-11-19). See the Flyers section below.
 - **Offer sheet filled in** (contact details are on the private canvas only, not here); turnaround days and
   "spots left" removed for now.
