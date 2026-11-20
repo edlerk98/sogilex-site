@@ -92,6 +92,22 @@ This repo is public: no keys, user IDs or private details here.
 - **Before taking money:** Missouri LLC, business bank account, a one-page written agreement per customer
   (Stripe later). Terms of service + DMCA agent before publishing opens to the public.
 
+## Launch plan for self-serve (owner decided 2026-11-20; build when going to market, not before)
+
+Owner: a big free plan won't work ("people use it for what they need and never come back"). Decided:
+- **Free trial: try each tool once.** Meaning (to confirm when building): 1 website build, 1 menu, 1 flyer, 1 post,
+  1 quote or invoice. Download/print allowed; no publishing, no online menu. Still open: how many website *changes*
+  the one trial site gets (suggest a few, e.g. 5).
+- **Do it yourself: $19/month** (yearly option suggested: 10 months' price). All tools with **monthly** limits
+  (suggested starting points, not yet decided by the owner: 30 website changes, 50 captions, a few new websites),
+  publishing at name.sogilex.net, online menu with QR, own web address later. The monthly value is hosting: when a
+  subscription ends, the site and online menu go offline (files stay downloadable).
+- Done-for-you plans stay as they are ($149+$25, $349+$45, All-in-one $499+$149).
+- **Needs before taking money:** LLC (two partners), a lawyer's look at terms/privacy (add billing/refund terms),
+  copyright agent registration (~$6), Stripe (Checkout + webhook -> subscription table -> limits and can_publish;
+  monthly instead of daily quotas; switch sites/menus off when a subscription ends). About two sessions.
+- Then open publishing to everyone on the paid plan, and update the Plans page, homepage and offer sheet.
+
 ## What Sogilex is
 
 Design tools for local businesses that **don't look AI-made**. Four design rules on every tool: one message,
