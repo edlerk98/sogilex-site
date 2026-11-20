@@ -362,7 +362,15 @@ facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: d
 - **Enforce HTTPS** in GitHub Pages settings for all three repos (Settings → Pages); not confirmed done.
 
 - **Form the Missouri LLC** (planned; about $50 online). Then tell the next session the business name.
-- **Terms of service** need the operator name (LLC or the owner's own name) before publishing opens to everyone.
+- **Privacy policy and terms are live (2026-11-20)** at sogilex.com/privacy/ and /terms/, linked from every site and
+  tool footer and the sign-in box ("By signing in you agree to..."). They name **Keagan Edler (founder) and Blake
+  Pille**, based in St. Louis, and say Sogilex "is not yet a registered company" (owner: nothing that needs an LLC).
+  Key promises made in them: delete an account within 30 days of an email request; email before important changes;
+  tell users if their data is exposed; no ads/tracking/selling; no training AI on user content; 18+; Missouri law,
+  St. Louis County courts; liability capped at $50 for the free tools; copyright complaints by email (no DMCA agent
+  claimed). **When the LLC exists:** swap the names for the company, consider registering a DMCA agent, and have a
+  lawyer read both before taking payments. Advisor note given: two people running a business without an entity are
+  usually a general partnership (each personally liable); a short written agreement between them is worth having.
 - **DMCA designated agent** registration with the US Copyright Office (about $6), around the same time.
 - (Atlas privacy page placeholders: moot, Atlas is closed.)
 
