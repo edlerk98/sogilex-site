@@ -100,8 +100,8 @@ This repo is public: no keys, user IDs or private details here.
   'trial' at launch**). All AI limits (claim_build/edit/import/caption_slot), the "N left" counters, flyer/post/
   invoice caps (`plan_item_cap` triggers) and publishing (`can_publish()`) read the plan. `build_limits` still
   overrides builds/publishing per person. Plans: beta, trial, diy ($19/$190), dfy_menu, dfy_site, dfy_all, team
-  (hidden). The owner's account is on **team** (20 builds, 100 changes, 200 captions a day, publishing). Blake's
-  account: not set yet (two Pille emails exist; ask which).
+  (hidden). The owner's account is on **team** (20 builds, 100 changes, 200 captions a day, publishing). Blake: owner will
+  give him a Sogilex email address later; put that account on 'team' then (Table Editor → subscriptions).
 - **Changing someone's plan by hand** (done-for-you clients, until Stripe): Supabase → Table Editor →
   subscriptions → insert/edit the row (user_id, plan_id, billing, status 'active', period dates).
 - **Account page "Your plan":** plan, price, renewal, usage meters for the current window (trial also shows flyers,
