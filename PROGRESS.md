@@ -238,8 +238,18 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
   embeds the new fonts.
 - Tested in a browser with a stand-in account: all six kinds, both sizes, dish picker, review boxes hidden, story
   saved at 1080x1920, saves go to `posts`; Flyers re-tested (no change in behaviour).
-- Later: a caption to copy (needs care: AI must not invent facts), posting straight to Instagram/Facebook (Meta
-  app review), several posts at once ("this week's posts"), and Quotes & invoices as the 5th tool.
+- **AI captions (2026-11-20, owner asked: "like the chat box editor with websites"):** "Caption" group in Posts:
+  tone (Friendly, Fun, Professional, Short), "Write a caption" / "Write a new one", an editable box (saved with the
+  post as `caption`, `tone`), "Change it" requests ("make it shorter") applied to the current caption, "Copy
+  caption". Edge Function **`write-caption` (v1, verify_jwt on)**: Claude Opus 5.5, effort low, JSON output
+  `{caption}`, server-side refusal fallback. The prompt allows only the post's facts (or facts the owner types in a
+  change request): no invented prices, dates, claims, awards, review words or star ratings; a list of banned AI
+  clichés; at most 2 emoji; 2-4 hashtags, a place only if it's in the facts. Limits in `build_generations`
+  (kind `caption`, 017_captions.sql): 40 a person a day, failures don't count (max 10), 1000 a day for everyone;
+  `caption_quota()` for the "left today" count. Tested in a browser with a stand-in for the AI; **not yet tested
+  against the real model** (the sandbox can't reach Supabase functions): the owner's first real caption is the test.
+- Later: posting straight to Instagram/Facebook (Meta app review), several posts at once ("this week's posts"),
+  and Quotes & invoices as the 5th tool.
 
 ## Flyers (free beta): build.sogilex.com/flyers/
 
