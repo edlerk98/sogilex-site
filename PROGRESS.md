@@ -21,8 +21,9 @@ This repo is public: no keys, user IDs or private details here.
   sogilex.com/invoices/, pushed to `main` 2026-11-20); not yet used by the owner with a real sign-in. **Owner's test:** make a real invoice for themselves (e.g. a $149 setup
   for a pretend client), print it to PDF, check it reads right. Next for this tool, when asked: email from Sogilex,
   Stripe "Pay now", reminders.
-- **Owner corrections (2026-11-20), keep to them:** Sogilex is **nationwide**, not St. Louis only (the owner starts
-  locally only because they live there): no city or region in any public wording or the offer sheet. **No founding
+- **Owner corrections (2026-11-20), keep to them:** Sogilex sells **nationwide**. Saying it is **based in St. Louis
+  is fine** (and the demo lawn business can say St. Louis); what is not wanted is wording that limits the market to
+  St. Louis (e.g. "for restaurants in St. Louis"). **No founding
   offer / no "first 10 half price"**: a session invented it; the owner never offered it. Both removed from the
   homepage and the offer sheet. Don't add offers, discounts or prices the owner didn't state.
 - **Owner's instruction (2026-11-20): not going to market yet; focus is the website (sogilex.com and the tools).
@@ -275,9 +276,9 @@ facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: d
   (phones; some desktops). Copies the caption, then opens the phone's share menu with the 1080 px PNG (and the caption
   as text; Instagram/Facebook ignore it, hence the copy). The image is made ahead of time ~1 s after each change,
   because a share menu only opens right after a tap. Uses the same drawing code as Save image (`makeImage()` in
-  flyers.js). Tested in Chromium with a stand-in share menu; **not yet tested on a real phone. Risk: iPhones (all
-  iPhone browsers are Safari underneath) may refuse to draw the image, as Save image may; then it says so and points
-  to Save image / PDF. If that happens, the fix is drawing the image on the server.**
+  flyers.js). Tested in Chromium with a stand-in share menu, and **the owner confirmed it works on an iPhone**
+  (2026-11-20), so the image drawing works in iPhone Safari (the old "Safari may refuse Save image" worry is likely
+  outdated).
 - Real "connect your Instagram/Facebook" advice given: needs Meta app review + Business Verification (needs the LLC),
   privacy policy and terms; Meta Business Suite already schedules for free. Build only after LLC + terms + real demand.
 - Later: posting straight to Instagram/Facebook (Meta app review), several posts at once ("this week's posts"),
