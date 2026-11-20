@@ -92,6 +92,34 @@ This repo is public: no keys, user IDs or private details here.
 - **Before taking money:** Missouri LLC, business bank account, a one-page written agreement per customer
   (Stripe later). Terms of service + DMCA agent before publishing opens to the public.
 
+## Plans and accounts (built 2026-11-20): `sogilex-build/supabase/021_plans.sql`
+
+- **Every account has a plan, and the database enforces it.** `plans` (catalogue: prices in cents, limits with a
+  window: day / month / ever), `subscriptions` (one row per account not on the default; users can read their own
+  row but never write it), `app_settings.default_plan` (now **'beta'** = exactly the old daily limits; **switch to
+  'trial' at launch**). All AI limits (claim_build/edit/import/caption_slot), the "N left" counters, flyer/post/
+  invoice caps (`plan_item_cap` triggers) and publishing (`can_publish()`) read the plan. `build_limits` still
+  overrides builds/publishing per person. Plans: beta, trial, diy ($19/$190), dfy_menu, dfy_site, dfy_all, team
+  (hidden). The owner's account is on **team** (20 builds, 100 changes, 200 captions a day, publishing). Blake's
+  account: not set yet (two Pille emails exist; ask which).
+- **Changing someone's plan by hand** (done-for-you clients, until Stripe): Supabase → Table Editor →
+  subscriptions → insert/edit the row (user_id, plan_id, billing, status 'active', period dates).
+- **Account page "Your plan":** plan, price, renewal, usage meters for the current window (trial also shows flyers,
+  posts, invoices), publishing yes/no, **Change plan** → choose a plan (monthly/yearly) → **checkout**.
+- **Checkout** (build.sogilex.com/checkout/?plan=&billing=): order, billing toggle, summary (setup fee + first period
+  = due today, then renewal date), Terms checkbox, and a marked **Stripe slot** (`#stripe-payment`). Sogilex never
+  takes card numbers: Stripe Checkout (hosted page) or Stripe's Payment Element goes there. `PAYMENTS_ON = false` in
+  `assets/checkout.js`: for now "Continue to secure payment" only records the request (`request_plan_change`; the
+  owner sees requested_plan_id in subscriptions) and says nothing was charged. `?status=success` shows the
+  after-payment screen. The file header lists exactly what to add for Stripe (create-checkout + stripe-webhook).
+- Tools: counters say "left today / this month / on your free trial"; on plans without publishing (not Beta) Build and
+  Menus say publishing comes with Do it yourself (link to the account page).
+- Tested: SQL on a local copy (every plan, refusals, no self-upgrade, launch switch), live checks in a rolled-back
+  transaction (owner = team, a tester = beta, unchanged), browser tests (14 checks plan/checkout; account, delete
+  and menu tests rerun).
+- Stripe sign-up started by the owner 2026-11-20 (business description given; choose Individual / sole proprietor
+  until the LLC exists). Don't take real payments before the LLC + terms update.
+
 ## Launch plan for self-serve (owner decided 2026-11-20; build when going to market, not before)
 
 Owner: a big free plan won't work ("people use it for what they need and never come back"). Decided:
