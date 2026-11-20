@@ -15,6 +15,13 @@ This repo is public: no keys, user IDs or private details here.
 
 ## Where we left off (2026-11-20)
 
+- **"Services" tab (2026-11-20, owner: "each time we add something it needs to automatically go under that tab"):**
+  one list, `sogilex-site/assets/services.js` (`window.SOGILEX_SERVICES`), builds the Services tab with its
+  drop-down on every page (it replaced "Tools"; shows on phones too), the homepage cards (`<div data-services>`,
+  section renamed "01 / Services") and the new page sogilex.com/services/ (`data-services="full"`). **To add a
+  service: add one entry to that list.** Tested: a 5th entry appeared in the menu and the cards with nothing else
+  changed. New pages need `<li class="nav-services"><a href="/services/">Services</a></li>` in their menu and
+  `<script src="/assets/services.js" defer></script>`.
 - **Posts (4th tool, free beta) is live** at build.sogilex.com/posts/ with a page at sogilex.com/posts/ and a 4th
   homepage card. Owner paused Menus to pick a 4th service: résumés were advised against again (individuals, not
   businesses; free competition; no repeat income); owner clarified Sogilex is for any local business, not only

@@ -8,3 +8,4 @@ The Sogilex company site, served at https://sogilex.com/ via GitHub Pages.
 - Fonts are self-hosted in `assets/fonts` (SIL Open Font License): Unbounded, Inter, JetBrains Mono, Montserrat (wordmark).
 - Contact: hello@sogilex.com (Porkbun email forwarding).
 - Tools live on their own subdomains, e.g. Build, Menus and Flyers at https://build.sogilex.com/.
+- Services: everything Sogilex offers is listed once in `assets/services.js`; the menu's Services tab, the homepage cards and /services/ are built from it. To add a service, add an entry there.

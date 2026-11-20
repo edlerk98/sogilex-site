@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sogilex services · Websites, menus, flyers and posts</title>
+<meta name="description" content="Everything Sogilex makes for local businesses: websites, restaurant menus, flyers and social media posts. Do it yourself, or have us do it for you.">
+<meta name="theme-color" content="#120A18">
+<meta property="og:title" content="Sogilex services">
+<meta property="og:description" content="Websites, menus, flyers and social media posts for local businesses.">
+<meta property="og:url" content="https://sogilex.com/services/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/unbounded-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/scene.js" defer></script>
+<script src="/assets/services.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="sunset" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D91E8C"/><stop offset="0.55" stop-color="#F2496B"/><stop offset="1" stop-color="#FF9A4D"/></linearGradient>
+    <symbol id="mark" viewBox="0 0 124 102"><rect x="0" y="50" width="64" height="52" rx="11" fill="url(#sunset)"/><rect x="60" y="0" width="64" height="52" rx="11" fill="url(#sunset)"/></symbol>
+  </defs>
+</svg>
+
+<canvas id="scene" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="logo" href="/" aria-label="Sogilex home"><svg width="34" height="28" aria-hidden="true"><use href="#mark"/></svg><span class="wordmark">SOGILEX</span></a>
+      <nav aria-label="Main">
+        <ul class="nav">
+          <li class="nav-services"><a href="/services/" aria-current="page">Services</a></li>
+          <li><a href="/examples/">Examples</a></li>
+          <li><a href="/#rules">How we design</a></li>
+          <li><a class="btn btn-ghost btn-sm" href="https://build.sogilex.com/">Open Build</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero hero" aria-labelledby="hero-title" style="min-height: 0">
+      <div class="wrap" style="min-height: 0; padding-bottom: 32px">
+        <div class="hero-copy">
+          <a class="crumb" href="/">SOGILEX / SERVICES</a>
+          <h1 id="hero-title">Everything we make for <span class="glow-text">local businesses.</span></h1>
+          <p class="lede">One Sogilex account for every tool, free while they're in beta. Use them yourself, or have us do the work for you.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" aria-label="Services">
+      <div class="wrap" style="padding-top: 24px">
+        <!-- Built from the one list in assets/services.js. -->
+        <div class="cards" data-services="full">
+          <noscript><p class="muted">This list needs JavaScript. Or email <a href="mailto:hello@sogilex.com">hello@sogilex.com</a> and we'll tell you what we can do.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="cta-title">
+      <div class="wrap" style="align-items: flex-start">
+        <h2 class="h2" id="cta-title">Rather we just do it?</h2>
+        <p class="muted" style="margin: 0; max-width: 40rem; font-size: 17px">We'll design your menu, put it online, make your posts and keep it all up to date. See the prices, or ask for a free sample menu.</p>
+        <a class="btn btn-primary" href="/#done-for-you">See prices and get a free sample</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer solid">
+    <div class="wrap">
+      <span><svg width="22" height="18" aria-hidden="true"><use href="#mark"/></svg>© 2026 Sogilex</span>
+      <a href="mailto:hello@sogilex.com">hello@sogilex.com</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

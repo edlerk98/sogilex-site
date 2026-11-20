@@ -14,6 +14,7 @@
 <link rel="preload" href="assets/fonts/unbounded-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css">
 <script src="assets/scene.js" defer></script>
+<script src="/assets/services.js" defer></script>
 <script src="assets/sample.js" defer></script>
 </head>
 <body>
@@ -44,7 +45,7 @@
       </a>
       <nav aria-label="Main">
         <ul class="nav">
-          <li><a href="#tools">Tools</a></li>
+          <li class="nav-services"><a href="/services/">Services</a></li>
           <li><a href="/examples/">Examples</a></li>
           <li><a href="#rules">How we design</a></li>
           <li><a class="btn btn-ghost btn-sm" href="https://build.sogilex.com/">Open Build</a></li>
@@ -72,40 +73,15 @@
       <div class="wrap">
         <div class="section-head">
           <div>
-            <p class="label">01 / Tools</p>
+            <p class="label">01 / Services</p>
             <h2 class="h2" id="tools-title">Everything a shop front needs.</h2>
           </div>
           <p class="muted">One Sogilex account for every tool. Free during the beta, with three website builds a day.</p>
         </div>
 
-        <div class="cards">
-          <article class="card panel live">
-            <div class="card-top"><span class="label">Build</span><span class="tag on">Beta</span></div>
-            <h3>Websites</h3>
-            <p>Describe your business in a few sentences. Get a one-page site you can download and keep.</p>
-            <a class="more" href="https://build.sogilex.com/">Open Build →</a>
-          </article>
-          <article class="card panel live">
-            <div class="card-top"><span class="label">Menus</span><span class="tag on">Beta</span></div>
-            <h3>Restaurant menus</h3>
-            <p>Type your dishes and prices once, pick a look, add your logo. Get a print-ready menu. Prices stay exactly as you typed them, and updates are free.</p>
-            <a class="more" href="https://build.sogilex.com/menus/">Make a menu →</a>
-            <a class="more" href="/menus/" style="margin-top:0;font-weight:500;color:var(--muted)">How it works</a>
-          </article>
-          <article class="card panel live">
-            <div class="card-top"><span class="label">Flyers</span><span class="tag on">Beta</span></div>
-            <h3>Flyers</h3>
-            <p>Event and promo flyers with one clear message, built on real typography. No waxy crowds, no grime filters.</p>
-            <a class="more" href="https://build.sogilex.com/flyers/">Make a flyer →</a>
-            <a class="more" href="/flyers/" style="margin-top:0;font-weight:500;color:var(--muted)">How it works</a>
-          </article>
-          <article class="card panel live">
-            <div class="card-top"><span class="label">Posts</span><span class="tag on">Beta</span></div>
-            <h3>Social media posts</h3>
-            <p>This week's deal, a new dish, an event or a real customer review, as a ready-to-post image for Instagram and Facebook.</p>
-            <a class="more" href="https://build.sogilex.com/posts/">Make a post →</a>
-            <a class="more" href="/posts/" style="margin-top:0;font-weight:500;color:var(--muted)">How it works</a>
-          </article>
+        <!-- Built from the one list in assets/services.js: add a service there and it appears here, in the menu and on /services/. -->
+        <div class="cards" data-services>
+          <noscript><p class="muted">See all our services on the <a href="/services/">services page</a>.</p></noscript>
         </div>
       </div>
     </section>
