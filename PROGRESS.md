@@ -142,7 +142,8 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
   (Script), self-hosted OFL, headings only. Palettes Mustard (dark/yellow) and Ketchup. Looks: Bold grill, Night
   market, Saloon, Retro diner, Sweet shop. Poor Richard's fits front and back at 80-84% with photos.
   Online menu shows the photos too (2026-11-20, Worker deployed; see sogilex-build/docs/PUBLISHING.md), plus the
-  new palettes/lettering (system-font stand-ins) and the longer text limits. Not yet: photos in Flyers.
+  new palettes/lettering (system-font stand-ins) and the longer text limits. Flyers have a photo too (one per flyer, from the same library; Colour block puts it edge to
+  edge under the band; Save image embeds it).
 - Photo reader no longer cuts text silently (it did: "Served with ... D"): higher limits, anything still too
   long goes in the "couldn't read clearly" note.
 
