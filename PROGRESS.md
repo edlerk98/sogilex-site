@@ -299,6 +299,12 @@ facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: d
 - **Account deletion is by email for now.** A `delete_my_account()` RPC exists (signed-in users can call it) but it
   only deletes the auth user (rows cascade); it would leave photos in storage and a published site in Cloudflare KV.
   Before offering self-serve deletion: make it also remove storage objects and unpublish (Worker/KV), or revoke it.
+- **Delete buttons (2026-11-20)**, each asks first: flyers, posts, draft quotes/invoices (sent ones are kept by
+  design: cancel instead), the menu (turns the online menu off first, so its QR code stops), and website versions
+  via `delete_my_build()` (020_delete_build.sql: removes the saved page only, keeps the build_generations usage row so
+  daily limits can't be dodged, refuses the published version). Build hides Undo when the earlier version is gone.
+  Tested: 9 checks incl. cancel, refusals shown, counts update. Not deletable here yet: photos and logo (done in
+  Build / any tool's logo box), saved invoice customers (Invoices), the whole account (email request).
 - Next for this page if wanted: "Download everything" (a zip backup of all of it).
 
 ## Quotes & invoices (free beta): build.sogilex.com/invoices/
