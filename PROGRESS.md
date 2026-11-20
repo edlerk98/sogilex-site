@@ -6,7 +6,7 @@ This repo is public: no keys, user IDs or private details here.
 ## How to start the next session
 
 - Start a cloud session on the **"Sogilex"** environment (it holds the Cloudflare key; a session started on
-  Default can move to it with one approval) with all three repos:
+  Default can move to it with one approval) with both repos:
   `edlerk98/sogilex-site`, `edlerk98/sogilex-build` (`edlerk98/savepoint-atlas` only serves the "closed" page now; not needed).
 - Tell it: *"Read PROGRESS.md in sogilex-site, then continue."*
 - Working style the owner asked for: be an advisor, not a yes-man (say when they're wrong and why, give
