@@ -1,6 +1,6 @@
 # Sogilex: where things stand
 
-Last updated 2026-11-19. **A new session should read this file first.**
+Last updated 2026-11-20. **A new session should read this file first.**
 This repo is public: no keys, user IDs or private details here.
 
 ## How to start the next session
@@ -15,6 +15,17 @@ This repo is public: no keys, user IDs or private details here.
 
 ## Where we left off (2026-11-20)
 
+- **NEXT: Quotes & invoices (5th tool).** Owner said "it's time for invoices", then started a new chat. Proposed
+  version 1 (not yet approved; confirm with the owner before building): saved customer list; quotes with line
+  items (description, quantity, price), optional tax, notes, "valid until", one click to turn a quote into an
+  invoice; invoices with gap-free numbering (INV-0001...), due date, status draft/sent/paid/overdue; the owner's
+  logo/colours and a print-ready PDF; **no AI** (plain maths, exact numbers). Later: email from Sogilex, Stripe
+  "Pay now", reminders. About two sessions. Lives at build.sogilex.com/invoices/ with a page at
+  sogilex.com/invoices/; add it to `assets/services.js` and it appears in the Services tab. Advisor note given:
+  restaurants usually invoice through their point-of-sale, so this mainly serves service businesses (HVAC,
+  landscaping, cleaning). Also still open: the first restaurant visit (Poor Richard's sample menu).
+- All of 2026-11-20's work is live and the owner checked it: Posts + AI captions, Services tab, done-for-you
+  section, Atlas closed. The first real AI caption worked.
 - **"Services" tab (2026-11-20, owner: "each time we add something it needs to automatically go under that tab"):**
   one list, `sogilex-site/assets/services.js` (`window.SOGILEX_SERVICES`), builds the Services tab with its
   drop-down on every page (it replaced "Tools"; shows on phones too), the homepage cards (`<div data-services>`,
