@@ -334,7 +334,13 @@ facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: d
   (Evergreen Lawn & Landscape demo, live at https://evergreenlawn.sogilex.net/, labelled "Demo site"; screenshots
   in `examples/`, rendered from the published copy in Cloudflare KV), `/menus/` (Beta), `/flyers/` (Beta,
   links to build.sogilex.com/flyers/). Nav: Tools, Examples, How we design, Open Build.
-- Examples to add: 2-3 demos in other trades (owner's mom's photography site is the obvious next one).
+- **/examples/ (2026-11-20): one demo per tool.** Evergreen website (as before), Maple Street Diner menu (Retro diner
+  look), flyer ("Kids Eat Free", Poster layout) and square post ("Blueberry Pancake Stack", Poster layout), and
+  Evergreen invoice INV-0042. All made-up businesses, 555 phone numbers, labelled "Demo"; no photos (no stock).
+  Images are `examples/diner-*.jpg` and `evergreen-invoice.jpg`, made by rendering the real tools with fixture data
+  in a headless browser (copy the page out of the preview box before the screenshot, or it gets clipped).
+  Finding: the "Colour block" layout leaves a large empty middle when there's no photo; Poster looks better without one.
+- Still to add: 2-3 more demo websites in other trades (owner's mom's photography site, if she agrees).
 - Waitlist: `waitlist` table (insert-only; read it in Supabase Table Editor), `assets/waitlist.js`, `supabase/waitlist.sql`.
 
 ## Waiting on the owner

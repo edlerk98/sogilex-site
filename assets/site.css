@@ -217,6 +217,8 @@ img, svg { display: block; }
 .example-how { margin: 0; padding-left: 1.1em; color: var(--muted); display: flex; flex-direction: column; gap: 8px; }
 .example-how b { color: var(--text); font-weight: 600; }
 .example .actions { margin: 4px 0 0; }
+.example-paper img { border-radius: 4px; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); }
+.example-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: center; }
 @media (max-width: 860px) {
   .example { grid-template-columns: minmax(0, 1fr); gap: 28px; }
 }
