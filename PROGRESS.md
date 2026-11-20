@@ -286,6 +286,21 @@ facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: d
 - Later: posting straight to Instagram/Facebook (Meta app review), several posts at once ("this week's posts"),
   and Quotes & invoices as the 5th tool.
 
+## Your account: build.sogilex.com/account/ (2026-11-20)
+
+- "Account" in every tool's menu bar. One list of everything saved to the account: websites (every version, which is
+  published, the published address and message count), the menu (and online menu link), flyers, posts, quotes and
+  invoices (status, unpaid total), logo and photo count, and settings (email, member since, where contact-form
+  messages go, change password, sign out, "Email us to delete it"). Six per section, then "Show all".
+- Each Open button deep-links: Build `/?open=<build_id>`, `/flyers/?open=<id>`, `/posts/?open=<id>`,
+  `/invoices/?open=<id>`, Menus `/menus/` (one per person). Read-only: no new tables.
+- Files: `account/index.html`, `assets/account.js`, `assets/account.css`. Tested with stand-in data (14 checks,
+  desktop and phone), including every Open button landing on the right item.
+- **Account deletion is by email for now.** A `delete_my_account()` RPC exists (signed-in users can call it) but it
+  only deletes the auth user (rows cascade); it would leave photos in storage and a published site in Cloudflare KV.
+  Before offering self-serve deletion: make it also remove storage objects and unpublish (Worker/KV), or revoke it.
+- Next for this page if wanted: "Download everything" (a zip backup of all of it).
+
 ## Quotes & invoices (free beta): build.sogilex.com/invoices/
 
 - Files: `invoices/index.html`, `assets/invoices.js`, `assets/invoices.css` (editor reuses menus.css), SQL
