@@ -271,6 +271,15 @@ facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: d
   (kind `caption`, 017_captions.sql): 40 a person a day, failures don't count (max 10), 1000 a day for everyone;
   `caption_quota()` for the "left today" count. Tested in a browser with a stand-in for the AI; **not yet tested
   against the real model** (the sandbox can't reach Supabase functions): the owner's first real caption is the test.
+- **Share button (2026-11-20):** in Posts, next to Save image, shown only where the browser can share image files
+  (phones; some desktops). Copies the caption, then opens the phone's share menu with the 1080 px PNG (and the caption
+  as text; Instagram/Facebook ignore it, hence the copy). The image is made ahead of time ~1 s after each change,
+  because a share menu only opens right after a tap. Uses the same drawing code as Save image (`makeImage()` in
+  flyers.js). Tested in Chromium with a stand-in share menu; **not yet tested on a real phone. Risk: iPhones (all
+  iPhone browsers are Safari underneath) may refuse to draw the image, as Save image may; then it says so and points
+  to Save image / PDF. If that happens, the fix is drawing the image on the server.**
+- Real "connect your Instagram/Facebook" advice given: needs Meta app review + Business Verification (needs the LLC),
+  privacy policy and terms; Meta Business Suite already schedules for free. Build only after LLC + terms + real demand.
 - Later: posting straight to Instagram/Facebook (Meta app review), several posts at once ("this week's posts"),
   and Quotes & invoices as the 5th tool.
 
