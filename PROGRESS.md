@@ -21,6 +21,10 @@ This repo is public: no keys, user IDs or private details here.
   sogilex.com/invoices/, pushed to `main` 2026-11-20); not yet used by the owner with a real sign-in. **Owner's test:** make a real invoice for themselves (e.g. a $149 setup
   for a pretend client), print it to PDF, check it reads right. Next for this tool, when asked: email from Sogilex,
   Stripe "Pay now", reminders.
+- **Owner corrections (2026-11-20), keep to them:** Sogilex is **nationwide**, not St. Louis only (the owner starts
+  locally only because they live there): no city or region in any public wording or the offer sheet. **No founding
+  offer / no "first 10 half price"**: a session invented it; the owner never offered it. Both removed from the
+  homepage and the offer sheet. Don't add offers, discounts or prices the owner didn't state.
 - Still open and more important: the first restaurant visit (Poor Richard's sample menu).
 - Security advisor (pre-existing, not urgent): `public.rls_auto_enable()` is SECURITY DEFINER and executable by anon
   and authenticated; revoke EXECUTE from them (check what it is first).
@@ -39,14 +43,14 @@ This repo is public: no keys, user IDs or private details here.
   restaurants (selling stays restaurant-first for now). Chosen: social posts first, quotes/invoices later.
   See the Posts section below.
 - **Homepage section "04 / Done for you" is live** (owner approved prices going public): headline, the two price
-  cards from the offer sheet ($149 + $25/mo menu; $349 + $45/mo menu + website), founding offer, and a "Get a free
+  cards from the offer sheet ($149 + $25/mo menu; $349 + $45/mo menu + website), "No contracts", and a "Get a free
   sample menu" form. Requests go to table `sample_requests` (`sogilex-site/supabase/sample_requests.sql`: anyone can
   insert, nobody can read via the API; one per email a day, 30 a day in all) and are emailed to hello@sogilex.com by
   `message-email` v4 (action "sample", Reply-To the requester). Owner confirmed hello@sogilex.com reaches them.
   No "Most popular" label: no customers yet, so it would be a made-up claim.
 - **Pricing advice given:** prices are fine and low; the risk is "unlimited changes" eating time. Decide a private
-  fair-use line for the one-page agreement (e.g. a full redesign = $75). Ask founding customers for permission to
-  show their menu as an example plus a one-line quote, in exchange for half-price setup.
+  fair-use line for the one-page agreement (e.g. a full redesign = $75). Ask early customers for permission to
+  show their menu as an example plus a one-line quote (no discount attached: owner has no founding offer).
 - **Owner's next step is still the first restaurant visit** (Poor Richard's, Eureka/Fenton): read their menu in
   again (the reader no longer cuts text), use the Bold grill look with their photos, print, visit.
 - Parked by the owner: an AI help chat (advised: not until self-serve users ask repeated questions), and a
@@ -69,7 +73,7 @@ This repo is public: no keys, user IDs or private details here.
   https://claude.ai/artifact/VbFfATarqVS9VNuapzoJbQ . Page 1: "Your menu, on paper and online. Done for you." with
   a free-sample hook ("I'll redo your current menu"). Page 2 prices: setup Menu $149 / Menu + website $349;
   care plans Menu $25/mo, Menu + website $45/mo (unlimited changes within 1 business day); extra menu $75; same-day
-  change $25; printing at cost; yearly = 2 months free; founding offer: first 10 restaurants half-price setup;
+  change $25; printing at cost; yearly = 2 months free;
   own domain "coming soon". Placeholders the owner fills: [YOUR NAME] [PHONE] [YOUR CITY] [BUSINESS NAME] [2 DAYS]
   [X] spots left.
 - **Owner's next step:** fill the placeholders, print, visit the first restaurant with a free sample menu
