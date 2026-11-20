@@ -132,6 +132,16 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
   white or ink for contrast); per-section "Feature this section" (tinted panel, bigger heading, never splits
   across columns or pages). Tested on the full Poor Richard's menu: fits front and back at 84-88%.
   Known: one shared type scale for both pages, so page 1 can end with spare space when page 2 is full.
+- **Bold layout + photos + display fonts (2026-11-20)**, after the owner said the statement looks still read
+  "like a Word doc" and sent reference menus (picked: bold modern; must-haves: colour bands/shapes, food photos,
+  fun lettering). Layout "Bold": accent band with a curved bottom edge at the top (hero photo on the right if
+  chosen, logo on a white tile), label-style section headings with a rule, prices as tinted tags, half-circles
+  peeking in from the margins, a dark footer band with a curved top. Photos: "Food photos" group in Menus uses
+  Build's private photo library (`assets/photos.js`, signed links); `menu.hero` and `section.photo` hold photo
+  ids; removed photos drop off the menu. Fonts: Anton (Heavy), Alfa Slab One (Slab), Rye (Western), Lobster
+  (Script), self-hosted OFL, headings only. Palettes Mustard (dark/yellow) and Ketchup. Looks: Bold grill, Night
+  market, Saloon, Retro diner, Sweet shop. Poor Richard's fits front and back at 80-84% with photos.
+  Not yet: photos on the online menu (/menu) or in Flyers.
 - Photo reader no longer cuts text silently (it did: "Served with ... D"): higher limits, anything still too
   long goes in the "couldn't read clearly" note.
 
