@@ -229,6 +229,7 @@ img, svg { display: block; }
 .dfy .h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); line-height: 1.1; }
 .dfy-lede { margin: 0; font-size: 17px; }
 .dfy-prices { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.dfy-prices .dfy-list { flex: 1; }
 .dfy-price { margin: 0; color: var(--text) !important; font-size: 17px; }
 .dfy-price b { font-family: var(--head); font-weight: 600; font-size: 40px; margin-right: 4px; }
 .dfy-price span { color: var(--muted); }
