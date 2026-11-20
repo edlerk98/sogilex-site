@@ -27,6 +27,12 @@ window.SOGILEX_SERVICES = [
     make: { href: 'https://build.sogilex.com/posts/', text: 'Make a post' },
     about: { href: '/posts/', text: 'How it works' },
   },
+  {
+    id: 'invoices', label: 'Invoices', tag: 'Beta', title: 'Quotes & invoices',
+    blurb: 'Quotes and invoices with your logo and exact totals. Save your customers, turn a quote into an invoice in one click, and see who still owes you.',
+    make: { href: 'https://build.sogilex.com/invoices/', text: 'Make an invoice' },
+    about: { href: '/invoices/', text: 'How it works' },
+  },
 ];
 
 // Shown under the services in the menu and on /services/: the service where we do the work for you.

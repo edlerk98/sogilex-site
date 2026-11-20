@@ -15,15 +15,13 @@ This repo is public: no keys, user IDs or private details here.
 
 ## Where we left off (2026-11-20)
 
-- **NEXT: Quotes & invoices (5th tool).** Owner said "it's time for invoices", then started a new chat. Proposed
-  version 1 (not yet approved; confirm with the owner before building): saved customer list; quotes with line
-  items (description, quantity, price), optional tax, notes, "valid until", one click to turn a quote into an
-  invoice; invoices with gap-free numbering (INV-0001...), due date, status draft/sent/paid/overdue; the owner's
-  logo/colours and a print-ready PDF; **no AI** (plain maths, exact numbers). Later: email from Sogilex, Stripe
-  "Pay now", reminders. About two sessions. Lives at build.sogilex.com/invoices/ with a page at
-  sogilex.com/invoices/; add it to `assets/services.js` and it appears in the Services tab. Advisor note given:
-  restaurants usually invoice through their point-of-sale, so this mainly serves service businesses (HVAC,
-  landscaping, cleaning). Also still open: the first restaurant visit (Poor Richard's sample menu).
+- **Quotes & invoices (5th tool) built 2026-11-20** (owner approved the plan, including the advisor's additions:
+  the owner is the first user, billing their own done-for-you clients; "Bill this again next month" for care plans).
+  See the "Quotes & invoices" section below. Database applied live; pages on branch `claude/gifted-brahmagupta-n0pd29`
+  in both repos (live once pushed to `main`). **Owner's test:** make a real invoice for themselves (e.g. a $149 setup
+  for a pretend client), print it to PDF, check it reads right. Next for this tool, when asked: email from Sogilex,
+  Stripe "Pay now", reminders.
+- Still open and more important: the first restaurant visit (Poor Richard's sample menu).
 - All of 2026-11-20's work is live and the owner checked it: Posts + AI captions, Services tab, done-for-you
   section, Atlas closed. The first real AI caption worked.
 - **"Services" tab (2026-11-20, owner: "each time we add something it needs to automatically go under that tab"):**
@@ -89,8 +87,7 @@ This repo is public: no keys, user IDs or private details here.
 Design tools for local businesses that **don't look AI-made**. Four design rules on every tool: one message,
 two typefaces at most, no AI look (rule 03, reworded 2026-11-19 at the owner's request: no glossy stock art,
 grime filters or uncanny faces; Sogilex itself is AI-made, so "nothing generated" overclaimed), only the owner's
-facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: demo sites are labelled demos. Order of tools: websites (live), menus (live beta),
-flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). Excel later.
+facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: demo sites are labelled demos. Order of tools: websites, menus, flyers, posts, invoices (all live betas), reports later. Resume maker parked (wrong customer). Excel later.
 
 ## Live
 
@@ -99,6 +96,7 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 | Company site | https://sogilex.com (+ /menus, /flyers pages) | `sogilex-site` |
 | Build: AI websites (beta) | https://build.sogilex.com | `sogilex-build` |
 | Menus (free beta) | https://build.sogilex.com/menus/ | `sogilex-build` |
+| Flyers, Posts, Invoices (free beta) | build.sogilex.com/flyers/, /posts/, /invoices/ | `sogilex-build` |
 | Published customer sites | https://NAME.sogilex.net (closed beta: owner only) | `sogilex-build/worker` |
 | (closed) Savepoint Atlas | https://atlas.sogilex.com shows a "closed" page | `savepoint-atlas` |
 
@@ -129,7 +127,7 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 - **Anthropic:** `ANTHROPIC_API_KEY` Supabase secret; Claude Opus 5.5; spend limit in the Anthropic Console.
 - **Resend** sends sign-in emails from `signin@mail.sogilex.com`.
 
-## Sign-in (shared by Build, Menus, Flyers)
+## Sign-in (shared by Build, Menus, Flyers, Posts, Invoices)
 
 - `sogilex-build/assets/sogilex-auth.js` (Atlas's copy is gone with Atlas).
 - One session for all of *.sogilex.com (cookie on `.sogilex.com`, chunked). Customer sites are on sogilex.net,
@@ -151,7 +149,7 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 - **Your sites (2026-11-19):** "Your sites" picker above the preview; the latest finished build opens on return;
   any past version can be reopened, downloaded or published. RPCs `my_builds()` / `my_build(id)` (own rows only).
 - SQL (all applied; files are safe to re-run): `supabase/003_build.sql`, `004_publishing.sql`,
-  `005_menus.sql`, `006_brand_kits.sql`, `007_my_sites.sql`, `008_edits.sql`, `009_photos.sql`, `010_menu_import.sql`, `011_online_menus.sql`, `012_menu_logo.sql`. Lesson: new tables in this project don't grant `service_role` by default.
+  `005_menus.sql`, `006_brand_kits.sql`, `007_my_sites.sql`, `008_edits.sql`, `009_photos.sql`, `010_menu_import.sql`, `011_online_menus.sql`, `012_menu_logo.sql`, then 013-018 (flyers, message email, Atlas removal, posts, captions, invoices). Lesson: new tables in this project don't grant `service_role` by default.
 
 ## Publishing (closed beta): `sogilex-build/docs/PUBLISHING.md`
 
@@ -268,6 +266,33 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
   against the real model** (the sandbox can't reach Supabase functions): the owner's first real caption is the test.
 - Later: posting straight to Instagram/Facebook (Meta app review), several posts at once ("this week's posts"),
   and Quotes & invoices as the 5th tool.
+
+## Quotes & invoices (free beta): build.sogilex.com/invoices/
+
+- Files: `invoices/index.html`, `assets/invoices.js`, `assets/invoices.css` (editor reuses menus.css), SQL
+  `supabase/018_invoices.sql` (applied live 2026-11-20). Page on sogilex.com: `/invoices/`; entry in `assets/services.js`.
+  **No AI.** Money is whole cents, quantities are hundredths, tax rate is thousandths of a percent (8.475% = 8475);
+  amounts round half away from zero. The database recomputes every total in a trigger (`inv_docs_check`), so the
+  stored totals are the real ones; the page shows the same maths as you type.
+- Tables: `inv_profile` (business details, one per person: name, address, phone, email, website, how to pay, usual
+  terms, usual tax, colour), `inv_customers` (max 500), `inv_docs` (quotes and invoices, max 2000; `data` holds
+  date, due, to, lines [{d, q, p, t}], tax, notes; `from` is frozen in when sent), `inv_counters` (no client access).
+- Rules: a draft has no number; `inv_send()` gives the next one per kind (INV-0001, Q-0001) in the same transaction,
+  so no gaps, and saves/updates the customer in the list. Sent documents can't be edited or deleted (trigger +
+  column grants: the page can only write `data`/`customer_id`); invoices go sent → paid (undo allowed) or sent →
+  void ("Cancelled", keeps its number); quotes go sent → accepted/declined (undo allowed). `inv_quote_to_invoice()`
+  makes a draft invoice linked to the quote (`source_id`) and marks the quote accepted. Only drafts can be deleted.
+  "Overdue" isn't stored: sent invoice past its due date (worked out in the browser, local date).
+- Page: list with All/Invoices/Quotes/Unpaid and "Unpaid: $X · Overdue: $Y"; editor (customer picker, dates with
+  On receipt/7/14/30 days, lines with qty/price/taxed, tax %, notes); "Make a copy"; "Bill this again next month"
+  (dates move one month; the 31st becomes the last day of a short month); print or save PDF (letter, 0.5 in margins,
+  long invoices flow onto more pages with the column headings repeated; the PDF's suggested name is "INV-0003 Customer").
+  Drafts print with a "Draft" stamp. Logo comes from the shared brand kit.
+- Tested 2026-11-20: SQL on a local Postgres 16 (totals, rounding, numbering, locking, other users see nothing) and
+  live in a rolled-back transaction; browser test (23 checks) with the page talking to that local Postgres through a
+  small PostgREST stand-in (harness idea worth reusing: real SQL rules instead of mocks). Not yet used by a real person.
+- Later (only when asked): email the invoice from Sogilex (Resend), Stripe "Pay now" link, reminders, a customers
+  page, CSV export for the accountant, several businesses per account.
 
 ## Flyers (free beta): build.sogilex.com/flyers/
 

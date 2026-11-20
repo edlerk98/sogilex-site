@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sogilex Invoices · Quotes and invoices for your business</title>
+<meta name="description" content="Quotes and invoices with your logo, saved customers, exact totals and numbers with no gaps. Turn a quote into an invoice in one click. Print or save a PDF. Free beta.">
+<meta name="theme-color" content="#120A18">
+<meta property="og:title" content="Sogilex Invoices · beta">
+<meta property="og:description" content="Quotes and invoices, exact to the cent. Free beta.">
+<meta property="og:url" content="https://sogilex.com/invoices/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/unbounded-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/scene.js" defer></script>
+<script src="/assets/services.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="sunset" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D91E8C"/><stop offset="0.55" stop-color="#F2496B"/><stop offset="1" stop-color="#FF9A4D"/></linearGradient>
+    <symbol id="mark" viewBox="0 0 124 102"><rect x="0" y="50" width="64" height="52" rx="11" fill="url(#sunset)"/><rect x="60" y="0" width="64" height="52" rx="11" fill="url(#sunset)"/></symbol>
+  </defs>
+</svg>
+
+<canvas id="scene" aria-hidden="true"></canvas>
+
+<div class="page">
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="logo" href="/" aria-label="Sogilex home"><svg width="34" height="28" aria-hidden="true"><use href="#mark"/></svg><span class="wordmark">SOGILEX</span></a>
+      <nav aria-label="Main">
+        <ul class="nav">
+          <li class="nav-services"><a href="/services/">Services</a></li>
+          <li><a href="/examples/">Examples</a></li>
+          <li><a href="/#rules">How we design</a></li>
+          <li><a class="btn btn-ghost btn-sm" href="https://build.sogilex.com/">Open Build</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="hero-copy">
+          <a class="crumb" href="/#tools">SOGILEX / INVOICES · BETA</a>
+          <h1 id="hero-title">Quotes and invoices. <span class="glow-text">Exact to the cent.</span></h1>
+          <p class="lede">Send a quote before the job and an invoice after it, with your logo at the top. Save your customers once. Turn an accepted quote into an invoice in one click, and see at a glance who still owes you. Plain maths, no AI: every number is what you typed.</p>
+          <div class="actions" data-horizon>
+            <a class="btn btn-primary" href="https://build.sogilex.com/invoices/">Make an invoice (free beta)</a>
+            <a class="btn btn-ghost" href="#how-title">See how it works</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="for-title">
+      <div class="wrap">
+        <div style="display: flex; flex-direction: column; gap: 14px">
+          <p class="label">01 / Made for</p>
+          <h2 class="h2" id="for-title">Businesses that bill for their work.</h2>
+        </div>
+        <ul class="promises">
+          <li class="panel"><h3>Quotes before the job</h3><p>Lines, quantities and prices, optional sales tax, and a "valid until" date. When the customer says yes, it becomes an invoice with one click.</p></li>
+          <li class="panel"><h3>Invoices after it</h3><p>A due date, how to pay you, and a clear total. Mark it paid when the money arrives; the list shows what's unpaid and what's overdue.</p></li>
+          <li class="panel"><h3>Monthly plans</h3><p>"Bill this again next month" makes next month's invoice from this one. Check it, then send it.</p></li>
+          <li class="panel"><h3>Records that stay straight</h3><p>Numbers are given in order when you send, with no gaps. A sent invoice can't be quietly changed: cancel it and make a corrected copy, and both stay on your list.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="how-title">
+      <div class="wrap">
+        <div style="display: flex; flex-direction: column; gap: 14px">
+          <p class="label">02 / How it works</p>
+          <h2 class="h2" id="how-title">Lines in, PDF out.</h2>
+        </div>
+        <ol class="steps">
+          <li class="panel"><h3>Your details, once</h3><p>Business name, address, logo and how customers pay you. They print at the top and bottom of everything you send.</p></li>
+          <li class="panel"><h3>Add the lines</h3><p>Pick a saved customer, type what the work was, how many and the price. Totals and tax are worked out to the exact cent as you type.</p></li>
+          <li class="panel"><h3>Send it your way</h3><p>Mark it as sent to give it its number, then print it or save a PDF to email. Online payments and emailing from Sogilex are coming later.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="cta-title">
+      <div class="wrap" style="align-items: flex-start">
+        <h2 class="h2" id="cta-title">Make one now.</h2>
+        <p class="muted" style="margin: 0; max-width: 40rem; font-size: 17px">Free while it's in beta. Sign in with the same Sogilex account you use for Build, Menus, Flyers and Posts.</p>
+        <a class="btn btn-primary" href="https://build.sogilex.com/invoices/">Make an invoice</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer solid">
+    <div class="wrap">
+      <span><svg width="22" height="18" aria-hidden="true"><use href="#mark"/></svg>© 2026 Sogilex</span>
+      <a href="mailto:hello@sogilex.com">hello@sogilex.com</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

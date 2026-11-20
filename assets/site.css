@@ -86,6 +86,12 @@ img, svg { display: block; }
 .section-head > div { display: flex; flex-direction: column; gap: 14px; }
 .section-head > p { margin: 0; max-width: 26rem; }
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+/* Five or six services: rows of three (five = three, then two wider cards) instead of one card left alone. */
+@media (min-width: 980px) {
+  .cards:has(> :nth-child(5)) { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .cards:has(> :nth-child(5)) > * { grid-column: span 2; }
+  .cards:has(> :nth-child(5):last-child) > :nth-child(n+4) { grid-column: span 3; }
+}
 .card { display: flex; flex-direction: column; gap: 18px; padding: 28px; border-radius: 18px; }
 .card.live { border-color: rgba(255, 154, 77, 0.6); background: linear-gradient(180deg, rgba(58, 20, 52, 0.95), rgba(22, 12, 30, 0.95)); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), 0 0 40px rgba(240, 69, 143, 0.12); }
 .card-top { display: flex; justify-content: space-between; align-items: center; }
