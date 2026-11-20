@@ -14,6 +14,7 @@
 <link rel="preload" href="assets/fonts/unbounded-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css">
 <script src="assets/scene.js" defer></script>
+<script src="assets/sample.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -131,6 +132,57 @@
           <a class="btn btn-primary" href="https://build.sogilex.com/">Build a website</a>
           <a class="btn btn-ghost" href="/examples/">See example sites →</a>
         </div>
+      </div>
+    </section>
+
+    <section class="dfy" id="done-for-you" aria-labelledby="dfy-title">
+      <div class="wrap">
+        <div class="dfy-head">
+          <p class="label">04 / Done for you</p>
+          <h2 class="h2" id="dfy-title">Rather we just do it? <span class="glow-text">We will.</span></h2>
+          <p class="muted dfy-lede">For restaurants in St. Louis: we design your menu, put it online behind a QR code, and keep both up to date. When a price changes, you text us. That's it.</p>
+        </div>
+        <div class="dfy-prices">
+          <article class="card panel live">
+            <div class="card-top"><span class="label">Menu</span></div>
+            <p class="dfy-price"><b>$149</b> setup <span>+ $25/month</span></p>
+            <ul class="dfy-list">
+              <li>Printed menu, designed for your place</li>
+              <li>Online menu made for phones, with a QR code</li>
+              <li>Unlimited price and dish changes, done within a business day</li>
+            </ul>
+          </article>
+          <article class="card panel live">
+            <div class="card-top"><span class="label">Menu + website</span></div>
+            <p class="dfy-price"><b>$349</b> setup <span>+ $45/month</span></p>
+            <ul class="dfy-list">
+              <li>Everything in Menu</li>
+              <li>A one-page website with your own photos, hours and address</li>
+              <li>A contact form that sends messages straight to your email</li>
+            </ul>
+          </article>
+        </div>
+        <p class="dfy-terms muted"><b>Founding offer:</b> the first 10 restaurants get setup at half price. No contracts: stop any time and keep your PDFs.</p>
+
+        <form class="panel dfy-form" id="sample-form" novalidate>
+          <div class="dfy-form-head">
+            <h3>Get a free sample menu</h3>
+            <p class="muted">We'll redo your current menu for free. If you like it, we talk. If not, you keep it.</p>
+          </div>
+          <div class="dfy-fields">
+            <label>Restaurant<input name="restaurant" required maxlength="120" autocomplete="organization"></label>
+            <label>Your name<input name="name" required maxlength="80" autocomplete="name"></label>
+            <label>Email<input name="email" type="email" required maxlength="254" autocomplete="email"></label>
+            <label><span>Phone <span class="opt">(optional)</span></span><input name="phone" type="tel" maxlength="40" autocomplete="tel"></label>
+            <label class="wide"><span>Anything we should know? <span class="opt">(optional)</span></span><textarea name="note" rows="3" maxlength="1000" placeholder="For example: our menu is on our website, or we're changing prices next month"></textarea></label>
+          </div>
+          <div class="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label></div>
+          <div class="dfy-send">
+            <button class="btn btn-primary" type="submit">Ask for my free sample</button>
+            <p class="form-status" role="status" aria-live="polite">We reply within one business day.</p>
+          </div>
+          <noscript><p class="form-status">Or email <a href="mailto:hello@sogilex.com?subject=Free%20sample%20menu">hello@sogilex.com</a>.</p></noscript>
+        </form>
       </div>
     </section>
 
