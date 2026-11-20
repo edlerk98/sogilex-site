@@ -15,6 +15,11 @@ This repo is public: no keys, user IDs or private details here.
 
 ## Where we left off (2026-11-20)
 
+- **Posts (4th tool, free beta) is live** at build.sogilex.com/posts/ with a page at sogilex.com/posts/ and a 4th
+  homepage card. Owner paused Menus to pick a 4th service: résumés were advised against again (individuals, not
+  businesses; free competition; no repeat income); owner clarified Sogilex is for any local business, not only
+  restaurants (selling stays restaurant-first for now). Chosen: social posts first, quotes/invoices later.
+  See the Posts section below.
 - **Homepage section "04 / Done for you" is live** (owner approved prices going public): headline, the two price
   cards from the offer sheet ($149 + $25/mo menu; $349 + $45/mo menu + website), founding offer, and a "Get a free
   sample menu" form. Requests go to table `sample_requests` (`sogilex-site/supabase/sample_requests.sql`: anyone can
@@ -217,6 +222,24 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
   don't grant it anything): remember this for any future Edge Function that writes a new table.
 - **Owner tested it live end to end (2026-11-19):** confirmation email, Confirm page, a real contact-form message
   arrived, Reply goes to the visitor, Stop link opens the stop page.
+
+## Posts (free beta): build.sogilex.com/posts/
+
+- Runs on the Flyers engine (`assets/flyers.js` + `flyers.css`): `posts/index.html` has `<body data-tool="posts">`,
+  which switches the table (`posts`, 016_posts.sql, max 100 per person), the sizes (Square 8in = 1080x1080 feed,
+  Tall 7.5x13.333in = 1080x1920 story; no print), and the kinds: Deal or special, Event, Featured item, Announcement,
+  Now hiring, Customer review. A kind can rename boxes (`labels`), hide boxes and leave them off the image (`hide`),
+  rename the image's row labels (`rows`, e.g. "Hours"), and show a rule (`note`).
+- Customer review: the review is the headline, shown as an italic quote with "— name" under it. Rule shown in the
+  form: only real reviews, copied exactly; ask before using a full name. No stars (no made-up ratings).
+- "Use a dish from my menu" (Posts and Flyers): copies a dish's name, description, price (exactly as on the menu,
+  with its labels) and its section's photo. Prices read from a photo and not yet checked are left out.
+- Flyers gained the display fonts (Heavy, Slab, Western, Script) and Tavern/Mustard/Ketchup colours; Save image
+  embeds the new fonts.
+- Tested in a browser with a stand-in account: all six kinds, both sizes, dish picker, review boxes hidden, story
+  saved at 1080x1920, saves go to `posts`; Flyers re-tested (no change in behaviour).
+- Later: a caption to copy (needs care: AI must not invent facts), posting straight to Instagram/Facebook (Meta
+  app review), several posts at once ("this week's posts"), and Quotes & invoices as the 5th tool.
 
 ## Flyers (free beta): build.sogilex.com/flyers/
 
