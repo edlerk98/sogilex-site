@@ -286,3 +286,20 @@ img, svg { display: block; }
 .legal b { color: var(--text); font-weight: 600; }
 .legal a { color: var(--amber); }
 .foot-links { display: inline-flex; gap: 16px; flex-wrap: wrap; }
+
+/* ---------- plans ---------- */
+.plans-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: stretch; }
+.plan { display: flex; flex-direction: column; gap: 18px; }
+.plan .dfy-list { flex: 1; }
+.plan-btn { align-self: flex-start; }
+.plan-limits { padding: 28px; border-radius: 18px; display: flex; flex-direction: column; gap: 14px; }
+.plan-limits h3 { margin: 0; font-family: var(--head); font-weight: 500; font-size: 20px; }
+.plan-limits p { margin: 0; font-size: 15px; }
+.plan-limits b { color: var(--text); }
+.plan-extras { padding: 8px 28px; border-radius: 18px; }
+.plan-extras table { width: 100%; border-collapse: collapse; font-size: 16px; }
+.plan-extras th { text-align: left; font-weight: 600; padding: 16px 16px 16px 0; color: var(--text); }
+.plan-extras th span { display: block; font-weight: 400; font-size: 14px; color: var(--muted); margin-top: 2px; }
+.plan-extras td { text-align: right; padding: 16px 0; white-space: nowrap; font-weight: 600; color: var(--text); }
+.plan-extras tr + tr th, .plan-extras tr + tr td { border-top: 1px solid var(--border); }
+@media (max-width: 760px) { .plans-grid { grid-template-columns: minmax(0, 1fr); } }

@@ -286,6 +286,17 @@ facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: d
 - Later: posting straight to Instagram/Facebook (Meta app review), several posts at once ("this week's posts"),
   and Quotes & invoices as the 5th tool.
 
+## Plans page: sogilex.com/plans/ (2026-11-20, owner asked for "a plans tab")
+
+- "Plans" in the menu of every sogilex.com page (after Services); the homepage's done-for-you section links to it.
+- Shows only what exists (owner chose this): **Free (beta)** with the real daily limits (3 websites, 30 website
+  changes, 10 menu photo reads, 40 captions; failed tries don't count; publishing and online menus invite-only),
+  **done-for-you** Menu $149 + $25/mo and Menu + website $349 + $45/mo (with the offer sheet's details), and
+  **extras**: another menu $75, same-day changes $25, printing at cost, own web address coming soon; yearly = 2 months
+  free; no contracts. No online payment yet: buttons go to Build (free) or the free-sample form.
+- **If a price or limit changes, update this page AND the homepage cards AND the offer sheet.** Future paid
+  self-serve plans: only with names and prices from the owner.
+
 ## Your account: build.sogilex.com/account/ (2026-11-20)
 
 - **Menu bar (2026-11-20, owner asked to condense it):** every tool page has two drop-downs, **Tools ▾** (Websites,
