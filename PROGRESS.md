@@ -359,9 +359,9 @@ facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: d
 ## Waiting on the owner
 
 - (Parked by the owner: printing the offer sheet and the first restaurant visit.)
-- Done 2026-11-20: leaked-password protection is **on** (Supabase → Authentication → Attack Protection).
-  **CAPTCHA must stay off** until the sign-in box sends a CAPTCHA token: the owner switched it on once and it blocks
-  every sign-in (turned off again, sign-in confirmed working).
+- Done 2026-11-20: leaked-password protection is **on** (Supabase → Authentication → Attack Protection), and
+  CAPTCHA is **on** with Turnstile (see below). Lesson: CAPTCHA in Supabase blocks every sign-in unless the sign-in box
+  sends a token, so never remove the Turnstile check from sogilex-auth.js while it's on.
 - **Turnstile bot check (2026-11-20):** Cloudflare Turnstile widget "Sogilex sign-in" (hostname build.sogilex.com,
   Managed, no pre-clearance; made by the owner in the Cloudflare dashboard: the API token can read Turnstile but not
   create). Site key `0x4AAAAAAGKuTNjS5HAc2lze` (public) is in `assets/sogilex-auth.js`; every sign-in form (password,
@@ -369,6 +369,7 @@ facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: d
   key lives only in Supabase (owner pastes it). Order that keeps sign-in working: site key live first, THEN CAPTCHA on
   in Supabase (Attack Protection, provider Turnstile). Clearing `TURNSTILE_SITE_KEY` hides the check again, but
   only after turning CAPTCHA off in Supabase.
+  **Live and on (2026-11-20):** CAPTCHA switched on in Supabase with Turnstile; the owner signed in successfully after.
 - **Enforce HTTPS** in GitHub Pages settings for all three repos (Settings → Pages); not confirmed done.
 
 - **Form the Missouri LLC** (planned; about $50 online). Then tell the next session the business name.
