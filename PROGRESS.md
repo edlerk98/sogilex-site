@@ -7,7 +7,7 @@ This repo is public: no keys, user IDs or private details here.
 
 - Start a cloud session on the **"Sogilex"** environment (it holds the Cloudflare key; a session started on
   Default can move to it with one approval) with all three repos:
-  `edlerk98/sogilex-site`, `edlerk98/sogilex-build`, `edlerk98/savepoint-atlas`.
+  `edlerk98/sogilex-site`, `edlerk98/sogilex-build` (`edlerk98/savepoint-atlas` only serves the "closed" page now; not needed).
 - Tell it: *"Read PROGRESS.md in sogilex-site, then continue."*
 - Working style the owner asked for: be an advisor, not a yes-man (say when they're wrong and why, give
   confidence levels); **simple, one-step-at-a-time walkthroughs** for anything the owner does by hand (they get
@@ -29,10 +29,16 @@ This repo is public: no keys, user IDs or private details here.
 - Parked by the owner: an AI help chat (advised: not until self-serve users ask repeated questions), and a
   "Questions? Text us" line with phone numbers. Résumé maker stays parked (wrong customer); suggested 4th service
   instead: weekly social posts made from the menu (specials/dishes as Instagram/Facebook images).
-- **Savepoint Atlas removed from sogilex.com (2026-11-20, owner: "nothing to do with what I am building").** Atlas itself
-  still runs at atlas.sogilex.com, untouched: 2 people have checklists, one used it 2026-11-20. Shutting it down is
-  a separate decision (warn users, offer an export first; it shares the Sogilex sign-in and database). Do no new
-  Atlas work unless the owner asks.
+- **Savepoint Atlas shut down (2026-11-20, owner: "nothing to do with what I am building"; its 2 users were
+  testers).** Removed from the homepage; atlas.sogilex.com now shows one "has closed" page (old pages redirect to
+  it; the app is in the `savepoint-atlas` repo history). Its database pieces were dropped by
+  `sogilex-build/supabase/015_remove_atlas.sql` (data was placeholder test entries only), including the sign-up hook
+  that made an Atlas profile for every new account (dropped first, so sign-ups don't break). Atlas wording removed
+  from the sign-in boxes. The `savepoint-atlas` repo stays only to serve the closed page; no more work there.
+- **Owner to-do (2 minutes): paste the updated sign-in email** (`sogilex-build/supabase/email-sign-in.html`, now
+  without "Savepoint Atlas") into Supabase > Authentication > Emails > Templates, in both "Magic link" and "Confirm
+  signup". And check Authentication > URL Configuration: "Site URL" should be https://build.sogilex.com (if it is
+  atlas.sogilex.com, a sign-in link could land on the closed page).
 - Flyers is live (merged 2026-11-19). See the Flyers section below.
 - **Offer sheet filled in** (contact details are on the private canvas only, not here); turnaround days and
   "spots left" removed for now.
@@ -73,9 +79,9 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 | Build: AI websites (beta) | https://build.sogilex.com | `sogilex-build` |
 | Menus (free beta) | https://build.sogilex.com/menus/ | `sogilex-build` |
 | Published customer sites | https://NAME.sogilex.net (closed beta: owner only) | `sogilex-build/worker` |
-| Savepoint Atlas | https://atlas.sogilex.com | `savepoint-atlas` |
+| (closed) Savepoint Atlas | https://atlas.sogilex.com shows a "closed" page | `savepoint-atlas` |
 
-## Brand (sogilex.com and Build, not Atlas)
+## Brand (sogilex.com and Build)
 
 - Night plum + sunset gradient (#D91E8C to #F2496B to #FF9A4D). Tokens and fonts: `sogilex-site/design/README.md`.
 - Fonts self-hosted (SIL OFL): Unbounded (headings), Inter (body), JetBrains Mono (labels), Montserrat 600 (wordmark).
@@ -102,14 +108,14 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 - **Anthropic:** `ANTHROPIC_API_KEY` Supabase secret; Claude Opus 5.5; spend limit in the Anthropic Console.
 - **Resend** sends sign-in emails from `signin@mail.sogilex.com`.
 
-## Sign-in (shared by Atlas, Build, Menus)
+## Sign-in (shared by Build, Menus, Flyers)
 
-- `assets/sogilex-auth.js`, **keep identical** in savepoint-atlas and sogilex-build.
+- `sogilex-build/assets/sogilex-auth.js` (Atlas's copy is gone with Atlas).
 - One session for all of *.sogilex.com (cookie on `.sogilex.com`, chunked). Customer sites are on sogilex.net,
   so they never see it.
 - Password, or an emailed code (the email's link still works). Forgot password = sign in with a code, then set a
-  new one. "Password" button in Build/Menus header; password form on Atlas's Account page.
-- Supabase email templates (Magic link + Confirm signup) use `savepoint-atlas/supabase/email-sign-in.html`;
+  new one. "Password" button in the Build/Menus/Flyers header.
+- Supabase email templates (Magic link + Confirm signup) use `sogilex-build/supabase/email-sign-in.html`;
   minimum password length 8; email code length 8. Owner tested all of it: works.
 
 ## Build (websites): `sogilex-build`
@@ -243,7 +249,7 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 
 ## sogilex.com: `sogilex-site`
 
-- Pages: `/` (hero, tools, four rules, "How Build works" 3 steps + link to examples, Atlas strip), `/examples/`
+- Pages: `/` (hero, tools, four rules, "How Build works" 3 steps + link to examples, "Done for you" prices + free sample form), `/examples/`
   (Evergreen Lawn & Landscape demo, live at https://evergreenlawn.sogilex.net/, labelled "Demo site"; screenshots
   in `examples/`, rendered from the published copy in Cloudflare KV), `/menus/` (Beta), `/flyers/` (Beta,
   links to build.sogilex.com/flyers/). Nav: Tools, Examples, How we design, Open Build.
@@ -260,7 +266,7 @@ flyers (next), invoices (no AI), reports. Resume maker parked (wrong customer). 
 - **Form the Missouri LLC** (planned; about $50 online). Then tell the next session the business name.
 - **Terms of service** need the operator name (LLC or the owner's own name) before publishing opens to everyone.
 - **DMCA designated agent** registration with the US Copyright Office (about $6), around the same time.
-- Atlas privacy page placeholders: `[OPERATOR NAME]`, `[COUNTRY]`, `[EFFECTIVE DATE]`, `[SUPABASE REGION]`.
+- (Atlas privacy page placeholders: moot, Atlas is closed.)
 
 ## Usage (checked 2026-11-19)
 
@@ -306,8 +312,6 @@ Owner's mom (photographer) built a site and couldn't change it afterwards. Plan,
    that GitHub API)**; add `v=spf1 -all` and `_dmarc p=reject` TXT
    records for sogilex.net in Cloudflare (the Worker already redirects sogilex.net to sogilex.com); delete old
    `build_outputs` after 30 days (but never the published one or a person's latest: "Your sites" relies on them); a privacy policy page for Build/Menus (Build's "Privacy & limits" section is current).
-5. Atlas: real GTA VI entries; Pack Plus features before selling ($9.99, Stripe link still a placeholder);
-   a phone app later should start with Atlas (installable web app first).
 
 ## How things were tested (reuse)
 
