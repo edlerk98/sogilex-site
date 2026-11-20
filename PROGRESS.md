@@ -25,7 +25,9 @@ This repo is public: no keys, user IDs or private details here.
   locally only because they live there): no city or region in any public wording or the offer sheet. **No founding
   offer / no "first 10 half price"**: a session invented it; the owner never offered it. Both removed from the
   homepage and the offer sheet. Don't add offers, discounts or prices the owner didn't state.
-- Still open and more important: the first restaurant visit (Poor Richard's sample menu).
+- **Owner's instruction (2026-11-20): not going to market yet; focus is the website (sogilex.com and the tools).
+  Do NOT bring up the restaurant visit, Poor Richard's, sales or "talk to customers first" until the owner raises it.**
+  (The case for testing with customers has been made several times; the owner has heard it and decided.)
 - Security advisor (pre-existing, not urgent): `public.rls_auto_enable()` is SECURITY DEFINER and executable by anon
   and authenticated; revoke EXECUTE from them (check what it is first).
 - All of 2026-11-20's work is live and the owner checked it: Posts + AI captions, Services tab, done-for-you
@@ -51,8 +53,7 @@ This repo is public: no keys, user IDs or private details here.
 - **Pricing advice given:** prices are fine and low; the risk is "unlimited changes" eating time. Decide a private
   fair-use line for the one-page agreement (e.g. a full redesign = $75). Ask early customers for permission to
   show their menu as an example plus a one-line quote (no discount attached: owner has no founding offer).
-- **Owner's next step is still the first restaurant visit** (Poor Richard's, Eureka/Fenton): read their menu in
-  again (the reader no longer cuts text), use the Bold grill look with their photos, print, visit.
+- (Parked by the owner until they bring it up: the first restaurant visit with a printed sample menu.)
 - Parked by the owner: an AI help chat (advised: not until self-serve users ask repeated questions), and a
   "Questions? Text us" line with phone numbers. Résumé maker stays parked (wrong customer); suggested 4th service
   instead: weekly social posts made from the menu (specials/dishes as Instagram/Facebook images).
@@ -76,7 +77,7 @@ This repo is public: no keys, user IDs or private details here.
   change $25; printing at cost; yearly = 2 months free;
   own domain "coming soon". Placeholders the owner fills: [YOUR NAME] [PHONE] [YOUR CITY] [BUSINESS NAME] [2 DAYS]
   [X] spots left.
-- **Owner's next step:** fill the placeholders, print, visit the first restaurant with a free sample menu
+- (Parked, see above:) fill the placeholders, print, visit the first restaurant with a free sample menu
   (use "Read it from a photo" on their current menu, check prices, print). Their reaction picks what to build next.
 - **Gaps the done-for-you model exposes (build when needed):**
   1. One account = one business. Each client needs its own sign-in for now (Gmail plus-addresses work:
@@ -338,7 +339,7 @@ facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: d
 
 ## Waiting on the owner
 
-- **Fill in and print the offer sheet; first restaurant visit** (see "Where we left off").
+- (Parked by the owner: printing the offer sheet and the first restaurant visit.)
 - **Turn on leaked-password protection** in Supabase (Authentication → password security); can't be done from a
   session. Not confirmed done.
 - **Enforce HTTPS** in GitHub Pages settings for all three repos (Settings → Pages); not confirmed done.
