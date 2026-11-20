@@ -95,11 +95,10 @@ This repo is public: no keys, user IDs or private details here.
 ## Launch plan for self-serve (owner decided 2026-11-20; build when going to market, not before)
 
 Owner: a big free plan won't work ("people use it for what they need and never come back"). Decided:
-- **Free trial: try each tool once.** Meaning (to confirm when building): 1 website build, 1 menu, 1 flyer, 1 post,
-  1 quote or invoice. Download/print allowed; no publishing, no online menu. Still open: how many website *changes*
-  the one trial site gets (suggest a few, e.g. 5).
-- **Do it yourself: $19/month** (yearly option suggested: 10 months' price). All tools with **monthly** limits
-  (suggested starting points, not yet decided by the owner: 30 website changes, 50 captions, a few new websites),
+- **Free trial: try each tool once:** 1 website build **with up to 5 changes**, 1 menu, 1 flyer, 1 post, 1 quote or
+  invoice. Download/print allowed; no publishing, no online menu. (All decided by the owner.)
+- **Do it yourself: $19/month or $190/year** (decided). All tools with **monthly** limits (decided: 30 website
+  changes and 50 captions a month, plus a few new websites a month: exact number still to set, suggest 3),
   publishing at name.sogilex.net, online menu with QR, own web address later. The monthly value is hosting: when a
   subscription ends, the site and online menu go offline (files stay downloadable).
 - Done-for-you plans stay as they are ($149+$25, $349+$45, All-in-one $499+$149).
