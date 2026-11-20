@@ -32,8 +32,7 @@ This repo is public: no keys, user IDs or private details here.
 - Security advisor checked 2026-11-20: `rls_auto_enable` (the event trigger that turns on RLS for every new table)
   locked to the owner (`019_lock_rls_auto_enable.sql`; trigger still works). The remaining "SECURITY DEFINER callable"
   warnings are the tools' own RPCs, each checking `auth.uid()`; the two open to anon (`public_menu`,
-  `submit_site_message`) are intended (online menus and contact forms). Still open: leaked-password protection is OFF
-  (owner must switch it on in the Supabase dashboard).
+  `submit_site_message`) are intended (online menus and contact forms). Leaked-password protection: on.
 - All of 2026-11-20's work is live and the owner checked it: Posts + AI captions, Services tab, done-for-you
   section, Atlas closed. The first real AI caption worked.
 - **"Services" tab (2026-11-20, owner: "each time we add something it needs to automatically go under that tab"):**
@@ -360,8 +359,10 @@ facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: d
 ## Waiting on the owner
 
 - (Parked by the owner: printing the offer sheet and the first restaurant visit.)
-- **Turn on leaked-password protection** in Supabase (Authentication → password security); can't be done from a
-  session. **Confirmed still off (2026-11-20).**
+- Done 2026-11-20: leaked-password protection is **on** (Supabase → Authentication → Attack Protection).
+  **CAPTCHA must stay off** until the sign-in box sends a CAPTCHA token: the owner switched it on once and it blocks
+  every sign-in (turned off again, sign-in confirmed working). To add it later: Cloudflare Turnstile widget in
+  sogilex-auth.js (pass `captchaToken` to signInWithPassword / signInWithOtp / verifyOtp), deploy, THEN enable it.
 - **Enforce HTTPS** in GitHub Pages settings for all three repos (Settings → Pages); not confirmed done.
 
 - **Form the Missouri LLC** (planned; about $50 online). Then tell the next session the business name.
