@@ -266,6 +266,15 @@ facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: d
 - Files: `menus/index.html`, `assets/menus.js`, `assets/menus.css`. Extra fonts: EB Garamond, Playfair Display,
   Bebas Neue, Fraunces.
 
+## Build pro tips (2026-11-21, owner's idea)
+
+- Under "Describe the site": a fold-out "Pro tip: let an AI write your description" with a starter prompt and Copy
+  button (falls back to selecting the text). The prompt tells the AI: under 1,500 characters, include name, offer,
+  audience, area, hours, contact, feel; only the given facts (no made-up prices, awards, reviews, years).
+- Under "Change your site": one change at a time, say where; up to 1,000 characters.
+- Stripe: the owner pasted the sandbox secret key in chat once; told to roll it. When building Stripe, ask for keys
+  with the secure credential form (never in chat); the secret also goes in Supabase Edge Function secrets.
+
 ## Build quick changes (2026-11-19)
 
 - 8 one-click buttons above the "Change your site" chat (`renderQuick` in `assets/build.js`): Serif fonts,
