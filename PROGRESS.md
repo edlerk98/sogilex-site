@@ -266,6 +266,21 @@ facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: d
 - Files: `menus/index.html`, `assets/menus.js`, `assets/menus.css`. Extra fonts: EB Garamond, Playfair Display,
   Bebas Neue, Fraunces.
 
+## Adjust photos by hand (2026-11-21, owner's mom: a photo cut off a child's head)
+
+- Build: **Adjust photos** button under the preview (enabled when the open version uses your photos). Click a photo
+  in the preview, **drag** to choose what shows (sets `object-position`), arrow keys nudge (Shift = bigger steps),
+  **Show the whole photo** (`object-fit: contain`), **Reset this photo**, **Save photo changes** / Cancel.
+- Saved by `save_manual_version()` (022_manual_versions.sql): a new version of kind 'manual' (parent = the open
+  version, so Undo works; shows in Your sites and the account page as "Changed: Adjusted a photo"). **No AI: doesn't
+  count toward builds or changes.** Refuses pages that add `<script>`, someone else's site, >200 KB; 200 a day.
+- Safety: while adjusting, the preview iframe is `sandbox="allow-same-origin"` (still **no scripts**), so Build can
+  reach the photos; links/forms inside don't work in that mode; afterwards it goes back to `sandbox=""`.
+- Only `<img src="sogilex:photo:<uuid>">` photos are adjustable (every generated site so far uses img tags; CSS
+  background photos would need more work). Not yet: zoom/crop tighter, swap one photo for another (both possible
+  next steps).
+- Tested: 15 browser checks with a tall test photo (drag, keys, whole photo, link, save contents, Undo, Cancel).
+
 ## Build pro tips (2026-11-21, owner's idea)
 
 - Under "Describe the site": a fold-out "Pro tip: let an AI write your description" with a starter prompt and Copy
