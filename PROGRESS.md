@@ -266,6 +266,27 @@ facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: d
 - Files: `menus/index.html`, `assets/menus.js`, `assets/menus.css`. Extra fonts: EB Garamond, Playfair Display,
   Bebas Neue, Fraunces.
 
+## Security review (2026-11-21, owner asked after seeing browser DevTools edit a page)
+
+DevTools edits are local to one browser and vanish on refresh; all enforcement is server-side. Reviewed:
+- **Tables:** RLS on every table, own-rows-only policies; plans/subscriptions read-only to users. Fixed: stray
+  TRUNCATE/TRIGGER/REFERENCES grants on build_generations (023).
+- **Functions:** every authenticated RPC checks auth.uid(); anon can only call public_menu (public data) and
+  submit_site_message. Fixed: delete_my_account locked (it left photos + a published site behind) (023).
+- **Storage:** site-photos private, own folder only, JPEG ≤3 MB, signed 1-hour links.
+- **Edge functions:** edit-site / build-site verify the user; message-email's public actions only send pending
+  messages once; visitor text is HTML-escaped in emails.
+- **Published sites:** scripts stripped, strict CSP (no scripts, nothing external), on sogilex.net (no shared cookies).
+- **Secrets:** none in either repo's history. Captcha + leaked-password protection on.
+- **Open, not fixed yet:**
+  1. Contact-form spam: the Worker calls submit_site_message with the publishable key, so anyone can call it
+     directly and vary p_ip_hash to dodge the 5-per-visitor limit; the 30-per-site-per-hour cap still holds (so at
+     most 30 junk messages/emails per site per hour). Fix: a shared secret (Worker env + app_settings) the function
+     checks, deploy the Worker, then the old path refuses. Medium; do before opening publishing to everyone.
+  2. Storage: the 60-photo cap lives in site_photos, not storage, so direct uploads could exceed it (cost only).
+     Low; fix with a storage insert policy that requires a matching site_photos row.
+  3. Self-serve account deletion: build a complete version (storage + unpublish) before offering it.
+
 ## Adjust photos by hand (2026-11-21, owner's mom: a photo cut off a child's head)
 
 - Build: **Adjust photos** button under the preview (enabled when the open version uses your photos). Click a photo
