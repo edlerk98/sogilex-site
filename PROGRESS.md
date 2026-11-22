@@ -271,6 +271,21 @@ facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: d
 - Files: `menus/index.html`, `assets/menus.js`, `assets/menus.css`. Extra fonts: EB Garamond, Playfair Display,
   Bebas Neue, Fraunces.
 
+## Next website features (owner asked 2026-11-22; recommended order)
+
+1. **Business hours in Build:** Mon-Sun open/close or Closed, plus a holidays line, in the Build form; sent to
+   build-site as a separate structured field (exact facts, not counted in the 1,500-character description), stored
+   for reuse (menu footer, flyers, Google data). Needs a build-site Edge Function update (deploy the tested file).
+2. **Link preview photo (Open Graph):** Publish box choice: Automatic (first photo) / one of your photos / logo.
+   Store on `sites`; publish copies that photo to KV; the Worker injects og:title, og:description, og:image (absolute
+   https://name.sogilex.net/photos/<id>.jpg) and twitter:card. Today shared links show no picture. Do 1 and 2 in one
+   session (owner's prompt: "add a Business hours section to Build and a Link preview photo choice to Publish").
+3. **Show up on Google:** title/description meta + LocalBusiness JSON-LD (name, address, phone, hours) injected by
+   the Worker (allowlist application/ld+json, which doesn't run under the CSP), sitemap/robots.
+4. **Edit words directly** (like Adjust photos, for text; saved via save_manual_version, no AI).
+5. **Visitor counts** for owners from the Worker (no personal tracking).
+6. **Own web address** (Cloudflare for SaaS custom hostnames) when close to charging.
+
 ## Security review (2026-11-21, owner asked after seeing browser DevTools edit a page)
 
 DevTools edits are local to one browser and vanish on refresh; all enforcement is server-side. Reviewed:
