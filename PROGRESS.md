@@ -94,6 +94,11 @@ This repo is public: no keys, user IDs or private details here.
 
 ## Plans and accounts (built 2026-11-20): `sogilex-build/supabase/021_plans.sql`
 
+- **2026-11-22: publishing is open to everyone on the Beta plan** (owner's decision; 024_beta_publishing.sql; the
+  free trial still can't publish). Plans page and Terms updated ("Publishing is part of the beta", Terms dated
+  Nov 22). Advised first: fix contact-form spam (security review item 1) and register the copyright agent (~$6).
+  Both still open.
+
 - **Every account has a plan, and the database enforces it.** `plans` (catalogue: prices in cents, limits with a
   window: day / month / ever), `subscriptions` (one row per account not on the default; users can read their own
   row but never write it), `app_settings.default_plan` (now **'beta'** = exactly the old daily limits; **switch to
