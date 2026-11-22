@@ -1,6 +1,6 @@
 # Sogilex: where things stand
 
-Last updated 2026-11-20. **A new session should read this file first.**
+Last updated 2026-11-22. **A new session should read this file first.**
 This repo is public: no keys, user IDs or private details here.
 
 ## How to start the next session
@@ -13,7 +13,11 @@ This repo is public: no keys, user IDs or private details here.
   confidence levels); **simple, one-step-at-a-time walkthroughs** for anything the owner does by hand (they get
   overwhelmed by long lists); test before shipping; end each reply with one clear next step.
 
-## Where we left off (2026-11-20)
+## Where we left off (2026-11-22)
+
+- **Business hours + link preview picture built and deployed 2026-11-22** (database 025, build-site v17, Worker). The
+  Build page changes are on branch `claude/magical-fermat-rwiczu` in sogilex-build, **waiting for the owner's OK to go to
+  `main`** (that's what makes them visible on build.sogilex.com). See "Next website features" below.
 
 - **Quotes & invoices (5th tool) built 2026-11-20** (owner approved the plan, including the advisor's additions:
   the owner is the first user, billing their own done-for-you clients; "Bill this again next month" for care plans).
@@ -197,7 +201,7 @@ facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: d
 
 ## Build (websites): `sogilex-build`
 
-- `build-site` Edge Function, **version 15** (v15 added "Use my photos"): Opus 5.5, effort **medium** (low produced junk, never use it),
+- `build-site` Edge Function, **version 17** (v15 added "Use my photos", v17 business hours): Opus 5.5, effort **medium** (low produced junk, never use it),
   `max_tokens` 24000, stops itself at **380 s** (Supabase Pro limit 400 s; builds take ~140 s), styles incl.
   Futuristic (with anti-cliché direction), rejects output that isn't a real page (doesn't count), saves each
   finished page to `build_outputs`, sends `{t:"meta", build_id}` first. Logo: asks Claude for
@@ -273,13 +277,23 @@ facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: d
 
 ## Next website features (owner asked 2026-11-22; recommended order)
 
-1. **Business hours in Build:** Mon-Sun open/close or Closed, plus a holidays line, in the Build form; sent to
-   build-site as a separate structured field (exact facts, not counted in the 1,500-character description), stored
-   for reuse (menu footer, flyers, Google data). Needs a build-site Edge Function update (deploy the tested file).
-2. **Link preview photo (Open Graph):** Publish box choice: Automatic (first photo) / one of your photos / logo.
-   Store on `sites`; publish copies that photo to KV; the Worker injects og:title, og:description, og:image (absolute
-   https://name.sogilex.net/photos/<id>.jpg) and twitter:card. Today shared links show no picture. Do 1 and 2 in one
-   session (owner's prompt: "add a Business hours section to Build and a Link preview photo choice to Publish").
+1. **Done 2026-11-22: Business hours in Build.** Fold-out "Business hours (optional)" under Your photos: each day
+   Not listed / Open (one or two time ranges, e.g. lunch + dinner; close before open = after midnight) / Closed,
+   "Copy Monday to Tuesday–Friday", a "Holidays or notes" line (200 chars). Autosaves to `business_hours` (025: one row
+   per person, `hours` jsonb checked by `valid_hours()`, own rows only) and refills next visit. Sent to build-site
+   **v17** as `hours` (not part of the 1,500 characters); the function checks it, writes exact lines ("Monday to
+   Friday: 9 AM – 5 PM", "noon"/"midnight", consecutive equal days grouped, unlisted days left out) and tells Claude
+   to show them unchanged. Build is blocked with a message if a day is Open without both times. Not yet reused by
+   Menus/Flyers (the table is there for it); edit-site doesn't read it (changing hours on a built site = chat edit).
+2. **Done 2026-11-22: Link preview picture.** Publish box: "Link preview picture" tiles (Automatic / Your logo / each
+   photo) and a mock shared-link card. Saved as `sites.preview` (025; `publish_site(build, slug, preview)`); on a live
+   version, changing it turns the button into "Update link preview" (republishes the same version). Worker (deployed
+   2026-11-22) adds og:/twitter: tags; details in `sogilex-build/docs/PUBLISHING.md`. **Existing sites get the tags
+   only when republished.** Known risk (medium confidence): photos are up to 2000 px; WhatsApp has been known to skip
+   preview images over ~300 KB, so a WhatsApp share may show no picture (Facebook/iMessage are fine with large ones).
+   If the owner sees that, add a 1200 px "share copy" made in the browser at upload.
+   Tested: SQL on local Postgres 16 (rules, re-run, RLS), Worker in miniflare (20 checks), browser test (20 checks incl.
+   phone width). Not yet tested by a real person: **owner's test = republish, then paste the link into a text message.**
 3. **Show up on Google:** title/description meta + LocalBusiness JSON-LD (name, address, phone, hours) injected by
    the Worker (allowlist application/ld+json, which doesn't run under the CSP), sitemap/robots.
 4. **Edit words directly** (like Adjust photos, for text; saved via save_manual_version, no AI).
