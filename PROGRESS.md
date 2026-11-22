@@ -17,7 +17,7 @@ This repo is public: no keys, user IDs or private details here.
 
 - **Business hours + link preview picture built and deployed 2026-11-22** (database 025, build-site v17, Worker). The
   Build page changes are on branch `claude/magical-fermat-rwiczu` in sogilex-build, **waiting for the owner's OK to go to
-  `main`** (that's what makes them visible on build.sogilex.com). See "Next website features" below.
+  `main`** (now also Edit words + the reworked Adjust photos) (that's what makes them visible on build.sogilex.com). See "Next website features" below.
 
 - **Quotes & invoices (5th tool) built 2026-11-20** (owner approved the plan, including the advisor's additions:
   the owner is the first user, billing their own done-for-you clients; "Bill this again next month" for care plans).
@@ -294,9 +294,9 @@ facts (missing ones become [PLACEHOLDERS], never invented). Honesty line kept: d
    If the owner sees that, add a 1200 px "share copy" made in the browser at upload.
    Tested: SQL on local Postgres 16 (rules, re-run, RLS), Worker in miniflare (20 checks), browser test (20 checks incl.
    phone width). Not yet tested by a real person: **owner's test = republish, then paste the link into a text message.**
-3. **Show up on Google:** title/description meta + LocalBusiness JSON-LD (name, address, phone, hours) injected by
+3. **Done 2026-11-22 (owner asked): Edit words + a reworked Adjust photos.** See "Edit by hand" below.
+4. **Show up on Google:** title/description meta + LocalBusiness JSON-LD (name, address, phone, hours) injected by
    the Worker (allowlist application/ld+json, which doesn't run under the CSP), sitemap/robots.
-4. **Edit words directly** (like Adjust photos, for text; saved via save_manual_version, no AI).
 5. **Visitor counts** for owners from the Worker (no personal tracking).
 6. **Own web address** (Cloudflare for SaaS custom hostnames) when close to charging.
 
@@ -320,6 +320,32 @@ DevTools edits are local to one browser and vanish on refresh; all enforcement i
   2. Storage: the 60-photo cap lives in site_photos, not storage, so direct uploads could exceed it (cost only).
      Low; fix with a storage insert policy that requires a matching site_photos row.
   3. Self-serve account deletion: build a complete version (storage + unpublish) before offering it.
+
+## Edit by hand (2026-11-22, owner: "fix the picture editing and cropping tool… it looks weird and doesn't really work
+## right" and "people should be able to click any wording and edit it")
+
+- **Why the photo tool "didn't work":** the mom's live site puts 44 of 46 photos in `.slide img {aspect-ratio:16/9;
+  object-fit:cover}`. A portrait in a wide frame loses most of its height; dragging only picks which strip shows, and
+  "Show the whole photo" left a thin picture with big bars. The frame, not the drag, was the problem.
+- **Adjust photos now:** click a photo → **Frame shape**: As designed / Photo's own shape (whole photo, no bars) / Wide /
+  Landscape / Square / Portrait / Tall / Whole photo inside the frame; drag + arrow keys as before; Reset; Save.
+  Build measures what kind of photo it is by trying a test shape: **flow** (the photo's size sets its frame, e.g. the
+  gallery: shape set on the photo, `width:min(100%, calc(80vh * ratio))`, centred, so tall photos never exceed 80% of the
+  screen), **box** (fills a box the design sized, e.g. the about photo: shape set on that box), **fill** (a section
+  background, position:absolute: only drag and "whole photo"). Animations/hover zooms are off while adjusting (the hero's
+  zoom animation made dragging feel wrong). Outlines only on hover/selected.
+- **Edit words:** button next to Adjust photos. Every piece of text becomes editable in the preview (still no scripts:
+  sandbox allow-same-origin). Text with only inline formatting (b, em, a…) is edited whole; loose text next to anything
+  else (form boxes, images) and inside buttons/labels is wrapped in a temporary `span[data-sxw]` (unwrapped on save) so
+  boxes can't be deleted and buttons get a cursor. Enter finishes (no new paragraphs). Phone/email links follow their
+  new text (tel:/mailto:). **Fill in placeholders (N)**: one box per [PLACEHOLDER], highlights where it is, fills every
+  place incl. links. Typing a placeholder by hand in one place offers "Use … in the other N places".
+- Both save via `save_manual_version` (no AI, no change used, Undo works; notes "Adjusted 2 photos" / "Edited words: …").
+  Changes are applied to a fresh copy of the saved page by position, so preview photo links never get saved.
+- Known: typing at the very end of a link inside a sentence can land just after the link (Chrome's own behaviour; a
+  workaround was tried and dropped as fragile; the placeholder box avoids it). Words can't add/remove sections (that's
+  the chat). Tested in Chromium only (35 checks incl. a fixture copying the mom's gallery CSS, phone width); **not yet
+  on an iPhone**. Changes go live after "Publish this version".
 
 ## Adjust photos by hand (2026-11-21, owner's mom: a photo cut off a child's head)
 
