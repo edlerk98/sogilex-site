@@ -321,6 +321,16 @@ DevTools edits are local to one browser and vanish on refresh; all enforcement i
      Low; fix with a storage insert policy that requires a matching site_photos row.
   3. Self-serve account deletion: build a complete version (storage + unpublish) before offering it.
 
+## Publishing photos fix (2026-11-23, found from Cloudflare's "KV 50% of daily limit" emails)
+
+- Cause: every publish re-copied every photo to KV. 13 republishes of sweetanniephotography (46 photos) on Nov 22 =
+  525 of the free plan's 1,000 KV writes/day (account-wide: at 1,000, publishing breaks for everyone until 00:00 UTC).
+- Also found: a 40-photo cap meant **6 of that site's 46 photos were blank on the live site** (1-pixel placeholder).
+- Fix (Worker deployed 2026-11-23): copy only photos not already copied; max 45 new per publish, `more: true` until done
+  (Build on the branch loops; the live Build needs one extra Publish if >45 new photos); unchanged logo/photo lists are
+  not rewritten; menu photos the same. Tested in miniflare (46-photo site: 2 rounds, then republish = 0 photo downloads).
+  **Owner action: republish sweetanniephotography once to fill the 6 blanks.** Workers Paid ($5/mo) not needed now.
+
 ## Edit by hand (2026-11-22, owner: "fix the picture editing and cropping tool… it looks weird and doesn't really work
 ## right" and "people should be able to click any wording and edit it")
 
