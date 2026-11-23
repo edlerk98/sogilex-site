@@ -16,8 +16,7 @@ This repo is public: no keys, user IDs or private details here.
 ## Where we left off (2026-11-22)
 
 - **Business hours + link preview picture built and deployed 2026-11-22** (database 025, build-site v17, Worker). The
-  Build page changes are on branch `claude/magical-fermat-rwiczu` in sogilex-build, **waiting for the owner's OK to go to
-  `main`** (now also Edit words + the reworked Adjust photos) (that's what makes them visible on build.sogilex.com). See "Next website features" below.
+  Build page changes went live on `main` 2026-11-23 (with Edit words, the reworked Adjust photos and the publishing photos fix). See "Next website features" below.
 
 - **Quotes & invoices (5th tool) built 2026-11-20** (owner approved the plan, including the advisor's additions:
   the owner is the first user, billing their own done-for-you clients; "Bill this again next month" for care plans).
