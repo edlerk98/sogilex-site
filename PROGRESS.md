@@ -329,7 +329,7 @@ DevTools edits are local to one browser and vanish on refresh; all enforcement i
 - Fix (Worker deployed 2026-11-23): copy only photos not already copied; max 45 new per publish, `more: true` until done
   (Build on the branch loops; the live Build needs one extra Publish if >45 new photos); unchanged logo/photo lists are
   not rewritten; menu photos the same. Tested in miniflare (46-photo site: 2 rounds, then republish = 0 photo downloads).
-  **Owner action: republish sweetanniephotography once to fill the 6 blanks.** Workers Paid ($5/mo) not needed now.
+  **Done 2026-11-23: republished; all 46 photos on the live page, 0 blanks, link preview tags present.** Workers Paid ($5/mo) not needed now.
 
 ## Edit by hand (2026-11-22, owner: "fix the picture editing and cropping tool… it looks weird and doesn't really work
 ## right" and "people should be able to click any wording and edit it")
