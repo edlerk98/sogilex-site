@@ -473,12 +473,12 @@ DevTools edits are local to one browser and vanish on refresh; all enforcement i
 
 ## First real example: Sweet Annie Photography (2026-11-23, owner's mom agreed)
 
-- /examples/ now starts with her site, tagged "Real business" (built 2026-11-18 by its owner, 54 chat changes Nov 21-23,
-  46 of her photos), with desktop and phone screenshots (`examples/sweetannie.jpg`, `sweetannie-phone.jpg`) rendered
+- /examples/ now starts with her site, tagged "Real business" (built 2026-11-18 by its owner, 64 chat changes Nov 21-23,
+  47 of her photos, her logo), with desktop and phone screenshots (`examples/sweetannie.jpg`, `sweetannie-phone.jpg`) rendered
   from the published copy in Cloudflare KV. The intro says the first is real (with permission) and the rest are demos.
   The homepage showcase's website piece is now her site (`home-annie.jpg`, label "Website · real", note "One real
   business, three demos").
-- **Her live site still shows placeholders** ("[Photo of Annie]" in About; "[Session name]" and "[PRICE]" on the three
+- **Done 2026-11-23: she filled the placeholders and added her logo; screenshots re-taken.** (Was: her live site showed placeholders ("[Photo of Annie]" in About; "[Session name]" and "[PRICE]" on the three
   session cards). Advised: fill them with Edit words → Fill in placeholders before Sogilex links to it. Also advised:
   her clients' photos appear on Sogilex's pages, so she should be comfortable with that (portfolio use).
 - If she changes her site a lot, re-render the screenshots from KV the same way (see this session's notes).
