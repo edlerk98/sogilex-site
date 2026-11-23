@@ -454,6 +454,16 @@ DevTools edits are local to one browser and vanish on refresh; all enforcement i
   hours, editing words and the link picture; Build and Quotes blurbs in `assets/services.js` updated (so /services/
   and the menu changed too). Only live features are described; no invented claims.
 
+## Homepage showcase (2026-11-23, owner: "do 1" after advice that the homepage showed nothing Sogilex made)
+
+- Hero is now two columns on wide screens: the headline on the left, a fanned stack of real tool output on the right
+  (Evergreen website, Maple Street Diner menu, Kids Eat Free flyer, Blueberry Pancake Stack post), each a link to its
+  section on /examples/, with a "Demo businesses · See them all" note (they're the labelled demos). Below the buttons on
+  phones/tablets. Light copies made for it: `examples/home-site.jpg`, `home-menu.jpg`, `home-flyer.jpg`, `home-post.jpg`
+  (~125 KB together; the originals stay for /examples/). Hover/focus lifts a piece. Checked at 1400, 1100, 768 and
+  390 px wide: images load, no sideways scroll, nothing covers the headline or buttons. When a real customer agrees,
+  swap one demo for their work.
+
 ## Plans page: sogilex.com/plans/ (2026-11-20, owner asked for "a plans tab")
 
 - "Plans" in the menu of every sogilex.com page (after Services); the homepage's done-for-you section links to it.
