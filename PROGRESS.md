@@ -464,6 +464,13 @@ DevTools edits are local to one browser and vanish on refresh; all enforcement i
   390 px wide: images load, no sideways scroll, nothing covers the headline or buttons. When a real customer agrees,
   swap one demo for their work.
 
+## Homepage rhythm (2026-11-23, owner: "do 2")
+
+- "How we design" is now one row of four rules with gradient top lines instead of four boxes (2 per row on tablets, 1
+  on phones), and "How Build works" is three numbered steps on a connecting line (vertical on phones) with shorter
+  wording, instead of three boxes. Homepage only (`.rule-row`, `.flow`, `.home-rules`); the tool pages keep their
+  `.steps` boxes. Boxed panels on the homepage: 21 → 14; phone page about 550 px shorter.
+
 ## Plans page: sogilex.com/plans/ (2026-11-20, owner asked for "a plans tab")
 
 - "Plans" in the menu of every sogilex.com page (after Services); the homepage's done-for-you section links to it.
