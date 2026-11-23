@@ -13,6 +13,15 @@ This repo is public: no keys, user IDs or private details here.
   confidence levels); **simple, one-step-at-a-time walkthroughs** for anything the owner does by hand (they get
   overwhelmed by long lists); test before shipping; end each reply with one clear next step.
 
+## Owner's standing rules for documents (2026-11-23)
+
+- **Every document made for Sogilex carries the Sogilex logo at the top** (owner: "Any document that we make, I will
+  always want the logo on it"). Use `design/sogilex-logo-badge.png` (1038x308, the two sunset squares + SOGILEX
+  wordmark on night plum, readable in light and dark mode; source `design/sogilex-logo-badge.html`, rendered at 2x).
+  In a Claude Docs doc: upload it as an asset to the doc's artifact, create a blob, insert `![Sogilex logo](blob/<id>)`
+  above the title of every tab. Business plan (Claude Doc, private to the owner):
+  https://claude.ai/artifact/PhM9gHYKiWhdGVs5ZH8M5E (tabs: plan, "What's next").
+
 ## Where we left off (2026-11-22)
 
 - **Business hours + link preview picture built and deployed 2026-11-22** (database 025, build-site v17, Worker). The
