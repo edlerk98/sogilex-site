@@ -506,6 +506,18 @@ DevTools edits are local to one browser and vanish on refresh; all enforcement i
 - Tested 2026-11-20: SQL on a local Postgres 16 (totals, rounding, numbering, locking, other users see nothing) and
   live in a rolled-back transaction; browser test (23 checks) with the page talking to that local Postgres through a
   small PostgREST stand-in (harness idea worth reusing: real SQL rules instead of mocks). Not yet used by a real person.
+- **Quote extras (2026-11-23, owner asked for 1 + 2 + "fix the new button"; `026_quote_extras.sql`, applied live):**
+  the owner's first test meant to be a quote but was saved as an invoice, so "+ New" is now two equal cards
+  ("+ New quote: a price before the job…" / "+ New invoice: a bill for work you've done…"), the open document shows a
+  QUOTE/INVOICE badge, and drafts have **Switch to a quote / an invoice** (makes a new draft of the other kind with the
+  same customer and lines, removes the old draft). Quotes: "Valid 14/30/60 days" buttons, **opening message**
+  (`data.intro`), **terms saved once** (`inv_profile.data.quoteTerms`, frozen onto a quote when sent) with a per-quote
+  "Print my terms" tick (`data.showTerms`), an **Accepted by / Signature / Date** block (`data.sign`), and **optional
+  add-ons** (line `o: true`): listed apart under "Optional add-ons · not included in the total" with tick boxes and
+  "Total with all add-ons", left out of the stored totals by the database; invoices refuse them; a quote needs one
+  non-optional line to be sent. **Turn into an invoice** asks which add-ons they chose (`inv_quote_to_invoice` 4th
+  argument `p_addons`, positions from 0). Also fixed: the editor's totals line showed the word "null" when there was no
+  tax. Tested: SQL on local Postgres (totals, tax, refusals, conversion, old 3-argument call), browser 17 checks.
 - Later (only when asked): email the invoice from Sogilex (Resend), Stripe "Pay now" link, reminders, a customers
   page, CSV export for the accountant, several businesses per account.
 
