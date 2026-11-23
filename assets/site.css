@@ -380,3 +380,4 @@ img, svg { display: block; }
   .flow::before { display: none; }
   .flow li:not(:last-child)::after { content: ""; position: absolute; left: 27px; top: 56px; bottom: -26px; width: 2px; background: linear-gradient(180deg, var(--magenta), var(--amber)); opacity: .55; }
 }
+.show-site span { top: 8px; bottom: auto; left: auto; right: 8px; }
