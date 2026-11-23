@@ -518,6 +518,10 @@ DevTools edits are local to one browser and vanish on refresh; all enforcement i
   non-optional line to be sent. **Turn into an invoice** asks which add-ons they chose (`inv_quote_to_invoice` 4th
   argument `p_addons`, positions from 0). Also fixed: the editor's totals line showed the word "null" when there was no
   tax. Tested: SQL on local Postgres (totals, tax, refusals, conversion, old 3-argument call), browser 17 checks.
+- **Price box fix (2026-11-23, owner: "changed the coil pricing to $899 and it did not change"):** clicking into a
+  number put the cursor mid-number ("699.0$8990"), which can't be read, so nothing saved and the box silently snapped
+  back on blur. Now clicking selects the number (typing replaces it); an unreadable number stays red with a message;
+  Print and Mark as sent stop until it's fixed. Live on main.
 - Later (only when asked): email the invoice from Sogilex (Resend), Stripe "Pay now" link, reminders, a customers
   page, CSV export for the accountant, several businesses per account.
 
