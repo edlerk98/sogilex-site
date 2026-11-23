@@ -5,7 +5,7 @@
 window.SOGILEX_SERVICES = [
   {
     id: 'build', label: 'Build', tag: 'Beta', title: 'Websites',
-    blurb: 'Describe your business in a few sentences. Get a one-page site you can change by asking, publish, and keep.',
+    blurb: 'Describe your business in a few sentences. Get a one-page site you can change by asking or by clicking the words, publish, and keep.',
     make: { href: 'https://build.sogilex.com/', text: 'Open Build' },
     about: { href: '/examples/', text: 'See examples' },
   },
@@ -29,7 +29,7 @@ window.SOGILEX_SERVICES = [
   },
   {
     id: 'invoices', label: 'Invoices', tag: 'Beta', title: 'Quotes & invoices',
-    blurb: 'Quotes and invoices with your logo and exact totals. Save your customers, turn a quote into an invoice in one click, and see who still owes you.',
+    blurb: 'Quotes and invoices with your logo and exact totals. Offer optional add-ons, turn an accepted quote into an invoice in one click, and see who still owes you.',
     make: { href: 'https://build.sogilex.com/invoices/', text: 'Make an invoice' },
     about: { href: '/invoices/', text: 'How it works' },
   },

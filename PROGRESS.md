@@ -444,6 +444,16 @@ DevTools edits are local to one browser and vanish on refresh; all enforcement i
 - Later: posting straight to Instagram/Facebook (Meta app review), several posts at once ("this week's posts"),
   and Quotes & invoices as the 5th tool.
 
+## Homepage "New in Sogilex" (2026-11-23, owner: focus on sogilex.com)
+
+- Section right after the service cards (`index.html`, `#new`): 5 dated cards, newest first, each linking to its tool
+  (quotes with add-ons; Edit words; photo frame shapes; business hours; link preview picture). Layout: two wide over
+  three on desktop, one per row on phones. **Keep it current: when something ships, add a card at the top and drop the
+  oldest; change the heading if the newest card is over a week old** ("Made better this week" goes stale).
+- Also fixed stale copy: "How Build works" said publishing was "opening soon" (open since Nov 22) and now mentions
+  hours, editing words and the link picture; Build and Quotes blurbs in `assets/services.js` updated (so /services/
+  and the menu changed too). Only live features are described; no invented claims.
+
 ## Plans page: sogilex.com/plans/ (2026-11-20, owner asked for "a plans tab")
 
 - "Plans" in the menu of every sogilex.com page (after Services); the homepage's done-for-you section links to it.

@@ -304,3 +304,20 @@ img, svg { display: block; }
 .plan-extras td { text-align: right; padding: 16px 0; white-space: nowrap; font-weight: 600; color: var(--text); }
 .plan-extras tr + tr th, .plan-extras tr + tr td { border-top: 1px solid var(--border); }
 @media (max-width: 760px) { .plans-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* New in Sogilex (homepage) */
+.news .wrap { padding-top: 24px; padding-bottom: 72px; display: flex; flex-direction: column; gap: 32px; }
+.news .news-h { font-size: clamp(1.8rem, 3.4vw, 2.6rem); line-height: 1.1; }
+.news-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+.news-list li { padding: 24px; border-radius: 16px; display: flex; flex-direction: column; gap: 10px; }
+.news-list time { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); }
+.news-list h3 { margin: 0; font-size: 19px; font-weight: 600; }
+.news-list p { margin: 0; color: var(--muted); }
+.news-list a { margin-top: auto; color: var(--text); font-weight: 600; }
+.news-list a:hover { color: var(--amber); }
+@media (min-width: 900px) {
+  /* two wide over three: five cards without one left alone on a row */
+  .news-list { grid-template-columns: repeat(6, 1fr); }
+  .news-list li { grid-column: span 2; }
+  .news-list li:nth-child(-n + 2) { grid-column: span 3; }
+}
