@@ -106,6 +106,9 @@ LLC, Stripe live, default_plan -> 'trial', publish wording. Testers other than t
   non-tester). Tested live against Stripe test mode with throwaway accounts (deleted): subscribe Basics -> basics,
   switch to DIY yearly -> diy + publishing, cancel -> back to default, comp account + paid sub -> stays comp, non-tester
   ignored, tester synced. 17 browser checks (checkout, return confirm, Manage billing, past due, comp, beta).
+  **Live on main 2026-11-24** (checkout, Manage billing). Owner's test account (a Yahoo address, not the Team one) is the
+  only billing tester. **Fixed (033):** request_plan_change used to insert an ACTIVE row with the current plan, pinning
+  that account to Beta past the launch switch; new requests are stored 'canceled' and the one pinned row was repaired.
   **Not built yet:** site + online menu going offline when a plan ends (Worker side). Done-for-you plans stay manual.
   **Going live (after LLC):** swap both secrets to the sk_live_ key, recreate products/prices/portal/webhook in live
   mode (same lookup keys), then the switch-over.
