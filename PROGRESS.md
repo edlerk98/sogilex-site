@@ -110,7 +110,10 @@ LLC, Stripe live, default_plan -> 'trial', publish wording. Testers other than t
   only billing tester. **Fixed (033):** request_plan_change used to insert an ACTIVE row with the current plan, pinning
   that account to Beta past the launch switch; new requests are stored 'canceled' and the one pinned row was repaired.
   **Owner tested 2026-11-24: real browser checkout with test card on the Yahoo test account -> Basics, renews Dec 24, via Stripe; works.**
-  **Not built yet:** site + online menu going offline when a plan ends (Worker side). Done-for-you plans stay manual.
+  **Offline when a plan ends: built 2026-11-24.** 034 applied live (site_live(slug); public_menu needs can_publish).
+  Worker change committed on the branch (on top of the undeployed Google work) and as a main-based commit; **Worker NOT
+  deployed yet** (waiting for the owner). 13 miniflare checks on both copies. At the launch switch Sprayed by Jeanna (Beta)
+  goes offline unless it gets a plan or comp; Evergreen (team) and Sweet Annie (comp) stay up. Done-for-you plans stay manual.
   **Going live (after LLC):** swap both secrets to the sk_live_ key, recreate products/prices/portal/webhook in live
   mode (same lookup keys), then the switch-over.
 - **Found:** trial caps on flyers/posts/invoices count SAVED items, and one item can be edited into a new one
