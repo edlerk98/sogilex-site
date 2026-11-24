@@ -46,6 +46,8 @@ Everything else from this session is live on `main` (see the dated sections belo
 "offline when a plan ends"; the Terms still say "a free beta") with a lawyer's read, then Stripe live + the switch-over
 checklist (section "LOCKDOWN PHASE 1"). Ask for the LLC name; offer to draft Terms/Privacy then.
 
+**Titles (owner, 2026-11-24): Keagan = Founder & CEO, Blake = Co-founder & President.** Updated in the business plan doc (team table) and the About page draft; the doc's "What's next" tab now lists what the operating agreement should settle (final say, signing, spending limit, tie-breaks), to agree with Blake alongside the 70/30 split.
+
 **Decisions made this session (keep to them):** Basics $9/$90; Do it yourself $19/$190; own address $5/mo ($50/yr) add-on,
 included in done-for-you website plans, Team, Comp; 14-day free trial (clock starts at switch-over for old accounts);
 trial websites are preview-only; "Made with Sogilex" line on trial downloads; owner's mom = Complimentary; nobody else
@@ -68,9 +70,9 @@ permission, on /examples/ and the homepage).
 
 **Waiting on the owner or others (don't do these for them; remind gently, one at a time):**
 1. Blake's answers to the business plan (Claude Doc https://claude.ai/artifact/PhM9gHYKiWhdGVs5ZH8M5E, tabs: plan and
-   "What's next"). Suggested: 70/30, 4-year vesting (owner 25% earned at signing), Blake Co-founder & Head of Sales,
+   "What's next"). Suggested: 70/30, 4-year vesting (owner 25% earned at signing), Blake Co-founder & President (owner decided 2026-11-24),
    20% commission on setup fees he signs, Blake's funding recorded as loan or extra ownership.
-2. For the About page: owner's 2-3 sentence story, owner's profile answers (title "Founder & CEO" to confirm),
+2. For the About page: owner's 2-3 sentence story, owner's profile answers (title Founder & CEO, confirmed 2026-11-24),
    Blake's filled profile PDF (`design/team-profile/`), both photos (by email to hello@sogilex.com or in chat).
 3. LLC steps (order in the doc's "What's next" tab): Missouri LLC → operating agreement + lawyer → EIN + bank →
    legal pages under the LLC + copyright agent (register it AFTER the LLC, under its name, ~$6) → Stripe + first
@@ -717,7 +719,7 @@ DevTools edits are local to one browser and vanish on refresh; all enforcement i
 ## About page (2026-11-24, built, NOT live: waiting for the team's answers)
 
 - `/about/`: hero ("The people behind Sogilex."), "Our story" (Keagan writes 2-3 sentences; a factual paragraph on the
-  approach is already there), "The team" (Keagan Edler, Founder & CEO; Blake Pille, Co-founder & Head of Sales) with a
+  approach is already there), "The team" (Keagan Edler, Founder & CEO; Blake Pille, Co-founder & President) with a
   photo circle (initials until photos arrive), area, one-line role, and four facts (for fun, favorite local spot + order,
   surprising fact, three words), the four design rules, and "Say hello" (email + examples). Styles in site.css (`.team`,
   `.person*`, `.story`); `.todo` marks blanks in amber italics: **13 blanks; none may remain before pushing to main.**
