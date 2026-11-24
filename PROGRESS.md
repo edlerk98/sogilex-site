@@ -78,6 +78,19 @@ work. plan_full now says "Website builds aren't part of the Basics plan..." for 
 transaction; 8 browser checks (Build note + link, account meters). Self-serve ladder: trial (free, once each) → Basics
 $9 → Do it yourself $19 → done-for-you. Lockdown order: comp accounts → Stripe (after LLC) → default_plan 'trial'.
 
+**2026-11-24: LOCKDOWN PHASE 1 started (owner: "start phase 1, nobody else" = only the mom is comped).** Plan: phase 1
+(no LLC needed): (1) upgrade prompts, (2) "Made with Sogilex" on free-trial downloads only, (3) Stripe in TEST mode end
+to end (pay, plan changes, renew, cancel, site/online menu offline when a subscription ends), (4) wording sweep "free
+beta" -> "Start free" + Basics/DIY on the Plans page (ships on switch-over day). Phase 2 (after LLC): terms under the
+LLC, Stripe live, default_plan -> 'trial', publish wording. Testers other than the mom lose beta access at the switch.
+- **(1) done, on branch `claude/adoring-mayer-jom4sb` (sogilex-build), not on main:** `assets/upgrade.js` (loaded on
+  Build, Menus, Flyers, Posts, Invoices): any plan-limit message opens a box with the plans that would help (Basics
+  and/or DIY; Basics left out for website/publishing/online-menu limits; prices from `plans`), Choose -> /checkout/.
+  Daily Beta/Team limits stay plain text. Free-trial line above each tool ("1 of 1 post used"). Fixed: Flyers/Posts
+  said "Couldn't save. Check your connection." at the trial limit. 19 browser checks.
+- **Found:** trial caps on flyers/posts/invoices count SAVED items, and one item can be edited into a new one
+  forever, so for the no-AI tools the trial limit barely limits. The "Made with Sogilex" mark (2) is the real lever.
+
 **Next builds the owner can pick (advisor's order):** (1) finish the About page when the answers arrive; (2) "Show up
 on Google" for published sites (title/description, LocalBusiness data with hours, sitemap); (3) reuse saved
 business hours in Menus and Flyers. Keep the homepage "New in Sogilex" cards current when things ship.
