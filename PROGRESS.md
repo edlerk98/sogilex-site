@@ -164,6 +164,18 @@ a site looks like.** No warning needed at switch-over. **Unpublished 2026-11-24 
 the way Unpublish does it: sites row deleted, then the 6 KV copies (site, photos list, 3 photos, logo). Her builds,
 photos and logo in Build are untouched; she can publish again. Published sites now: evergreenlawn, sweetanniephotography.
 
+**2026-11-24: Own web address (custom domains) — owner decided: $5/month add-on to Do it yourself, included in the
+done-for-you website plans. Cloudflare set up, Sogilex side NOT built yet (about 2 sessions).** Done: owner enabled Cloudflare
+for SaaS (Custom Hostnames) on sogilex.net with a card on file, and added "SSL and Certificates: Write" to the "Sogilex
+publishing" token (same token value). Claude: proxied AAAA domains.sogilex.net -> 100::, fallback origin =
+domains.sogilex.net (active), 037 reserves domains/fallback/customers/etc. as site names. Customers will CNAME
+www.theirdomain -> domains.sogilex.net (bare domain: forward to www at their registrar; apex proxying is Enterprise-only).
+To build: table custom_domains (one per site, status), Build panel "Use your own web address" (enter domain, show the
+record, live status via the Cloudflare API from the Worker/api), Worker: route `*/*` on the zone + host -> slug lookup
+(KV host:<domain>), slug.sogilex.net 301s to the own address, canonical/og/sitemap use it; offline rule unchanged;
+Stripe add-on product "Own web address" $5/mo as a second subscription item (lookup key domain_month), plan gate:
+diy/dfy_site/dfy_all/team/comp; removing the add-on or the plan drops the hostname. Sogilex does NOT sell domains.
+
 **Next builds the owner can pick (advisor's order):** (1) finish the About page when the answers arrive; (2) "Show up
 on Google" for published sites (title/description, LocalBusiness data with hours, sitemap); (3) reuse saved
 business hours in Menus and Flyers. Keep the homepage "New in Sogilex" cards current when things ship.
