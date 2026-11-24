@@ -46,6 +46,8 @@ Everything else from this session is live on `main` (see the dated sections belo
 "offline when a plan ends"; the Terms still say "a free beta") with a lawyer's read, then Stripe live + the switch-over
 checklist (section "LOCKDOWN PHASE 1"). Ask for the LLC name; offer to draft Terms/Privacy then.
 
+**Business plan v2 (2026-11-24): https://claude.ai/artifact/EvFr1E79exNrUjeupqbKPj** (Claude Doc, private to the owner; logo on every tab). Built from the Nov 23 plan + the owner's ChatGPT review. Tabs: Plan (summary, pricing with Decided/Proposed status, sales funnel chart, costs with the AI unit fixed, 12-month forecast chart: base ~$1,670/mo by month 12, risks and launch blockers incl. moving off GitHub Pages, what changed), Founder decisions (register; ownership proposal = 70/30 + up to 10% Blake earns by milestones), 90-day plan (owners), For the lawyer and accountant. The Nov 23 doc (PhM9gHYKiWhdGVs5ZH8M5E) is kept as the original.
+
 **Titles (owner, 2026-11-24): Keagan = Founder & CEO, Blake = Co-founder & President.** Updated in the business plan doc (team table) and the About page draft; the doc's "What's next" tab now lists what the operating agreement should settle (final say, signing, spending limit, tie-breaks), to agree with Blake alongside the 70/30 split.
 
 **Decisions made this session (keep to them):** Basics $9/$90; Do it yourself $19/$190; own address $5/mo ($50/yr) add-on,
