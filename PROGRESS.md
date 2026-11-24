@@ -88,6 +88,10 @@ LLC, Stripe live, default_plan -> 'trial', publish wording. Testers other than t
   and/or DIY; Basics left out for website/publishing/online-menu limits; prices from `plans`), Choose -> /checkout/.
   Daily Beta/Team limits stay plain text. Free-trial line above each tool ("1 of 1 post used"). Fixed: Flyers/Posts
   said "Couldn't save. Check your connection." at the trial limit. 19 browser checks.
+- **(2) done, same branch, not on main:** free-trial mark "Made with Sogilex · sogilex.com" (`SogilexUpgrade.MARK`,
+  shown when the plan's window is 'ever') on flyers/posts (under the footer, inside the fit), menus (pill in the last
+  page's bottom margin) and quotes/invoices (page foot); in preview, Save image, Share and print; paid plans drop it.
+  Not on website downloads (trial websites can't be published; decide later). 22 browser checks, trial vs Basics.
 - **Found:** trial caps on flyers/posts/invoices count SAVED items, and one item can be edited into a new one
   forever, so for the no-AI tools the trial limit barely limits. The "Made with Sogilex" mark (2) is the real lever.
 
