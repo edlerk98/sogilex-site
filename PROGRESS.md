@@ -121,6 +121,21 @@ LLC, Stripe live, default_plan -> 'trial', publish wording. Testers other than t
 - **Found:** trial caps on flyers/posts/invoices count SAVED items, and one item can be edited into a new one
   forever, so for the no-AI tools the trial limit barely limits. The "Made with Sogilex" mark (2) is the real lever.
 
+**2026-11-24: Launch wording prepared (phase 1 item 5), on branch `claude/adoring-mayer-jom4sb` in BOTH repos, NOT on
+main (it goes live on switch-over day).** sogilex.com: Plans page section 01 = three cards (Free trial $0 / Basics $9 or
+$90 / Do it yourself $19 or $190, with the exact limits; Choose buttons -> build.sogilex.com/checkout/), lede and meta,
+homepage hero button "Start free" + tools line, Services lede, service cards lose the "Beta" tag, Menus/Flyers/Posts/
+Invoices pages (meta, og titles, crumbs, buttons "(try it free)", Menus FAQ on cost/online menu), Examples line.
+Tools: no "· beta" eyebrows; Build Publish tag "Do it yourself"; Privacy & limits text. Commits are wording-only.
+**Switch-over day checklist (in order):** (1) LLC formed; Terms + Privacy rewritten under the LLC with billing, renewal,
+cancellation/refund wording and "site offline when a plan ends" (the Terms still say "a free beta" everywhere), lawyer
+read. (2) Stripe live: swap the Supabase secret STRIPE_SECRET_KEY and the environment's api.stripe.com secret to the
+sk_live_ key; recreate products/prices (same lookup keys), portal config (metadata sogilex=1) and the webhook in live
+mode. (3) Tell Jeanna (owner decided no comp; her site goes offline unless she picks Do it yourself). (4) Push the
+wording commits to main in both repos (sogilex-site: cherry-pick ONLY the wording commits, not the About page).
+(5) Flip: `update public.app_settings set value='trial' where key='default_plan';`. (6) Check a beta tester sees the
+trial line, the mark and the upgrade box; Evergreen + Sweet Annie stay up; Jeanna offline.
+
 **Next builds the owner can pick (advisor's order):** (1) finish the About page when the answers arrive; (2) "Show up
 on Google" for published sites (title/description, LocalBusiness data with hours, sitemap); (3) reuse saved
 business hours in Menus and Flyers. Keep the homepage "New in Sogilex" cards current when things ship.

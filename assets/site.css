@@ -290,6 +290,8 @@ img, svg { display: block; }
 
 /* ---------- plans ---------- */
 .plans-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: stretch; }
+.plans-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.plan-best { border-color: rgba(242, 73, 107, .7); }
 .plan { display: flex; flex-direction: column; gap: 18px; }
 .plan .dfy-list { flex: 1; }
 .plan-btn { align-self: flex-start; }
@@ -304,6 +306,7 @@ img, svg { display: block; }
 .plan-extras td { text-align: right; padding: 16px 0; white-space: nowrap; font-weight: 600; color: var(--text); }
 .plan-extras tr + tr th, .plan-extras tr + tr td { border-top: 1px solid var(--border); }
 @media (max-width: 760px) { .plans-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 1000px) { .plans-grid.three { grid-template-columns: minmax(0, 1fr); max-width: 560px; } }
 
 /* New in Sogilex (homepage) */
 .news .wrap { padding-top: 24px; padding-bottom: 72px; display: flex; flex-direction: column; gap: 32px; }

@@ -4,31 +4,31 @@
 // To add a service, add one entry below. Nothing else needs changing.
 window.SOGILEX_SERVICES = [
   {
-    id: 'build', label: 'Build', tag: 'Beta', title: 'Websites',
+    id: 'build', label: 'Build', title: 'Websites',
     blurb: 'Describe your business in a few sentences. Get a one-page site you can change by asking or by clicking the words, publish, and keep.',
     make: { href: 'https://build.sogilex.com/', text: 'Open Build' },
     about: { href: '/examples/', text: 'See examples' },
   },
   {
-    id: 'menus', label: 'Menus', tag: 'Beta', title: 'Restaurant menus',
+    id: 'menus', label: 'Menus', title: 'Restaurant menus',
     blurb: 'Type your dishes and prices once, or read them from a photo. Print it, put it online behind a QR code, and change prices any time.',
     make: { href: 'https://build.sogilex.com/menus/', text: 'Make a menu' },
     about: { href: '/menus/', text: 'How it works' },
   },
   {
-    id: 'flyers', label: 'Flyers', tag: 'Beta', title: 'Flyers',
+    id: 'flyers', label: 'Flyers', title: 'Flyers',
     blurb: 'Event and promo flyers with one clear message, real typography and your own photos. Print it or save an image.',
     make: { href: 'https://build.sogilex.com/flyers/', text: 'Make a flyer' },
     about: { href: '/flyers/', text: 'How it works' },
   },
   {
-    id: 'posts', label: 'Posts', tag: 'Beta', title: 'Social media posts',
+    id: 'posts', label: 'Posts', title: 'Social media posts',
     blurb: "This week's deal, a new dish, an event or a real customer review, as a ready-to-post image with a caption written for you.",
     make: { href: 'https://build.sogilex.com/posts/', text: 'Make a post' },
     about: { href: '/posts/', text: 'How it works' },
   },
   {
-    id: 'invoices', label: 'Invoices', tag: 'Beta', title: 'Quotes & invoices',
+    id: 'invoices', label: 'Invoices', title: 'Quotes & invoices',
     blurb: 'Quotes and invoices with your logo and exact totals. Offer optional add-ons, turn an accepted quote into an invoice in one click, and see who still owes you.',
     make: { href: 'https://build.sogilex.com/invoices/', text: 'Make an invoice' },
     about: { href: '/invoices/', text: 'How it works' },
