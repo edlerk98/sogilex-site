@@ -45,8 +45,9 @@ permission, on /examples/ and the homepage).
    its Cloudflare key (secure credential form, never chat) and the connectors (GitHub, Supabase, Gmail) must be set
    up again there.
 
-**2026-11-24 (later session, branch `claude/adoring-mayer-jom4sb` in both repos): "Show up on Google" built and
-tested, NOT deployed** (waiting for the owner's OK). Worker: canonical link, `/sitemap.xml` + robots line, schema.org
+**2026-11-24 (later session): "Show up on Google" DEPLOYED 2026-11-24 (owner: "deploy the Google work")**: 028 applied,
+Worker = main + Google (live code checked == main first; bindings kept; 21 Google + 13 offline checks). The repo's
+`main` gets the Worker/028/PUBLISHING.md changes when the owner says push it to main. Worker: canonical link, `/sitemap.xml` + robots line, schema.org
 WebSite + LocalBusiness (phone, hours) from what the page shows; migration `028_google.sql` (publish_site returns
 hours). Details: `sogilex-build/docs/PUBLISHING.md`. To ship: apply 028, deploy the Worker (keep FORM_SECRET
 "inherit"), merge the build branch, then republish each site. Found: all 3 live sites already had title, description
