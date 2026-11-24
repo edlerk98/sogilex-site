@@ -175,6 +175,15 @@ record, live status via the Cloudflare API from the Worker/api), Worker: route `
 (KV host:<domain>), slug.sogilex.net 301s to the own address, canonical/og/sitemap use it; offline rule unchanged;
 Stripe add-on product "Own web address" $5/mo as a second subscription item (lookup key domain_month), plan gate:
 diy/dfy_site/dfy_all/team/comp; removing the add-on or the plan drops the hostname. Sogilex does NOT sell domains.
+**Progress 2026-11-24 (part 1 of 2):** 038 applied; billing v4 deployed (add-on synced live in Stripe test mode: plan picked
+from the items, domain_addon true); `domains` function v1 deployed (needs Supabase secret CF_DOMAINS_TOKEN from the owner:
+a Cloudflare token for sogilex.net with SSL and Certificates: Edit); Stripe prices domain_month $5 / domain_year $50 (yearly
+plans need a yearly item: $50 = 2 months free, owner may change). Worker change committed on the branch, NOT deployed; the
+zone route `*/*` (so customer domains reach the Worker) NOT added yet. Not built: the Build panel. **Pending cleanup (the
+Supabase SQL tool timed out waiting for an approval):** delete auth user b111ae57-0000-4000-8000-00000000d0d0
+(domain-test@example.com) and set app_settings billing_testers back to the Yahoo test account id only. Stripe test data for
+it is already removed. Portal limit to know: Stripe's Manage billing can't switch plans on a subscription with two items
+(cancel still works).
 
 **Next builds the owner can pick (advisor's order):** (1) finish the About page when the answers arrive; (2) "Show up
 on Google" for published sites (title/description, LocalBusiness data with hours, sitemap); (3) reuse saved
