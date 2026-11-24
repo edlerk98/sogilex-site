@@ -154,7 +154,7 @@ period end, Dec 24) and Sogilex received it, but didn't store it, so Your accoun
 + my_plan.cancel_at; billing v3 stores it (null when kept/ended); account shows "ends <date>" + a note. Live on main.
 14-day trial code also on main (wording still held for switch-over).
 
-**2026-11-24: Blanks warning in the Publish box (built on the branch, not on main yet).** Counts [PLACEHOLDER]s in visible
+**2026-11-24: Blanks warning in the Publish box (live on main 2026-11-24).** Counts [PLACEHOLDER]s in visible
 text, tel:/mailto: links, title and meta description (not CSS); "Fill them in" opens Edit words at the fill-in boxes;
 publishing with blanks asks first. 13 browser checks; earlier suites rerun. Jeanna's live site has 6 (seen 11-24).
 
