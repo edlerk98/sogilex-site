@@ -149,6 +149,11 @@ suites rerun (66 checks). Plans page trial card updated on the site branch ("$0 
 Advice given: free users cost ~$0.80 max in AI; the risk is value without paying; no card-upfront (hurts sign-ups for
 an unknown brand); screenshots make hard caps on no-AI tools impossible, so time + the mark are the levers.
 
+**2026-11-24: Fix (owner noticed): cancelling in Manage billing looked like nothing happened.** Stripe had it (cancel at
+period end, Dec 24) and Sogilex received it, but didn't store it, so Your account said "renews". 036 subscriptions.cancel_at
++ my_plan.cancel_at; billing v3 stores it (null when kept/ended); account shows "ends <date>" + a note. Live on main.
+14-day trial code also on main (wording still held for switch-over).
+
 **Next builds the owner can pick (advisor's order):** (1) finish the About page when the answers arrive; (2) "Show up
 on Google" for published sites (title/description, LocalBusiness data with hours, sitemap); (3) reuse saved
 business hours in Menus and Flyers. Keep the homepage "New in Sogilex" cards current when things ship.
