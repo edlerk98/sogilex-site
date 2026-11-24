@@ -45,6 +45,14 @@ permission, on /examples/ and the homepage).
    its Cloudflare key (secure credential form, never chat) and the connectors (GitHub, Supabase, Gmail) must be set
    up again there.
 
+**2026-11-24 (later session, branch `claude/adoring-mayer-jom4sb` in both repos): "Show up on Google" built and
+tested, NOT deployed** (waiting for the owner's OK). Worker: canonical link, `/sitemap.xml` + robots line, schema.org
+WebSite + LocalBusiness (phone, hours) from what the page shows; migration `028_google.sql` (publish_site returns
+hours). Details: `sogilex-build/docs/PUBLISHING.md`. To ship: apply 028, deploy the Worker (keep FORM_SECRET
+"inherit"), merge the build branch, then republish each site. Found: all 3 live sites already had title, description
+and lang; sprayedbyjeanna shows `[PHONE NUMBER]` and `[PRICE]` to visitors and Google, evergreenlawn (demo) shows
+`[CUSTOMER NAME]` reviews. Suggested next: warn in the Publish box when a page still has [BLANKS].
+
 **Next builds the owner can pick (advisor's order):** (1) finish the About page when the answers arrive; (2) "Show up
 on Google" for published sites (title/description, LocalBusiness data with hours, sitemap); (3) reuse saved
 business hours in Menus and Flyers. Keep the homepage "New in Sogilex" cards current when things ship.
