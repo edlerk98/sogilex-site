@@ -8,14 +8,50 @@ This repo is public: no keys, user IDs or private details here.
 - Start a cloud session on the **"Sogilex"** environment (it holds the Cloudflare key; a session started on
   Default can move to it with one approval) with both repos:
   `edlerk98/sogilex-site`, `edlerk98/sogilex-build` (`edlerk98/savepoint-atlas` only serves the "closed" page now; not needed).
-- Tell it: *"Read PROGRESS.md in sogilex-site, then continue."* If `main`'s copy is older than the one on branch
-  `claude/magical-fermat-rwiczu` (check the "Last updated" date), read the branch copy: the About page work there is
-  deliberately not merged yet (see the handoff below).
+- Tell it: *"Read PROGRESS.md in sogilex-site on branch `claude/adoring-mayer-jom4sb` (start with "Start here"), then
+  continue."* That branch (in BOTH repos) holds work deliberately not on `main` yet (listed below); its copy of this file is
+  the newest.
+- The environment also holds the Stripe TEST key (network secret for api.stripe.com). Supabase secrets: STRIPE_SECRET_KEY
+  (test key), and CF_DOMAINS_TOKEN still to be added by the owner.
 - Working style the owner asked for: be an advisor, not a yes-man (say when they're wrong and why, give
   confidence levels); **simple, one-step-at-a-time walkthroughs** for anything the owner does by hand (they get
   overwhelmed by long lists); test before shipping; end each reply with one clear next step.
 
-## Start here: handoff from the 2026-11-22 to 11-24 session
+## Start here: handoff at the end of 2026-11-24 (latest session)
+
+**Where we stopped (owner ended the day mid-feature): own web addresses (www.theirbusiness.com), $5/month add-on.**
+Everything is built and tested on branch `claude/adoring-mayer-jom4sb`; parts are live (database 038, billing v4, domains
+function v1, Stripe prices). Remaining, in order (details under "Own web address" below):
+1. **Owner:** create a Cloudflare API token "Sogilex domains": Zone = sogilex.net, permission SSL and Certificates: Edit
+   (Zone Read if asked); paste its value as Supabase secret **CF_DOMAINS_TOKEN** (Edge Functions -> Secrets). Walk
+   them through it ONE step at a time; never let them paste it in chat. (Their "Sogilex publishing" token already has the
+   same permission but its value can't be shown again.)
+2. **Claude, with the owner's OK ("deploy it"):** deploy the branch Worker (`worker/sites.js`; keep bindings, FORM_SECRET
+   inherit; check live code == main first) and add zone route `*/*` -> sogilex-sites (Workers Routes write is on the token).
+3. **End-to-end test without buying a domain:** owner adds CNAME `demo` -> `domains.sogilex.net` at Porkbun (sogilex.com
+   DNS); Claude creates custom hostname demo.sogilex.com via API + a custom_domains row (status active once Cloudflare
+   says so) for the owner's Team account (site evergreenlawn); check https://demo.sogilex.com shows Evergreen with a
+   padlock and evergreenlawn.sogilex.net forwards; then remove both (the domains function refuses sogilex.com on purpose).
+   This also tests domain_site/site_domain against real rows (not yet done).
+4. Owner says "push it to main" -> push the Build panel + Worker + 038/function files to sogilex-build `main`.
+
+**Held on the branch on purpose (do NOT push before their time):**
+- sogilex-build: the switch-over wording ("· beta" labels, Build Privacy & limits, Publish tag) -> switch-over day.
+- sogilex-site: the switch-over wording (Plans page with Free trial / Basics / Do it yourself, "Start free", no Beta
+  tags, Menus FAQ) -> switch-over day; the About page (13 `.todo` blanks; waiting for the owner's story/photo and Blake's
+  answers) -> when filled.
+Everything else from this session is live on `main` (see the dated sections below).
+
+**Biggest open item for launch is on the owner: the Missouri LLC**, then Terms/Privacy under it (billing, refunds,
+"offline when a plan ends"; the Terms still say "a free beta") with a lawyer's read, then Stripe live + the switch-over
+checklist (section "LOCKDOWN PHASE 1"). Ask for the LLC name; offer to draft Terms/Privacy then.
+
+**Decisions made this session (keep to them):** Basics $9/$90; Do it yourself $19/$190; own address $5/mo ($50/yr) add-on,
+included in done-for-you website plans, Team, Comp; 14-day free trial (clock starts at switch-over for old accounts);
+trial websites are preview-only; "Made with Sogilex" line on trial downloads; owner's mom = Complimentary; nobody else
+comped; sprayedbyjeanna was a TEST site by Blake's wife (now unpublished). Sogilex does not sell domains.
+
+## Earlier handoff (2026-11-22 to 11-24 session)
 
 **State:** everything below is live on `main` and deployed (database migrations 025-027, build-site v17, the Worker),
 except the About page. sogilex-build: branch = `main`. sogilex-site: the working branch `claude/magical-fermat-rwiczu`
