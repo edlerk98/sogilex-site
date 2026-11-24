@@ -160,9 +160,9 @@ text, tel:/mailto: links, title and meta description (not CSS); "Fill them in" o
 publishing with blanks asks first. 13 browser checks; earlier suites rerun. Jeanna's live site has 6 (seen 11-24).
 
 **Correction (owner, 2026-11-24): sprayedbyjeanna.sogilex.net is NOT a friend's business. Blake's wife made it to see what
-a site looks like.** No warning needed at switch-over. Advised: unpublish it now (public test page with [PHONE NUMBER]
-blanks and the Sogilex footer, now listed in its sitemap); waiting for the owner/Blake's wife to agree (Build -> Unpublish
-keeps everything saved).
+a site looks like.** No warning needed at switch-over. **Unpublished 2026-11-24 (owner: "unpublish it")**, done
+the way Unpublish does it: sites row deleted, then the 6 KV copies (site, photos list, 3 photos, logo). Her builds,
+photos and logo in Build are untouched; she can publish again. Published sites now: evergreenlawn, sweetanniephotography.
 
 **Next builds the owner can pick (advisor's order):** (1) finish the About page when the answers arrive; (2) "Show up
 on Google" for published sites (title/description, LocalBusiness data with hours, sitemap); (3) reuse saved
