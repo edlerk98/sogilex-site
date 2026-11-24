@@ -116,7 +116,7 @@ LLC, Stripe live, default_plan -> 'trial', publish wording. Testers other than t
   branch `offline-main` in the session; recreate by cherry-picking the branch commit onto main). **Worker DEPLOYED
   2026-11-24** from main + this change only (live code was checked equal to main first; bindings kept, FORM_SECRET
   inherit). Pushed to `main` 2026-11-24 (main's worker == deployed). 13 miniflare checks on both copies. At the launch switch Sprayed by Jeanna (Beta)
-  goes offline unless it gets a plan: **owner decided 2026-11-24: do NOT comp Jeanna**; Evergreen (team) and Sweet Annie (comp) stay up. Done-for-you plans stay manual.
+  goes offline unless it gets a plan: **owner decided 2026-11-24: do NOT comp Jeanna** (owner, later: it's only Blake's wife testing what a site looks like, not a real business); Evergreen (team) and Sweet Annie (comp) stay up. Done-for-you plans stay manual.
   **Going live (after LLC):** swap both secrets to the sk_live_ key, recreate products/prices/portal/webhook in live
   mode (same lookup keys), then the switch-over.
 - **Found:** trial caps on flyers/posts/invoices count SAVED items, and one item can be edited into a new one
@@ -132,7 +132,7 @@ Tools: no "· beta" eyebrows; Build Publish tag "Do it yourself"; Privacy & limi
 cancellation/refund wording and "site offline when a plan ends" (the Terms still say "a free beta" everywhere), lawyer
 read. (2) Stripe live: swap the Supabase secret STRIPE_SECRET_KEY and the environment's api.stripe.com secret to the
 sk_live_ key; recreate products/prices (same lookup keys), portal config (metadata sogilex=1) and the webhook in live
-mode. (3) Tell Jeanna (owner decided no comp; her site goes offline unless she picks Do it yourself). (4) Push the
+mode. (3) (Nothing to tell anyone: sprayedbyjeanna is only a TEST site by Blake's wife.) (4) Push the
 wording commits to main in both repos (sogilex-site: cherry-pick ONLY the wording commits, not the About page).
 (5) Start the trial clock, then flip: `insert into public.app_settings (key, value) values ('trial_epoch', now()::text) on conflict (key) do update set value = excluded.value;` then `update public.app_settings set value='trial' where key='default_plan';` (without trial_epoch, every account older than 14 days is 'Free trial ended' at once). (6) Check a beta tester sees the
 trial line, the mark and the upgrade box; Evergreen + Sweet Annie stay up; Jeanna offline.
@@ -158,6 +158,11 @@ period end, Dec 24) and Sogilex received it, but didn't store it, so Your accoun
 **2026-11-24: Blanks warning in the Publish box (live on main 2026-11-24).** Counts [PLACEHOLDER]s in visible
 text, tel:/mailto: links, title and meta description (not CSS); "Fill them in" opens Edit words at the fill-in boxes;
 publishing with blanks asks first. 13 browser checks; earlier suites rerun. Jeanna's live site has 6 (seen 11-24).
+
+**Correction (owner, 2026-11-24): sprayedbyjeanna.sogilex.net is NOT a friend's business. Blake's wife made it to see what
+a site looks like.** No warning needed at switch-over. Advised: unpublish it now (public test page with [PHONE NUMBER]
+blanks and the Sogilex footer, now listed in its sitemap); waiting for the owner/Blake's wife to agree (Build -> Unpublish
+keeps everything saved).
 
 **Next builds the owner can pick (advisor's order):** (1) finish the About page when the answers arrive; (2) "Show up
 on Google" for published sites (title/description, LocalBusiness data with hours, sitemap); (3) reuse saved
