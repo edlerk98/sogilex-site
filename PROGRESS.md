@@ -53,6 +53,14 @@ hours). Details: `sogilex-build/docs/PUBLISHING.md`. To ship: apply 028, deploy 
 and lang; sprayedbyjeanna shows `[PHONE NUMBER]` and `[PRICE]` to visitors and Google, evergreenlawn (demo) shows
 `[CUSTOMER NAME]` reviews. Suggested next: warn in the Publish box when a page still has [BLANKS].
 
+**2026-11-24: Zoom in Adjust photos (owner: "I could not crop a photo. Only move it around.")**, on branch
+`claude/adoring-mayer-jom4sb` in sogilex-build, not on `main` yet. Zoom slider 100-300% next to Frame shape: the photo
+is enlarged (`transform: scale`) around its focus point and clipped back to its frame (`clip-path: inset`), so the
+layout doesn't move; drag/arrow keys move the focus point; inline `animation:none` on a zoomed photo (a hero
+slow-zoom animation would override it); Whole photo disables zoom; Reset clears it. 20 browser checks with real
+photos (gallery, box, background, save contents, reopen, phone width). Arrow keys move the slider while it has focus
+(normal slider behaviour); click the photo first to nudge it. Not yet tried on an iPhone.
+
 **Next builds the owner can pick (advisor's order):** (1) finish the About page when the answers arrive; (2) "Show up
 on Google" for published sites (title/description, LocalBusiness data with hours, sitemap); (3) reuse saved
 business hours in Menus and Flyers. Keep the homepage "New in Sogilex" cards current when things ship.
