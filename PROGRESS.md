@@ -133,8 +133,21 @@ read. (2) Stripe live: swap the Supabase secret STRIPE_SECRET_KEY and the enviro
 sk_live_ key; recreate products/prices (same lookup keys), portal config (metadata sogilex=1) and the webhook in live
 mode. (3) Tell Jeanna (owner decided no comp; her site goes offline unless she picks Do it yourself). (4) Push the
 wording commits to main in both repos (sogilex-site: cherry-pick ONLY the wording commits, not the About page).
-(5) Flip: `update public.app_settings set value='trial' where key='default_plan';`. (6) Check a beta tester sees the
+(5) Start the trial clock, then flip: `insert into public.app_settings (key, value) values ('trial_epoch', now()::text) on conflict (key) do update set value = excluded.value;` then `update public.app_settings set value='trial' where key='default_plan';` (without trial_epoch, every account older than 14 days is 'Free trial ended' at once). (6) Check a beta tester sees the
 trial line, the mark and the upgrade box; Evergreen + Sweet Annie stay up; Jeanna offline.
+
+**2026-11-24: 14-day free trial + website preview-only on the trial (owner: "do 1 and 2", worried free users never pay).**
+035 applied live: hidden plan 'expired' ("Free trial ended", nothing included); plan_of turns 'trial' into 'expired' after
+trial_ends(user) = greatest(account created, app_settings 'trial_epoch') + 'trial_days' (default 14). Ended = read-only:
+triggers refuse edits to flyers/posts/inv_docs/menus (deleting still works), plan_item_cap refuses new items, AI refused
+with "Your free trial has ended...". my_plan.trial_ends. Tools (sogilex-build branch, not on main yet):
+SogilexUpgrade.gate('site') = website Download/Copy/Open full size need can_publish (trial = preview only; DIY/beta/
+team/comp fine); gate('export') = Save image/Share/Print refused when ended; trial line shows days left (Menus too);
+the box opens once per minute per message (autosave). Tested: live SQL in an undone transaction (old account ended
+without epoch, full 14 days with it, team/comp/paid unaffected, edits/new items refused) + 19 browser checks; earlier
+suites rerun (66 checks). Plans page trial card updated on the site branch ("$0 for 14 days").
+Advice given: free users cost ~$0.80 max in AI; the risk is value without paying; no card-upfront (hurts sign-ups for
+an unknown brand); screenshots make hard caps on no-AI tools impossible, so time + the mark are the levers.
 
 **Next builds the owner can pick (advisor's order):** (1) finish the About page when the answers arrive; (2) "Show up
 on Google" for published sites (title/description, LocalBusiness data with hours, sitemap); (3) reuse saved
