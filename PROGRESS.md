@@ -1,6 +1,6 @@
 # Sogilex: where things stand
 
-Last updated 2026-11-22. **A new session should read this file first.**
+Last updated 2026-11-24. **A new session should read this file first.**
 This repo is public: no keys, user IDs or private details here.
 
 ## How to start the next session
@@ -8,15 +8,56 @@ This repo is public: no keys, user IDs or private details here.
 - Start a cloud session on the **"Sogilex"** environment (it holds the Cloudflare key; a session started on
   Default can move to it with one approval) with both repos:
   `edlerk98/sogilex-site`, `edlerk98/sogilex-build` (`edlerk98/savepoint-atlas` only serves the "closed" page now; not needed).
-- Tell it: *"Read PROGRESS.md in sogilex-site, then continue."*
+- Tell it: *"Read PROGRESS.md in sogilex-site, then continue."* If `main`'s copy is older than the one on branch
+  `claude/magical-fermat-rwiczu` (check the "Last updated" date), read the branch copy: the About page work there is
+  deliberately not merged yet (see the handoff below).
 - Working style the owner asked for: be an advisor, not a yes-man (say when they're wrong and why, give
   confidence levels); **simple, one-step-at-a-time walkthroughs** for anything the owner does by hand (they get
   overwhelmed by long lists); test before shipping; end each reply with one clear next step.
 
+## Start here: handoff from the 2026-11-22 to 11-24 session
+
+**State:** everything below is live on `main` and deployed (database migrations 025-027, build-site v17, the Worker),
+except the About page. sogilex-build: branch = `main`. sogilex-site: the working branch `claude/magical-fermat-rwiczu`
+is ahead of `main` by the About page + the menu swap + design files (logos, profile form). **Do not merge the About
+page to `main` while it has `.todo` blanks** (13 now); the logo and profile-form files under `design/` are safe to
+merge any time.
+
+**Built and live this session (details in the sections below):** business hours in Build; link preview picture
+(Open Graph); Edit words + reworked Adjust photos (frame shapes); publishing copies only new photos (fixed 6 blank
+photos and Cloudflare KV write usage); contact-form spam fix (FORM_SECRET, 027); quote extras (add-ons, terms,
+signature, New quote/New invoice cards, 026); invoice price-box fix; homepage: New in Sogilex, showcase of real
+output, lighter "How we design"/"How Build works"; first real example (Sweet Annie Photography, owner's mom, with
+permission, on /examples/ and the homepage).
+
+**Waiting on the owner or others (don't do these for them; remind gently, one at a time):**
+1. Blake's answers to the business plan (Claude Doc https://claude.ai/artifact/PhM9gHYKiWhdGVs5ZH8M5E, tabs: plan and
+   "What's next"). Suggested: 70/30, 4-year vesting (owner 25% earned at signing), Blake Co-founder & Head of Sales,
+   20% commission on setup fees he signs, Blake's funding recorded as loan or extra ownership.
+2. For the About page: owner's 2-3 sentence story, owner's profile answers (title "Founder & CEO" to confirm),
+   Blake's filled profile PDF (`design/team-profile/`), both photos (by email to hello@sogilex.com or in chat).
+3. LLC steps (order in the doc's "What's next" tab): Missouri LLC → operating agreement + lawyer → EIN + bank →
+   legal pages under the LLC + copyright agent (register it AFTER the LLC, under its name, ~$6) → Stripe + first
+   paying customers.
+4. Later, owner's choice: Google Workspace emails (~$17/mo for two), Claude Team for owner + Blake (2-seat minimum,
+   ~$25/seat/mo; export data first; moving a personal account in is one-way). The owner is moving to a new chat now and
+   may later move to a Claude Team workspace: if this session runs in a new account, the "Sogilex" environment,
+   its Cloudflare key (secure credential form, never chat) and the connectors (GitHub, Supabase, Gmail) must be set
+   up again there.
+
+**Next builds the owner can pick (advisor's order):** (1) finish the About page when the answers arrive; (2) "Show up
+on Google" for published sites (title/description, LocalBusiness data with hours, sitemap); (3) reuse saved
+business hours in Menus and Flyers. Keep the homepage "New in Sogilex" cards current when things ship.
+
+**Working notes for the assistant:** the owner says "push it to main" to publish; don't push to `main` without it
+(an automatic permission check blocks unrequested `main` pushes). The Supabase connector's Execute SQL and Query logs
+are set to always-allow. Costs estimate (2026-11-23): ~$27/month today, ~$35-85/month with 10 customers (AI ~$0.28 a
+build, ~$0.10 a change). Logos: `design/logos/` (every document gets the logo at the top).
+
 ## Owner's standing rules for documents (2026-11-23)
 
 - **Every document made for Sogilex carries the Sogilex logo at the top** (owner: "Any document that we make, I will
-  always want the logo on it"). Use `design/sogilex-logo-badge.png` (1038x308, the two sunset squares + SOGILEX
+  always want the logo on it"). Use `design/sogilex-logo-badge.png` (or the set in `design/logos/`; 1038x308, the two sunset squares + SOGILEX
   wordmark on night plum, readable in light and dark mode; source `design/sogilex-logo-badge.html`, rendered at 2x).
   In a Claude Docs doc: upload it as an asset to the doc's artifact, create a blob, insert `![Sogilex logo](blob/<id>)`
   above the title of every tab. Business plan (Claude Doc, private to the owner):
