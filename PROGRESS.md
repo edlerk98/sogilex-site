@@ -92,6 +92,23 @@ LLC, Stripe live, default_plan -> 'trial', publish wording. Testers other than t
   shown when the plan's window is 'ever') on flyers/posts (under the footer, inside the fit), menus (pill in the last
   page's bottom margin) and quotes/invoices (page foot); in preview, Save image, Share and print; paid plans drop it.
   Not on website downloads (trial websites can't be published; decide later). 22 browser checks, trial vs Basics.
+- **(3) Stripe TEST mode built (2026-11-24); function + database live, pages on branch.** Stripe account (owner's;
+  test key saved on the "Sogilex" environment as a network secret for api.stripe.com AND as Supabase secret
+  STRIPE_SECRET_KEY). Stripe products/prices made by API with lookup keys basics_month/_year, diy_month/_year ($9/$90,
+  $19/$190); customer portal config (metadata sogilex=1: card, receipts, switch Basics<->DIY, cancel at period end);
+  webhook -> https://sdltqbctuieyjlujsdhj.supabase.co/functions/v1/billing (6 events; its signing secret is not used:
+  the function re-reads each event and then the subscription itself from Stripe, so replays can't undo changes).
+  Edge Function `billing` v2 (verify_jwt off): actions checkout / confirm / portal + webhook. Plans come only from the
+  price lookup key; comp/team rows without a Stripe id are never changed and can't check out. **Test-mode guard:** with
+  an sk_test_ key only app_settings 'billing_testers' (user ids, comma-separated; now empty) can pay or be synced;
+  others get "Payments aren't open yet" and the checkout page saves their choice as a request (old behaviour).
+  031 (my_plan.billing_managed), 032 (service_role select on app_settings: without it every account counted as a
+  non-tester). Tested live against Stripe test mode with throwaway accounts (deleted): subscribe Basics -> basics,
+  switch to DIY yearly -> diy + publishing, cancel -> back to default, comp account + paid sub -> stays comp, non-tester
+  ignored, tester synced. 17 browser checks (checkout, return confirm, Manage billing, past due, comp, beta).
+  **Not built yet:** site + online menu going offline when a plan ends (Worker side). Done-for-you plans stay manual.
+  **Going live (after LLC):** swap both secrets to the sk_live_ key, recreate products/prices/portal/webhook in live
+  mode (same lookup keys), then the switch-over.
 - **Found:** trial caps on flyers/posts/invoices count SAVED items, and one item can be edited into a new one
   forever, so for the no-AI tools the trial limit barely limits. The "Made with Sogilex" mark (2) is the real lever.
 
