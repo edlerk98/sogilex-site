@@ -381,3 +381,25 @@ img, svg { display: block; }
   .flow li:not(:last-child)::after { content: ""; position: absolute; left: 27px; top: 56px; bottom: -26px; width: 2px; background: linear-gradient(180deg, var(--magenta), var(--amber)); opacity: .55; }
 }
 .show-site span { top: 8px; bottom: auto; left: auto; right: 8px; }
+
+/* About page */
+.about-hero .wrap { min-height: 460px; }
+.story { max-width: 46rem; padding: clamp(24px, 4vw, 40px); border-radius: 22px; display: flex; flex-direction: column; gap: 14px; }
+.story p { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.65; }
+.team { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 20px; }
+.person { padding: 28px; border-radius: 20px; display: flex; flex-direction: column; gap: 18px; }
+.person-top { display: flex; align-items: center; gap: 18px; }
+.person-photo { flex: none; width: 96px; height: 96px; border-radius: 50%; padding: 3px; background: var(--sunset); }
+.person-photo span, .person-photo img { width: 100%; height: 100%; border-radius: 50%; display: grid; place-items: center; object-fit: cover; background: var(--night); font: 600 24px var(--head); color: var(--text); }
+.person h3 { margin: 0; font-family: var(--head); font-weight: 500; font-size: 24px; }
+.person-title { margin: 4px 0 0; color: var(--amber); font-weight: 600; }
+.person-area { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+.person-role { margin: 0; color: var(--text); font-size: 17px; line-height: 1.55; }
+.person-facts { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 10px 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+.person-facts dt { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding-top: 2px; }
+.person-facts dd { margin: 0; color: var(--text); }
+@media (max-width: 480px) { .person-facts { grid-template-columns: minmax(0, 1fr); gap: 2px; } .person-facts dd { margin-bottom: 10px; } }
+.about-cta .wrap { align-items: flex-start; }
+.about-cta .actions { margin: 0; }
+/* Blanks still to fill (visible on purpose; none may remain when the page goes live) */
+.todo { color: var(--amber) !important; font-style: italic; }

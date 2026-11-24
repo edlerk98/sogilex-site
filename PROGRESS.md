@@ -492,6 +492,20 @@ DevTools edits are local to one browser and vanish on refresh; all enforcement i
   her clients' photos appear on Sogilex's pages, so she should be comfortable with that (portfolio use).
 - If she changes her site a lot, re-render the screenshots from KV the same way (see this session's notes).
 
+## About page (2026-11-24, built, NOT live: waiting for the team's answers)
+
+- `/about/`: hero ("The people behind Sogilex."), "Our story" (Keagan writes 2-3 sentences; a factual paragraph on the
+  approach is already there), "The team" (Keagan Edler, Founder & CEO; Blake Pille, Co-founder & Head of Sales) with a
+  photo circle (initials until photos arrive), area, one-line role, and four facts (for fun, favorite local spot + order,
+  surprising fact, three words), the four design rules, and "Say hello" (email + examples). Styles in site.css (`.team`,
+  `.person*`, `.story`); `.todo` marks blanks in amber italics: **13 blanks; none may remain before pushing to main.**
+- Menu: "About" replaced "How we design" (a homepage anchor) on all 10 pages, keeping the menu at five items; the rules
+  stay on the homepage and the About page. This menu change is on the same branch commit, so it goes live with /about/.
+- Answers come from the fillable "Meet the team" profile PDF (`/home/user/Sogilex-Team-Profile.pdf`, generator script in
+  the session scratchpad: reportlab AcroForm, 15 fields, all optional, approval boxes; photos by email to
+  hello@sogilex.com). Owner's title to confirm; owner can answer in chat instead of the PDF.
+- Advice given: no further tabs now (menu stays at five); a FAQ later, only from real customer questions.
+
 ## Plans page: sogilex.com/plans/ (2026-11-20, owner asked for "a plans tab")
 
 - "Plans" in the menu of every sogilex.com page (after Services); the homepage's done-for-you section links to it.
