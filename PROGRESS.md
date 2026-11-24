@@ -179,10 +179,15 @@ diy/dfy_site/dfy_all/team/comp; removing the add-on or the plan drops the hostna
 from the items, domain_addon true); `domains` function v1 deployed (needs Supabase secret CF_DOMAINS_TOKEN from the owner:
 a Cloudflare token for sogilex.net with SSL and Certificates: Edit); Stripe prices domain_month $5 / domain_year $50 (yearly
 plans need a yearly item: $50 = 2 months free, owner may change). Worker change committed on the branch, NOT deployed; the
-zone route `*/*` (so customer domains reach the Worker) NOT added yet. Not built: the Build panel. **Pending cleanup (the
-Supabase SQL tool timed out waiting for an approval):** delete auth user b111ae57-0000-4000-8000-00000000d0d0
-(domain-test@example.com) and set app_settings billing_testers back to the Yahoo test account id only. Stripe test data for
-it is already removed. Portal limit to know: Stripe's Manage billing can't switch plans on a subscription with two items
+zone route `*/*` (so customer domains reach the Worker) NOT added yet. Not built: the Build panel. Cleanup done (throwaway user deleted, billing_testers = Yahoo test account only).
+**Part 2 built (2026-11-24):** Build panel "Your own web address" (branch, not on main; 13 browser checks). DB lookups
+domain_site/site_domain not yet tested against real rows (the SQL test tool timed out once): check them in the end-to-end
+test. **To go live:** (1) owner: Cloudflare token "Sogilex domains" (sogilex.net, SSL and Certificates: Edit) pasted into
+Supabase secret CF_DOMAINS_TOKEN; (2) deploy the Worker (branch version) + add zone route `*/*` -> sogilex-sites;
+(3) end-to-end test without buying a domain: owner adds a CNAME `demo` -> domains.sogilex.net at Porkbun (sogilex.com's
+DNS), Claude creates the custom hostname demo.sogilex.com by API + a custom_domains row for the Team account (Evergreen)
+(the domains function refuses sogilex.com names on purpose), check https://demo.sogilex.com, then remove both;
+(4) push the Build panel to main. Portal limit to know: Stripe's Manage billing can't switch plans on a subscription with two items
 (cancel still works).
 
 **Next builds the owner can pick (advisor's order):** (1) finish the About page when the answers arrive; (2) "Show up
