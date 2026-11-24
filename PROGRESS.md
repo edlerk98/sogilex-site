@@ -61,6 +61,14 @@ slow-zoom animation would override it); Whole photo disables zoom; Reset clears 
 photos (gallery, box, background, save contents, reopen, phone width). Arrow keys move the slider while it has focus
 (normal slider behaviour); click the photo first to nudge it. Not yet tried on an iPhone.
 
+**2026-11-24: Complimentary plan (029, applied live).** Hidden plan `comp` ($0, Beta's tools + daily limits,
+publishing). Owner's mom (Sweet Annie account) is on it (subscriptions row, status active, no Stripe ids), so the
+launch switch (default_plan -> 'trial') doesn't affect her. The owner's own account stays on `team` (more than comp).
+**Stripe work must only touch subscription rows that have a stripe_subscription_id** (never comp/team). Known: the
+account page shows comp as "Free" with a "Change plan" button (harmless until payments exist; hide it for comp/team
+before Stripe). Still to decide before lockdown: who else gets comp (10 accounts; sprayedbyjeanna is on beta), and the
+base plan (advised: ~$9/mo for flyers/posts/printed menus/invoices, no website or publishing; owner sets name, price, caps).
+
 **Next builds the owner can pick (advisor's order):** (1) finish the About page when the answers arrive; (2) "Show up
 on Google" for published sites (title/description, LocalBusiness data with hours, sitemap); (3) reuse saved
 business hours in Menus and Flyers. Keep the homepage "New in Sogilex" cards current when things ship.
