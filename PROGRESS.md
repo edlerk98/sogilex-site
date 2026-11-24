@@ -1,6 +1,6 @@
 # Sogilex: where things stand
 
-Last updated 2026-11-22. **A new session should read this file first.**
+Last updated 2026-11-24. **A new session should read this file first.**
 This repo is public: no keys, user IDs or private details here.
 
 ## How to start the next session
@@ -8,10 +8,179 @@ This repo is public: no keys, user IDs or private details here.
 - Start a cloud session on the **"Sogilex"** environment (it holds the Cloudflare key; a session started on
   Default can move to it with one approval) with both repos:
   `edlerk98/sogilex-site`, `edlerk98/sogilex-build` (`edlerk98/savepoint-atlas` only serves the "closed" page now; not needed).
-- Tell it: *"Read PROGRESS.md in sogilex-site, then continue."*
+- Tell it: *"Read PROGRESS.md in sogilex-site, then continue."* If `main`'s copy is older than the one on branch
+  `claude/magical-fermat-rwiczu` (check the "Last updated" date), read the branch copy: the About page work there is
+  deliberately not merged yet (see the handoff below).
 - Working style the owner asked for: be an advisor, not a yes-man (say when they're wrong and why, give
   confidence levels); **simple, one-step-at-a-time walkthroughs** for anything the owner does by hand (they get
   overwhelmed by long lists); test before shipping; end each reply with one clear next step.
+
+## Start here: handoff from the 2026-11-22 to 11-24 session
+
+**State:** everything below is live on `main` and deployed (database migrations 025-027, build-site v17, the Worker),
+except the About page. sogilex-build: branch = `main`. sogilex-site: the working branch `claude/magical-fermat-rwiczu`
+is ahead of `main` by the About page + the menu swap + design files (logos, profile form). **Do not merge the About
+page to `main` while it has `.todo` blanks** (13 now); the logo and profile-form files under `design/` are safe to
+merge any time.
+
+**Built and live this session (details in the sections below):** business hours in Build; link preview picture
+(Open Graph); Edit words + reworked Adjust photos (frame shapes); publishing copies only new photos (fixed 6 blank
+photos and Cloudflare KV write usage); contact-form spam fix (FORM_SECRET, 027); quote extras (add-ons, terms,
+signature, New quote/New invoice cards, 026); invoice price-box fix; homepage: New in Sogilex, showcase of real
+output, lighter "How we design"/"How Build works"; first real example (Sweet Annie Photography, owner's mom, with
+permission, on /examples/ and the homepage).
+
+**Waiting on the owner or others (don't do these for them; remind gently, one at a time):**
+1. Blake's answers to the business plan (Claude Doc https://claude.ai/artifact/PhM9gHYKiWhdGVs5ZH8M5E, tabs: plan and
+   "What's next"). Suggested: 70/30, 4-year vesting (owner 25% earned at signing), Blake Co-founder & Head of Sales,
+   20% commission on setup fees he signs, Blake's funding recorded as loan or extra ownership.
+2. For the About page: owner's 2-3 sentence story, owner's profile answers (title "Founder & CEO" to confirm),
+   Blake's filled profile PDF (`design/team-profile/`), both photos (by email to hello@sogilex.com or in chat).
+3. LLC steps (order in the doc's "What's next" tab): Missouri LLC → operating agreement + lawyer → EIN + bank →
+   legal pages under the LLC + copyright agent (register it AFTER the LLC, under its name, ~$6) → Stripe + first
+   paying customers.
+4. Later, owner's choice: Google Workspace emails (~$17/mo for two), Claude Team for owner + Blake (2-seat minimum,
+   ~$25/seat/mo; export data first; moving a personal account in is one-way). The owner is moving to a new chat now and
+   may later move to a Claude Team workspace: if this session runs in a new account, the "Sogilex" environment,
+   its Cloudflare key (secure credential form, never chat) and the connectors (GitHub, Supabase, Gmail) must be set
+   up again there.
+
+**2026-11-24 (later session): "Show up on Google" DEPLOYED 2026-11-24 (owner: "deploy the Google work")**: 028 applied,
+Worker = main + Google (live code checked == main first; bindings kept; 21 Google + 13 offline checks). On `main` 2026-11-24
+(main's worker == deployed). sogilex-build branch now differs from main ONLY by the switch-over wording. Worker: canonical link, `/sitemap.xml` + robots line, schema.org
+WebSite + LocalBusiness (phone, hours) from what the page shows; migration `028_google.sql` (publish_site returns
+hours). Details: `sogilex-build/docs/PUBLISHING.md`. To ship: apply 028, deploy the Worker (keep FORM_SECRET
+"inherit"), merge the build branch, then republish each site. Found: all 3 live sites already had title, description
+and lang; sprayedbyjeanna shows `[PHONE NUMBER]` and `[PRICE]` to visitors and Google, evergreenlawn (demo) shows
+`[CUSTOMER NAME]` reviews. Suggested next: warn in the Publish box when a page still has [BLANKS].
+
+**2026-11-24: Zoom in Adjust photos (owner: "I could not crop a photo. Only move it around.")**, on branch
+`claude/adoring-mayer-jom4sb` in sogilex-build, not on `main` yet. Zoom slider 100-300% next to Frame shape: the photo
+is enlarged (`transform: scale`) around its focus point and clipped back to its frame (`clip-path: inset`), so the
+layout doesn't move; drag/arrow keys move the focus point; inline `animation:none` on a zoomed photo (a hero
+slow-zoom animation would override it); Whole photo disables zoom; Reset clears it. 20 browser checks with real
+photos (gallery, box, background, save contents, reopen, phone width). Arrow keys move the slider while it has focus
+(normal slider behaviour); click the photo first to nudge it. Not yet tried on an iPhone.
+
+**2026-11-24: Complimentary plan (029, applied live).** Hidden plan `comp` ($0, Beta's tools + daily limits,
+publishing). Owner's mom (Sweet Annie account) is on it (subscriptions row, status active, no Stripe ids), so the
+launch switch (default_plan -> 'trial') doesn't affect her. The owner's own account stays on `team` (more than comp).
+**Stripe work must only touch subscription rows that have a stripe_subscription_id** (never comp/team). Known: the
+account page shows comp as "Free" with a "Change plan" button (harmless until payments exist; hide it for comp/team
+before Stripe). Still to decide before lockdown: who else gets comp (10 accounts; sprayedbyjeanna is on beta), and the
+base plan (advised: ~$9/mo for flyers/posts/printed menus/invoices, no website or publishing; owner sets name, price, caps).
+
+**2026-11-24: Basics plan (030, applied live; page changes on branch `claude/adoring-mayer-jom4sb`, not on main).**
+Owner approved the advisor's suggestion: `basics`, **$9/month or $90/year**, flyers + posts + printed menus + quotes/
+invoices (same saved-item room as Do it yourself), 15 captions and 3 menu photo reads a month, **no** website builds,
+website changes, publishing or online menu. Limited by scope and amount, never by worse-looking output. Shows in
+"Change plan" on the account page (public plan, like Do it yourself); NOT on the sogilex.com Plans page until payments
+work. plan_full now says "Website builds aren't part of the Basics plan..." for a 0 limit. Tested: live SQL in an undone
+transaction; 8 browser checks (Build note + link, account meters). Self-serve ladder: trial (free, once each) → Basics
+$9 → Do it yourself $19 → done-for-you. Lockdown order: comp accounts → Stripe (after LLC) → default_plan 'trial'.
+
+**2026-11-24: LOCKDOWN PHASE 1 started (owner: "start phase 1, nobody else" = only the mom is comped).** Plan: phase 1
+(no LLC needed): (1) upgrade prompts, (2) "Made with Sogilex" on free-trial downloads only, (3) Stripe in TEST mode end
+to end (pay, plan changes, renew, cancel, site/online menu offline when a subscription ends), (4) wording sweep "free
+beta" -> "Start free" + Basics/DIY on the Plans page (ships on switch-over day). Phase 2 (after LLC): terms under the
+LLC, Stripe live, default_plan -> 'trial', publish wording. Testers other than the mom lose beta access at the switch.
+- **(1) done, on branch `claude/adoring-mayer-jom4sb` (sogilex-build), not on main:** `assets/upgrade.js` (loaded on
+  Build, Menus, Flyers, Posts, Invoices): any plan-limit message opens a box with the plans that would help (Basics
+  and/or DIY; Basics left out for website/publishing/online-menu limits; prices from `plans`), Choose -> /checkout/.
+  Daily Beta/Team limits stay plain text. Free-trial line above each tool ("1 of 1 post used"). Fixed: Flyers/Posts
+  said "Couldn't save. Check your connection." at the trial limit. 19 browser checks.
+- **(2) done, same branch, not on main:** free-trial mark "Made with Sogilex · sogilex.com" (`SogilexUpgrade.MARK`,
+  shown when the plan's window is 'ever') on flyers/posts (under the footer, inside the fit), menus (pill in the last
+  page's bottom margin) and quotes/invoices (page foot); in preview, Save image, Share and print; paid plans drop it.
+  Not on website downloads (trial websites can't be published; decide later). 22 browser checks, trial vs Basics.
+- **(3) Stripe TEST mode built (2026-11-24); function + database live, pages on branch.** Stripe account (owner's;
+  test key saved on the "Sogilex" environment as a network secret for api.stripe.com AND as Supabase secret
+  STRIPE_SECRET_KEY). Stripe products/prices made by API with lookup keys basics_month/_year, diy_month/_year ($9/$90,
+  $19/$190); customer portal config (metadata sogilex=1: card, receipts, switch Basics<->DIY, cancel at period end);
+  webhook -> https://sdltqbctuieyjlujsdhj.supabase.co/functions/v1/billing (6 events; its signing secret is not used:
+  the function re-reads each event and then the subscription itself from Stripe, so replays can't undo changes).
+  Edge Function `billing` v2 (verify_jwt off): actions checkout / confirm / portal + webhook. Plans come only from the
+  price lookup key; comp/team rows without a Stripe id are never changed and can't check out. **Test-mode guard:** with
+  an sk_test_ key only app_settings 'billing_testers' (user ids, comma-separated; now empty) can pay or be synced;
+  others get "Payments aren't open yet" and the checkout page saves their choice as a request (old behaviour).
+  031 (my_plan.billing_managed), 032 (service_role select on app_settings: without it every account counted as a
+  non-tester). Tested live against Stripe test mode with throwaway accounts (deleted): subscribe Basics -> basics,
+  switch to DIY yearly -> diy + publishing, cancel -> back to default, comp account + paid sub -> stays comp, non-tester
+  ignored, tester synced. 17 browser checks (checkout, return confirm, Manage billing, past due, comp, beta).
+  **Live on main 2026-11-24** (checkout, Manage billing). Owner's test account (a Yahoo address, not the Team one) is the
+  only billing tester. **Fixed (033):** request_plan_change used to insert an ACTIVE row with the current plan, pinning
+  that account to Beta past the launch switch; new requests are stored 'canceled' and the one pinned row was repaired.
+  **Owner tested 2026-11-24: real browser checkout with test card on the Yahoo test account -> Basics, renews Dec 24, via Stripe; works.**
+  **Offline when a plan ends: built 2026-11-24.** 034 applied live (site_live(slug); public_menu needs can_publish).
+  Worker change committed on the branch (on top of the undeployed Google work) and as a main-based commit (local
+  branch `offline-main` in the session; recreate by cherry-picking the branch commit onto main). **Worker DEPLOYED
+  2026-11-24** from main + this change only (live code was checked equal to main first; bindings kept, FORM_SECRET
+  inherit). Pushed to `main` 2026-11-24 (main's worker == deployed). 13 miniflare checks on both copies. At the launch switch Sprayed by Jeanna (Beta)
+  goes offline unless it gets a plan: **owner decided 2026-11-24: do NOT comp Jeanna** (owner, later: it's only Blake's wife testing what a site looks like, not a real business); Evergreen (team) and Sweet Annie (comp) stay up. Done-for-you plans stay manual.
+  **Going live (after LLC):** swap both secrets to the sk_live_ key, recreate products/prices/portal/webhook in live
+  mode (same lookup keys), then the switch-over.
+- **Found:** trial caps on flyers/posts/invoices count SAVED items, and one item can be edited into a new one
+  forever, so for the no-AI tools the trial limit barely limits. The "Made with Sogilex" mark (2) is the real lever.
+
+**2026-11-24: Launch wording prepared (phase 1 item 5), on branch `claude/adoring-mayer-jom4sb` in BOTH repos, NOT on
+main (it goes live on switch-over day).** sogilex.com: Plans page section 01 = three cards (Free trial $0 / Basics $9 or
+$90 / Do it yourself $19 or $190, with the exact limits; Choose buttons -> build.sogilex.com/checkout/), lede and meta,
+homepage hero button "Start free" + tools line, Services lede, service cards lose the "Beta" tag, Menus/Flyers/Posts/
+Invoices pages (meta, og titles, crumbs, buttons "(try it free)", Menus FAQ on cost/online menu), Examples line.
+Tools: no "· beta" eyebrows; Build Publish tag "Do it yourself"; Privacy & limits text. Commits are wording-only.
+**Switch-over day checklist (in order):** (1) LLC formed; Terms + Privacy rewritten under the LLC with billing, renewal,
+cancellation/refund wording and "site offline when a plan ends" (the Terms still say "a free beta" everywhere), lawyer
+read. (2) Stripe live: swap the Supabase secret STRIPE_SECRET_KEY and the environment's api.stripe.com secret to the
+sk_live_ key; recreate products/prices (same lookup keys), portal config (metadata sogilex=1) and the webhook in live
+mode. (3) (Nothing to tell anyone: sprayedbyjeanna is only a TEST site by Blake's wife.) (4) Push the
+wording commits to main in both repos (sogilex-site: cherry-pick ONLY the wording commits, not the About page).
+(5) Start the trial clock, then flip: `insert into public.app_settings (key, value) values ('trial_epoch', now()::text) on conflict (key) do update set value = excluded.value;` then `update public.app_settings set value='trial' where key='default_plan';` (without trial_epoch, every account older than 14 days is 'Free trial ended' at once). (6) Check a beta tester sees the
+trial line, the mark and the upgrade box; Evergreen + Sweet Annie stay up; Jeanna offline.
+
+**2026-11-24: 14-day free trial + website preview-only on the trial (owner: "do 1 and 2", worried free users never pay).**
+035 applied live: hidden plan 'expired' ("Free trial ended", nothing included); plan_of turns 'trial' into 'expired' after
+trial_ends(user) = greatest(account created, app_settings 'trial_epoch') + 'trial_days' (default 14). Ended = read-only:
+triggers refuse edits to flyers/posts/inv_docs/menus (deleting still works), plan_item_cap refuses new items, AI refused
+with "Your free trial has ended...". my_plan.trial_ends. Tools (sogilex-build branch, not on main yet):
+SogilexUpgrade.gate('site') = website Download/Copy/Open full size need can_publish (trial = preview only; DIY/beta/
+team/comp fine); gate('export') = Save image/Share/Print refused when ended; trial line shows days left (Menus too);
+the box opens once per minute per message (autosave). Tested: live SQL in an undone transaction (old account ended
+without epoch, full 14 days with it, team/comp/paid unaffected, edits/new items refused) + 19 browser checks; earlier
+suites rerun (66 checks). Plans page trial card updated on the site branch ("$0 for 14 days").
+Advice given: free users cost ~$0.80 max in AI; the risk is value without paying; no card-upfront (hurts sign-ups for
+an unknown brand); screenshots make hard caps on no-AI tools impossible, so time + the mark are the levers.
+
+**2026-11-24: Fix (owner noticed): cancelling in Manage billing looked like nothing happened.** Stripe had it (cancel at
+period end, Dec 24) and Sogilex received it, but didn't store it, so Your account said "renews". 036 subscriptions.cancel_at
++ my_plan.cancel_at; billing v3 stores it (null when kept/ended); account shows "ends <date>" + a note. Live on main.
+14-day trial code also on main (wording still held for switch-over).
+
+**2026-11-24: Blanks warning in the Publish box (live on main 2026-11-24).** Counts [PLACEHOLDER]s in visible
+text, tel:/mailto: links, title and meta description (not CSS); "Fill them in" opens Edit words at the fill-in boxes;
+publishing with blanks asks first. 13 browser checks; earlier suites rerun. Jeanna's live site has 6 (seen 11-24).
+
+**Correction (owner, 2026-11-24): sprayedbyjeanna.sogilex.net is NOT a friend's business. Blake's wife made it to see what
+a site looks like.** No warning needed at switch-over. **Unpublished 2026-11-24 (owner: "unpublish it")**, done
+the way Unpublish does it: sites row deleted, then the 6 KV copies (site, photos list, 3 photos, logo). Her builds,
+photos and logo in Build are untouched; she can publish again. Published sites now: evergreenlawn, sweetanniephotography.
+
+**Next builds the owner can pick (advisor's order):** (1) finish the About page when the answers arrive; (2) "Show up
+on Google" for published sites (title/description, LocalBusiness data with hours, sitemap); (3) reuse saved
+business hours in Menus and Flyers. Keep the homepage "New in Sogilex" cards current when things ship.
+
+**Working notes for the assistant:** the owner says "push it to main" to publish; don't push to `main` without it
+(an automatic permission check blocks unrequested `main` pushes). The Supabase connector's Execute SQL and Query logs
+are set to always-allow. Costs estimate (2026-11-23): ~$27/month today, ~$35-85/month with 10 customers (AI ~$0.28 a
+build, ~$0.10 a change). Logos: `design/logos/` (every document gets the logo at the top).
+
+## Owner's standing rules for documents (2026-11-23)
+
+- **Every document made for Sogilex carries the Sogilex logo at the top** (owner: "Any document that we make, I will
+  always want the logo on it"). Use `design/sogilex-logo-badge.png` (or the set in `design/logos/`; 1038x308, the two sunset squares + SOGILEX
+  wordmark on night plum, readable in light and dark mode; source `design/sogilex-logo-badge.html`, rendered at 2x).
+  In a Claude Docs doc: upload it as an asset to the doc's artifact, create a blob, insert `![Sogilex logo](blob/<id>)`
+  above the title of every tab. Business plan (Claude Doc, private to the owner):
+  https://claude.ai/artifact/PhM9gHYKiWhdGVs5ZH8M5E (tabs: plan, "What's next").
 
 ## Where we left off (2026-11-22)
 
@@ -482,6 +651,20 @@ DevTools edits are local to one browser and vanish on refresh; all enforcement i
   session cards). Advised: fill them with Edit words → Fill in placeholders before Sogilex links to it. Also advised:
   her clients' photos appear on Sogilex's pages, so she should be comfortable with that (portfolio use).
 - If she changes her site a lot, re-render the screenshots from KV the same way (see this session's notes).
+
+## About page (2026-11-24, built, NOT live: waiting for the team's answers)
+
+- `/about/`: hero ("The people behind Sogilex."), "Our story" (Keagan writes 2-3 sentences; a factual paragraph on the
+  approach is already there), "The team" (Keagan Edler, Founder & CEO; Blake Pille, Co-founder & Head of Sales) with a
+  photo circle (initials until photos arrive), area, one-line role, and four facts (for fun, favorite local spot + order,
+  surprising fact, three words), the four design rules, and "Say hello" (email + examples). Styles in site.css (`.team`,
+  `.person*`, `.story`); `.todo` marks blanks in amber italics: **13 blanks; none may remain before pushing to main.**
+- Menu: "About" replaced "How we design" (a homepage anchor) on all 10 pages, keeping the menu at five items; the rules
+  stay on the homepage and the About page. This menu change is on the same branch commit, so it goes live with /about/.
+- Answers come from the fillable "Meet the team" profile PDF (`/home/user/Sogilex-Team-Profile.pdf`, generator script in
+  the session scratchpad: reportlab AcroForm, 15 fields, all optional, approval boxes; photos by email to
+  hello@sogilex.com). Owner's title to confirm; owner can answer in chat instead of the PDF.
+- Advice given: no further tabs now (menu stays at five); a FAQ later, only from real customer questions.
 
 ## Plans page: sogilex.com/plans/ (2026-11-20, owner asked for "a plans tab")
 
