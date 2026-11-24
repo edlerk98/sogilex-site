@@ -114,8 +114,8 @@ LLC, Stripe live, default_plan -> 'trial', publish wording. Testers other than t
   Worker change committed on the branch (on top of the undeployed Google work) and as a main-based commit (local
   branch `offline-main` in the session; recreate by cherry-picking the branch commit onto main). **Worker DEPLOYED
   2026-11-24** from main + this change only (live code was checked equal to main first; bindings kept, FORM_SECRET
-  inherit). The repo's `main` does NOT have this Worker change until the owner says push it to main. 13 miniflare checks on both copies. At the launch switch Sprayed by Jeanna (Beta)
-  goes offline unless it gets a plan or comp; Evergreen (team) and Sweet Annie (comp) stay up. Done-for-you plans stay manual.
+  inherit). Pushed to `main` 2026-11-24 (main's worker == deployed). 13 miniflare checks on both copies. At the launch switch Sprayed by Jeanna (Beta)
+  goes offline unless it gets a plan: **owner decided 2026-11-24: do NOT comp Jeanna**; Evergreen (team) and Sweet Annie (comp) stay up. Done-for-you plans stay manual.
   **Going live (after LLC):** swap both secrets to the sk_live_ key, recreate products/prices/portal/webhook in live
   mode (same lookup keys), then the switch-over.
 - **Found:** trial caps on flyers/posts/invoices count SAVED items, and one item can be edited into a new one
