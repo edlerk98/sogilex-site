@@ -46,8 +46,8 @@ permission, on /examples/ and the homepage).
    up again there.
 
 **2026-11-24 (later session): "Show up on Google" DEPLOYED 2026-11-24 (owner: "deploy the Google work")**: 028 applied,
-Worker = main + Google (live code checked == main first; bindings kept; 21 Google + 13 offline checks). The repo's
-`main` gets the Worker/028/PUBLISHING.md changes when the owner says push it to main. Worker: canonical link, `/sitemap.xml` + robots line, schema.org
+Worker = main + Google (live code checked == main first; bindings kept; 21 Google + 13 offline checks). On `main` 2026-11-24
+(main's worker == deployed). sogilex-build branch now differs from main ONLY by the switch-over wording. Worker: canonical link, `/sitemap.xml` + robots line, schema.org
 WebSite + LocalBusiness (phone, hours) from what the page shows; migration `028_google.sql` (publish_site returns
 hours). Details: `sogilex-build/docs/PUBLISHING.md`. To ship: apply 028, deploy the Worker (keep FORM_SECRET
 "inherit"), merge the build branch, then republish each site. Found: all 3 live sites already had title, description
