@@ -69,6 +69,15 @@ account page shows comp as "Free" with a "Change plan" button (harmless until pa
 before Stripe). Still to decide before lockdown: who else gets comp (10 accounts; sprayedbyjeanna is on beta), and the
 base plan (advised: ~$9/mo for flyers/posts/printed menus/invoices, no website or publishing; owner sets name, price, caps).
 
+**2026-11-24: Basics plan (030, applied live; page changes on branch `claude/adoring-mayer-jom4sb`, not on main).**
+Owner approved the advisor's suggestion: `basics`, **$9/month or $90/year**, flyers + posts + printed menus + quotes/
+invoices (same saved-item room as Do it yourself), 15 captions and 3 menu photo reads a month, **no** website builds,
+website changes, publishing or online menu. Limited by scope and amount, never by worse-looking output. Shows in
+"Change plan" on the account page (public plan, like Do it yourself); NOT on the sogilex.com Plans page until payments
+work. plan_full now says "Website builds aren't part of the Basics plan..." for a 0 limit. Tested: live SQL in an undone
+transaction; 8 browser checks (Build note + link, account meters). Self-serve ladder: trial (free, once each) → Basics
+$9 → Do it yourself $19 → done-for-you. Lockdown order: comp accounts → Stripe (after LLC) → default_plan 'trial'.
+
 **Next builds the owner can pick (advisor's order):** (1) finish the About page when the answers arrive; (2) "Show up
 on Google" for published sites (title/description, LocalBusiness data with hours, sitemap); (3) reuse saved
 business hours in Menus and Flyers. Keep the homepage "New in Sogilex" cards current when things ship.
