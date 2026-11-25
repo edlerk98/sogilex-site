@@ -96,7 +96,7 @@ img, svg { display: block; }
 .card.live { border-color: rgba(255, 154, 77, 0.6); background: linear-gradient(180deg, rgba(58, 20, 52, 0.95), rgba(22, 12, 30, 0.95)); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), 0 0 40px rgba(240, 69, 143, 0.12); }
 .card-top { display: flex; justify-content: space-between; align-items: center; }
 .card-top .label { font-size: 12px; letter-spacing: 0.16em; }
-.card h3 { margin: 0; font-family: var(--head); font-weight: 500; font-size: 24px; }
+.card h2, .card h3 { margin: 0; font-family: var(--head); font-weight: 500; font-size: 24px; }
 .card p { margin: 0; color: var(--muted); }
 .card .more { margin-top: auto; color: var(--text); font-weight: 600; }
 .card .more:hover { color: var(--amber); }
@@ -133,9 +133,6 @@ img, svg { display: block; }
 @media (max-width: 640px) {
   .hero .wrap { padding-top: 64px; min-height: 560px; }
   .nav { gap: 18px; }
-}
-@media (max-width: 480px) {
-  .nav li:not(:last-child) { display: none; }
 }
 
 /* ---------- product pages (menus, flyers) ---------- */
@@ -261,7 +258,7 @@ img, svg { display: block; }
 .svc-menu { display: none; position: absolute; top: calc(100% + 12px); left: -16px; z-index: 20; min-width: 270px; padding: 10px; border-radius: 16px;
   border: 1px solid var(--border); background: #1A1022; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5); flex-direction: column; gap: 2px; }
 .nav-services.open .svc-menu { display: flex; }
-@media (hover: hover) and (min-width: 481px) { .nav-services:hover .svc-menu, .nav-services:focus-within .svc-menu { display: flex; } }
+@media (hover: hover) and (min-width: 861px) { .nav-services:hover .svc-menu, .nav-services:focus-within .svc-menu { display: flex; } }
 .svc-menu a { text-decoration: none; }
 .svc-item { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 10px 12px; border-radius: 10px; color: var(--text) !important; }
 .svc-item:hover { background: rgba(255, 154, 77, 0.1); }
@@ -271,11 +268,6 @@ img, svg { display: block; }
 .svc-all { border-top: 1px solid #2A1B33; margin-top: 6px; padding-top: 12px; }
 .svc-dfy { padding-top: 2px; color: var(--muted) !important; }
 .card .more-quiet { margin-top: 0; font-weight: 500; color: var(--muted); }
-@media (max-width: 480px) {
-  .nav li.nav-services { display: flex; position: static; }
-  .site-header .bar { position: relative; }
-  .svc-menu { left: 16px; right: 16px; min-width: 0; top: calc(100% - 6px); }
-}
 
 /* ---------- privacy and terms ---------- */
 .legal-hero .wrap { min-height: 380px; }
@@ -305,13 +297,16 @@ img, svg { display: block; }
 .plan-extras tr + tr th, .plan-extras tr + tr td { border-top: 1px solid var(--border); }
 @media (max-width: 760px) { .plans-grid { grid-template-columns: minmax(0, 1fr); } }
 
-/* New in Sogilex (homepage) */
-.news .wrap { padding-top: 24px; padding-bottom: 72px; display: flex; flex-direction: column; gap: 32px; }
+/* What's new (/changelog/; the homepage keeps one link to it) */
+.news-link { margin: -16px 0 0; font-weight: 600; }
+.news-link a { color: var(--text); }
+.news-link a:hover { color: var(--amber); }
+.news .wrap { padding-top: 8px; padding-bottom: 72px; display: flex; flex-direction: column; gap: 32px; }
 .news .news-h { font-size: clamp(1.8rem, 3.4vw, 2.6rem); line-height: 1.1; }
 .news-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
 .news-list li { padding: 24px; border-radius: 16px; display: flex; flex-direction: column; gap: 10px; }
 .news-list time { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); }
-.news-list h3 { margin: 0; font-size: 19px; font-weight: 600; }
+.news-list h2, .news-list h3 { margin: 0; font-size: 19px; font-weight: 600; }
 .news-list p { margin: 0; color: var(--muted); }
 .news-list a { margin-top: auto; color: var(--text); font-weight: 600; }
 .news-list a:hover { color: var(--amber); }
@@ -324,7 +319,7 @@ img, svg { display: block; }
 
 /* Homepage showcase: real output of the tools beside the headline (demo businesses, see /examples/) */
 .hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
-.showcase { position: relative; width: 100%; max-width: 560px; aspect-ratio: 1 / 0.86; margin-inline: auto; }
+.showcase { position: relative; z-index: 0; /* keeps the cards' z-index inside, under the Services drop-down */ width: 100%; max-width: 560px; aspect-ratio: 1 / 0.86; margin-inline: auto; }
 .show { position: absolute; display: block; border-radius: 10px; overflow: hidden; background: #fff; text-decoration: none;
   box-shadow: 0 24px 50px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.08);
   transition: transform .35s cubic-bezier(.2, .7, .2, 1), box-shadow .35s; }
@@ -381,3 +376,38 @@ img, svg { display: block; }
   .flow li:not(:last-child)::after { content: ""; position: absolute; left: 27px; top: 56px; bottom: -26px; width: 2px; background: linear-gradient(180deg, var(--magenta), var(--amber)); opacity: .55; }
 }
 .show-site span { top: 8px; bottom: auto; left: auto; right: 8px; }
+
+/* Text over the moving sunset (assets/scene.js): a dark halo the colour of the night sky keeps text readable (WCAG AA)
+   when the sun or its glow passes behind it. Invisible on the plain background. Boxes with their own background drop it. */
+main { --halo: var(--night); text-shadow: 0 0 1px var(--halo), 0 0 2px var(--halo), 0 0 2px var(--halo), 0 0 3px var(--halo), 0 0 6px var(--halo), 0 0 12px var(--halo), 0 0 20px var(--halo); }
+main .panel, main .btn, main .show, main .legal, main .example, main .menu-card, main .flyer-card, main input, main textarea { text-shadow: none; }
+/* Small mono labels have thin strokes: a denser, tighter halo. */
+main .label, main .crumb, main .sample-note { text-shadow: 0 0 1px var(--halo), 0 0 1px var(--halo), 0 0 1px var(--halo), 0 0 1px var(--halo), 0 0 2px var(--halo), 0 0 2px var(--halo), 0 0 3px var(--halo), 0 0 3px var(--halo), 0 0 6px var(--halo), 0 0 12px var(--halo); }
+.glow-text { text-shadow: none; filter: drop-shadow(0 0 1px var(--night)) drop-shadow(0 0 2px var(--night)) drop-shadow(0 0 8px var(--night)); }
+
+/* Phones and small tablets: the main menu sits behind a "Menu" button (assets/nav.js adds it and the .nav-js class).
+   Without JavaScript the links simply wrap. */
+.nav-btn { display: none; }
+@media (max-width: 860px) {
+  .nav-js .site-header .bar { position: relative; flex-wrap: nowrap; }
+  .nav-js .nav-btn { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 16px; border-radius: 999px;
+    border: 1px solid #5A4366; background: rgba(18, 10, 24, 0.5); color: var(--text); font: inherit; font-size: 15px; font-weight: 500; cursor: pointer; }
+  .nav-js .nav-btn:hover, .nav-js .nav-btn[aria-expanded="true"] { border-color: var(--amber); }
+  .nav-btn-icon { position: relative; width: 16px; height: 2px; background: currentColor; border-radius: 2px; }
+  .nav-btn-icon::before, .nav-btn-icon::after { content: ""; position: absolute; left: 0; width: 16px; height: 2px; background: currentColor; border-radius: 2px; transition: transform .2s; }
+  .nav-btn-icon::before { top: -5px; } .nav-btn-icon::after { top: 5px; }
+  .nav-btn[aria-expanded="true"] .nav-btn-icon { background: transparent; }
+  .nav-btn[aria-expanded="true"] .nav-btn-icon::before { transform: translateY(5px) rotate(45deg); }
+  .nav-btn[aria-expanded="true"] .nav-btn-icon::after { transform: translateY(-5px) rotate(-45deg); }
+  .nav-js .nav { display: none; position: absolute; top: calc(100% - 4px); left: 16px; right: 16px; z-index: 20; flex-direction: column; align-items: stretch; gap: 2px;
+    padding: 10px; border-radius: 16px; border: 1px solid var(--border); background: #1A1022; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5); font-size: 16px; }
+  .nav-js .nav.open { display: flex; }
+  .nav-js .nav > li > a:not(.btn) { display: flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: 10px; flex: 1; }
+  .nav-js .nav > li > a:not(.btn):hover { background: rgba(255, 154, 77, 0.1); }
+  .nav-js .nav .btn { margin-top: 8px; width: 100%; justify-content: center; }
+  /* Services: its list opens inside the menu instead of floating */
+  .nav-js .nav .nav-services { flex-wrap: wrap; }
+  .nav-js .svc-toggle { min-width: 44px; min-height: 44px; }
+  .nav-js .svc-menu { position: static; flex-basis: 100%; min-width: 0; margin: 2px 0 6px; padding: 6px; box-shadow: none; background: rgba(255, 255, 255, 0.03); }
+}
+@media (prefers-reduced-motion: reduce) { .nav-btn-icon::before, .nav-btn-icon::after { transition: none; } }

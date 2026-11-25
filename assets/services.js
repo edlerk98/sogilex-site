@@ -72,7 +72,7 @@ window.SOGILEX_DONE_FOR_YOU = { href: '/#done-for-you', text: 'Rather we do it f
   document.querySelectorAll('[data-services]').forEach((box) => {
     box.replaceChildren(...list.map((s) => el('article', { class: 'card panel live', id: box.dataset.services === 'full' ? s.id : null },
       el('div', { class: 'card-top' }, el('span', { class: 'label', text: s.label }), s.tag ? el('span', { class: 'tag on', text: s.tag }) : null),
-      el('h3', { text: s.title }),
+      el(box.dataset.services === 'full' ? 'h2' : 'h3', { text: s.title }), // /services/ has no section h2 above the cards
       el('p', { text: s.blurb }),
       el('a', { class: 'more', href: s.make.href, text: s.make.text + ' →' }),
       s.about ? el('a', { class: 'more more-quiet', href: s.about.href, text: s.about.text }) : null)));

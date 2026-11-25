@@ -166,7 +166,7 @@ photos and logo in Build are untouched; she can publish again. Published sites n
 
 **Next builds the owner can pick (advisor's order):** (1) finish the About page when the answers arrive; (2) "Show up
 on Google" for published sites (title/description, LocalBusiness data with hours, sitemap); (3) reuse saved
-business hours in Menus and Flyers. Keep the homepage "New in Sogilex" cards current when things ship.
+business hours in Menus and Flyers. Keep the "What's new" cards on /changelog/ current when things ship (moved off the homepage 2026-11-25).
 
 **Working notes for the assistant:** the owner says "push it to main" to publish; don't push to `main` without it
 (an automatic permission check blocks unrequested `main` pushes). The Supabase connector's Execute SQL and Query logs
@@ -614,6 +614,9 @@ DevTools edits are local to one browser and vanish on refresh; all enforcement i
   and Quotes & invoices as the 5th tool.
 
 ## Homepage "New in Sogilex" (2026-11-23, owner: focus on sogilex.com)
+
+**Moved 2026-11-25 to `/changelog/` ("What's new in Sogilex"); the homepage keeps one link to it under the service cards.
+Add new cards at the top of the list in `changelog/index.html` (titles are h2 there). No weekly heading to keep fresh now.**
 
 - Section right after the service cards (`index.html`, `#new`): 5 dated cards, newest first, each linking to its tool
   (quotes with add-ons; Edit words; photo frame shapes; business hours; link preview picture). Layout: two wide over
