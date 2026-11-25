@@ -1,6 +1,6 @@
 # Sogilex: where things stand
 
-Last updated 2026-11-24. **A new session should read this file first.**
+Last updated 2026-11-25. **A new session should read this file first.**
 This repo is public: no keys, user IDs or private details here.
 
 ## How to start the next session
@@ -16,6 +16,22 @@ This repo is public: no keys, user IDs or private details here.
 - Working style the owner asked for: be an advisor, not a yes-man (say when they're wrong and why, give
   confidence levels); **simple, one-step-at-a-time walkthroughs** for anything the owner does by hand (they get
   overwhelmed by long lists); test before shipping; end each reply with one clear next step.
+
+## Update 2026-11-25 (read this first, then "Start here" below)
+
+**sogilex.com round LIVE on `main` (owner: "push it to main"), commits dff44ac + 5ec5e0f.** Details in the `main` copy of
+this file and the commit messages. robots.txt + sitemap.xml (11 pages; owner confirmed live), 404.html, canonical +
+twitter:card on every page, "Made better this week" moved to /changelog/ (homepage keeps one link; add new cards there),
+phone menu button up to 860px (assets/nav.js), /services/ card titles h2, a night-coloured text halo so text stays readable
+over the animated sunset (measured 27 -> 2 spots below WCAG AA), Services drop-down no longer behind the homepage showcase,
+/menus/ sign-up button "Tell me about new looks" (was "Join the waitlist") and privacy wording "Menus updates".
+- **This branch is now BEHIND `main` on sogilex-site.** Before shipping the switch-over wording or the About page, merge
+  `main` into this branch first; expect conflicts in index.html, plans/menus/privacy heads and assets/site.css.
+- Owner can't see Basics/DIY on their own account page: they're on Team, which hides "Change plan" on purpose. To see the
+  plans and try a test checkout, sign in with the Yahoo test account (in billing_testers).
+- Blake answered the business plan: details are in the private business plan doc, NOT here (this repo is public). Open
+  question for the owner: did he accept the whole package (vesting, role, commission, funding) or only the split?
+- Still next for own web addresses: step 1 below (owner creates the Cloudflare "Sogilex domains" token). Untouched today.
 
 ## Start here: handoff at the end of 2026-11-24 (latest session)
 
