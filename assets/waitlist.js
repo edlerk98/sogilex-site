@@ -21,7 +21,7 @@
           body: JSON.stringify({ email, product: form.dataset.waitlist }),
         });
         if (res.ok || res.status === 409) {
-          status.textContent = res.status === 409 ? "You're already on the list. We'll email you when it opens." : "You're on the list. We'll email you once, when it opens.";
+          status.textContent = res.status === 409 ? "You're already signed up. We'll email you when new looks land." : "Done. We'll email you when new looks land.";
           form.classList.add('done');
           form.elements.email.value = '';
         } else {
